@@ -7,7 +7,6 @@ Move the spider across the wall to a click.
 **Requirements:**
 
 - The spider center should come exactly under the pointer on click (without crossing the wall edge).
-
 - The spider must not cross wall boundaries.
 When the page is scrolled, nothing should break.
 
