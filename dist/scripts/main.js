@@ -16,5 +16,4 @@ document.addEventListener('click', e => {
   posY = posY + (spider.clientHeight) > field.clientHeight ? field.clientHeight - spider.clientHeight : posY;
 
   spider.style.cssText = `left: ${posX}px; top: ${posY}px`;
-  console.log(posY);
 });
