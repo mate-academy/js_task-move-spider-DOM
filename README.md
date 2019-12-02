@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://nastya2203.github.io/js-task-move-spider-DOM/)
+- [UPDATE DEMO LINK](https://nastya2203.github.io/js-task-move-spider-DOMi/)
