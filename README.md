@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+- [DEMO LINK](https://vmishchenko.github.io/js-task-move-spider-DOM/)
