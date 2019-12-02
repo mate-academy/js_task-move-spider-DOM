@@ -20,7 +20,7 @@ document.addEventListener('click', e => {
     }
 
     if (up < 0) {
-      up = 0;
+      up = 2;
     }
 
     if (up > wall.clientHeight - spider.clientHeight) {
