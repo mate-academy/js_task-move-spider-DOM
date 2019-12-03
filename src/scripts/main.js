@@ -16,23 +16,27 @@ const moveSpider = (click) => {
 
   const gorSpiderMove = click.clientX - wallLeftPos - spiderSize / 2;
   const vertSpiderMove = click.clientY - wallTopPos - spiderSize / 2;
+  const leftBorder = wallLeftPos + spiderSize;
+  const rightBorder = wallLeftPos + wall.clientWidth - spiderSize;
+  const topBorder = wallTopPos + spiderSize;
+  const bottomBorder = wallTopPos + wall.clientHeight - spiderSize;
 
   spider.style.left = `${gorSpiderMove}px`;
   spider.style.top = `${vertSpiderMove}px`;
 
-  if (click.clientX < wallLeftPos + spiderSize) {
+  if (click.clientX < leftBorder) {
     spider.style.left = `0`;
   }
 
-  if (click.clientX > wallLeftPos + wall.clientWidth - spiderSize) {
+  if (click.clientX > rightBorder) {
     spider.style.left = `${wall.clientWidth - spiderSize}px`;
   }
 
-  if (click.clientY < wallTopPos + spiderSize) {
+  if (click.clientY < topBorder) {
     spider.style.top = `0`;
   }
 
-  if (click.clientY > wallTopPos + wall.clientHeight - spiderSize) {
+  if (click.clientY > bottomBorder) {
     spider.style.top = `${wall.clientHeight - spiderSize}px`;
   }
 };
