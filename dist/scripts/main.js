@@ -14,15 +14,16 @@ document.addEventListener('click', e => {
   if (target.className.includes('wall')) {
     const wallLeftOffset = wall.getBoundingClientRect().left;
     const wallTopOffset = wall.getBoundingClientRect().top;
+    const wallClientRect = wall.getBoundingClientRect();
 
     const wallWithoutBorderWidth
-      = wall.getBoundingClientRect().right
-      - wall.getBoundingClientRect().left
+      = wallClientRect.right
+      - wallClientRect.left
       - wallLeftBorder * 2;
 
     const wallHeightBorderWidth
-      = wall.getBoundingClientRect().bottom
-      - wall.getBoundingClientRect().top
+      = wallClientRect.bottom
+      - wallClientRect.top
       - wallLeftBorder * 2;
 
     const newPositionX = e.clientX - wallLeftOffset - wallLeftBorder;
@@ -30,7 +31,7 @@ document.addEventListener('click', e => {
 
     const setTopPosition = function() {
       if ((newPositionY - spiderHeight / 2) < 0) {
-        spider.style.top = 0 + 'px';
+        spider.style.top = `0px`;
       } else if (
         (newPositionY - spiderHeight / 2)
         > (wallHeightBorderWidth - spiderHeight)
