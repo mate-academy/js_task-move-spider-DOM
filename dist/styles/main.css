@@ -28,6 +28,7 @@ body {
   width: 400px;
   height: 400px;
   position: relative;
+  overflow: hidden;
   cursor: pointer; }
 
 .spider {
@@ -37,6 +38,17 @@ body {
   width: 50px;
   height: 50px;
   -webkit-transition: 1s;
-  transition: 1s; }
+  transition: 1s;
+  z-index: 1; }
+
+.culkin {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: calc(50% - 75px);
+  left: -500px;
+  -webkit-transition: 3s;
+  transition: 3s;
+  z-index: 0; }
 
 /*# sourceMappingURL=main.css.map */
