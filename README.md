@@ -22,10 +22,14 @@ click coordinates.
 ### Gif of result
 ![](example/example.gif)
 
-**Read the guideline before start**
+___
+1. **Read the guideline before start**
 
-[Guideline](https://github.com/mate-academy/js_task-DOM-guideline)
+    - [Guideline](https://github.com/mate-academy/js_task-DOM-guideline)
 
-**Result**
+2. **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+   Replace `<your_account>` with your Github username in the links
+
+    - [DEMO LINK](https://andreas-just.github.io/js_sort-table-DOM/)
+    - [PULL REQUEST](https://github.com/mate-academy/js_sort-table-DOM/pull/19)
