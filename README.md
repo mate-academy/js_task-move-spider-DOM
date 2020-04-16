@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://RomaMykhalchuk.github.io/<repo_name>/)
+- [UPDATE DEMO LINK](https://romamykhalchuk.github.io/js-task-move-spider-DOM/)
