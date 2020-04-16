@@ -28,4 +28,5 @@ click coordinates.
 
 **Result**
 
+
 - [UPDATE DEMO LINK](https://FaychakA.github.io/js-task-move-spider-DOM/)
