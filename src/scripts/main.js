@@ -9,7 +9,7 @@ document.addEventListener('click', e => {
 
   const spiderCoords = {
     left: e.clientX - wallCoords.left - wall.clientLeft - spider.offsetWidth / 2,
-    top: e.clientY - wallCoords.top - wall.clientTop - spider.offsetWidth / 2,
+    top: e.clientY - wallCoords.top - wall.clientTop - spider.offsetHeight / 2,
   };
 
   if (spiderCoords.left < 0) {
