@@ -31,5 +31,5 @@ ___
 
    Replace `<your_account>` with your Github username in the links
 
-    - [DEMO LINK](https://andreas-just.github.io/js_sort-table-DOM/)
-    - [PULL REQUEST](https://github.com/mate-academy/js_sort-table-DOM/pull/19)
+    - [DEMO LINK](https://andreas-just.github.io/js-task-move-spider-DOM/)
+    - [PULL REQUEST](https://github.com/mate-academy/js-task-move-spider-DOM/pull/55)
