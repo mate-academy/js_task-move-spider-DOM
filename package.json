@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp default --silent",
     "build": "gulp build",
-    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "deploy": "git subtree push --prefix dist origin gh-pages ",
     "lint": "stylelint src/**/*.scss && eslint src/**/*.js && htmllint --rc ./node_modules/@mate-academy/htmllint-config/.htmllintrc src/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
