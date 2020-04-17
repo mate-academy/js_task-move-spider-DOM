@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://OlenaZubashenko.github.io/olenazubashenko/)
+- [UPDATE DEMO LINK](https://olenazubashenko.github.io/js-task-move-spider-DOM/)
