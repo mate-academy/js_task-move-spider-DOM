@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://IgorKulish.github.io/deploy/)
+- [UPDATE DEMO LINK](https://IgorKulish.github.io/js-task-move-spider-DOM)
