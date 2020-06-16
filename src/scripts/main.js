@@ -10,8 +10,10 @@ const sizes = {
 };
 
 document.addEventListener('click', e => {
-  setCoordinates('left', e.clientX);
-  setCoordinates('top', e.clientY);
+  if (e.target.closest('.wall')) {
+    setCoordinates('left', e.clientX);
+    setCoordinates('top', e.clientY);
+  }
 });
 
 function setCoordinates(axis, eventValue) {
