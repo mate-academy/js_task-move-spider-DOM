@@ -1,25 +1,37 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
-const spiderPosition = spider.getBoundingClientRect();
-const spiderX = spiderPosition.x;
-const spiderY = spiderPosition.y;
-const spiderWidth = spiderPosition.width;
-const spiderHeight = spiderPosition.height;
-
 document.addEventListener('click', e => {
   const target = e.target.closest('div');
 
   if (target) {
-    const differenceX = e.clientX - spiderX - spiderWidth / 2;
-    const differenceY = e.clientY - spiderY - spiderHeight / 2;
+    const wall = document.querySelector('.wall');
+    const wallGap = wall.clientTop + wall.clientLeft;
 
-    differenceX >= 0
-      ? spider.style.left = `${differenceX}px`
-      : spider.style.right = `-${differenceX}px`;
+    const spider = document.querySelector('.spider');
+    const wallPosition = wall.getBoundingClientRect();
 
-    differenceY >= 0
-      ? spider.style.top = `${differenceY}px`
-      : spider.style.bottom = `-${differenceY}px`;
+    let spiderX = e.clientX - wallPosition.x
+      - wall.clientLeft - spider.offsetWidth / 2;
+
+    let spiderY = e.clientY - wallPosition.y
+      - wall.clientTop - spider.offsetHeight / 2;
+
+    const maxX = wall.offsetWidth - spider.offsetWidth - wallGap;
+    const maxY = wall.offsetHeight - spider.offsetHeight - wallGap;
+
+    if (spiderX > maxX) {
+      spiderX = maxX;
+    } else if (spiderX < 0) {
+      spiderX = 0;
+    }
+
+    if (spiderY > maxY) {
+      spiderY = maxY;
+    } else if (spiderY < 0) {
+      spiderY = 0;
+    }
+
+    spider.style.left = `${spiderX}px`;
+    spider.style.top = `${spiderY}px`;
   }
 });
