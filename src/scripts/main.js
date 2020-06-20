@@ -1,30 +1,37 @@
 'use strict';
 
 const wall = document.querySelector('.wall');
-const spider = wall.querySelector('.spider');
+const spider = document.querySelector('.spider');
 
-wall.addEventListener('click', (e) => {
+function limitMoving(axis, coordinate) {
+  let currentAxis = axis;
+
+  if (axis < 0) {
+    currentAxis = 0;
+  } else if (axis > coordinate) {
+    currentAxis = coordinate;
+  }
+
+  return currentAxis;
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.wall')) {
+    return;
+  }
+
   const wallPosition = wall.getBoundingClientRect();
   const wallX = wallPosition.left + wall.clientLeft;
-  const wallY = wallPosition.top + wall.clientLeft;
-  let coordinateX = e.clientX - wallX - spider.offsetWidth / 2;
-  let coordinateY = e.clientY - wallY - spider.offsetHeight / 2;
+  const wallY = wallPosition.top + wall.clientTop;
+  const coordinateX = e.clientX - wallX - spider.offsetWidth / 2;
+  const coordinateY = e.clientY - wallY - spider.offsetHeight / 2;
 
   const maxX = wall.clientWidth - spider.offsetWidth;
   const maxY = wall.clientHeight - spider.offsetHeight;
 
-  if (coordinateX < 0) {
-    coordinateX = 0;
-  } else if (coordinateX > maxX) {
-    coordinateX = maxX;
-  }
+  const limitedCoordinateX = limitMoving(coordinateX, maxX);
+  const limitedCoordinateY = limitMoving(coordinateY, maxY);
 
-  if (coordinateY < 0) {
-    coordinateY = 0;
-  } else if (coordinateY > maxY) {
-    coordinateY = maxY;
-  }
-
-  spider.style.top = `${coordinateY}px`;
-  spider.style.left = `${coordinateX}px`;
+  spider.style.top = `${limitedCoordinateY}px`;
+  spider.style.left = `${limitedCoordinateX}px`;
 });
