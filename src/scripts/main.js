@@ -4,32 +4,30 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
   const wallCoodr = wall.getBoundingClientRect();
   const spider = document.querySelector('.spider');
+  const breackPointTop = wall.clientHeight - spider.clientHeight;
+  const breackPointLeft = wall.clientWidth - spider.clientWidth;
 
   if (e.target !== wall) {
     return;
   }
 
   const spiderCoord = {
-    top: e.clientX - wallCoodr.x - wall.clientTop - spider.clientWidth / 2,
-    left: e.clientY - wallCoodr.y - wall.clientLeft - spider.clientHeight / 2,
+    left: e.clientX - wallCoodr.x - wall.clientLeft - spider.clientWidth / 2,
+    top: e.clientY - wallCoodr.y - wall.clientTop - spider.clientHeight / 2,
   };
 
-  if (spiderCoord.left < 0) {
-    spiderCoord.left = 0;
-  }
+  function checkCoordinate(axis, breackPoint) {
+    if (spiderCoord[axis] < 0) {
+      spiderCoord[axis] = 0;
+    }
 
-  if (spiderCoord.top < 0) {
-    spiderCoord.top = 0;
-  }
+    if (spiderCoord[axis] > breackPoint) {
+      spiderCoord[axis] = breackPoint;
+    };
 
-  if (spiderCoord.top + spider.clientWidth > wall.clientWidth) {
-    spiderCoord.top = wall.clientWidth - spider.clientWidth;
-  }
+    return spiderCoord[axis];
+  };
 
-  if (spiderCoord.left + spider.clientHeight > wall.clientHeight) {
-    spiderCoord.left = wall.clientHeight - spider.clientHeight;
-  }
-
-  spider.style.left = spiderCoord.top + 'px';
-  spider.style.top = spiderCoord.left + 'px';
+  spider.style.left = checkCoordinate('left', breackPointLeft) + 'px';
+  spider.style.top = checkCoordinate('top', breackPointTop) + 'px';
 });
