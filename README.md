@@ -28,4 +28,4 @@ click coordinates.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+- [UPDATE DEMO LINK](https://coroboX.github.io/js_task-move-spider-DOM/)
