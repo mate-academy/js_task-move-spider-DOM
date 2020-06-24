@@ -6,8 +6,7 @@ document.addEventListener('click', e => {
 
   if (wall) {
     const spider = wall.children[0];
-    // eslint-disable-next-line no-undef
-    const border = parseInt(getComputedStyle(wall).borderWidth);
+    const border = parseInt(window.getComputedStyle(wall).borderWidth);
     const spiderXMin = spider.offsetWidth / 2 + border;
     const spiderYMin = spider.offsetHeight / 2 + border;
     const spiderXMax = wall.offsetWidth - spiderXMin;
