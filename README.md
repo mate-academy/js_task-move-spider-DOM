@@ -1,6 +1,9 @@
-# Move the spider
-
-## Task
+1. Replace `<your_account>` with your Github username in the link
+    - [DEMO LINK](https://<your_account>.github.io/layout_stop-watch/)
+2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
+    - There are no tests for this task so use `npm run lint` command instead of `npm test` 
+    
+### Task: Move the spider
 
 Move the spider across the wall to a click.
 
@@ -21,11 +24,3 @@ click coordinates.
 
 ### Gif of result
 ![](example/example.gif)
-
-**Read the guideline before start**
-
-[Guideline](https://github.com/mate-academy/js_task-DOM-guideline)
-
-**Result**
-
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
