@@ -13,17 +13,18 @@ document.addEventListener('click', event => {
   let x = event.offsetX - spiderSize / 2;
   let y = event.offsetY - spiderSize / 2;
 
-  if (x > wallSize - spiderSize) {
-    x = wallSize - spiderSize;
-  } else if (x < 0) {
-    x = 0;
+  function countCollisionWall(param) {
+    if (param > wallSize - spiderSize) {
+      return wallSize - spiderSize;
+    } else if (param < 0) {
+      return 0;
+    };
+
+    return param;
   };
 
-  if (y > wallSize - spiderSize) {
-    y = wallSize - spiderSize;
-  } else if (y < 0) {
-    y = 0;
-  };
+  x = countCollisionWall(x);
+  y = countCollisionWall(y);
 
   spider.style.left = x + 'px';
   spider.style.top = y + 'px';
