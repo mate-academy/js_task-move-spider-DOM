@@ -9,9 +9,9 @@ const maxCoord = wallSize - (spiderSize / 2);
 wall.addEventListener('click', e => {
   function getDistance(coord) {
     return coord > maxCoord
-    ? maxCoord
-    : coord < spiderSize / 2
-      ? spiderSize / 2 : coord;
+      ? maxCoord
+      : coord < spiderSize / 2
+        ? spiderSize / 2 : coord;
   }
 
   const x = getDistance(e.offsetX);
