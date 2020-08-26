@@ -11,11 +11,13 @@ document.addEventListener('click', event => {
   const posX = event.offsetX - spider.width / 2;
   const posY = event.offsetY - spider.height / 2;
   const getPosition = (coord, wallSize, spiderSize) => {
-    return (coord < 0)
-      ? 0
-      : (coord > wallSize - spiderSize)
-        ? wallSize - spiderSize
-        : coord;
+    if (coord < 0) {
+      return 0;
+    } else if (coord > wallSize - spiderSize) {
+      return wallSize - spiderSize;
+    } else {
+      return coord;
+    }
   };
 
   spider.style.top = `${getPosition(posY, wall.clientHeight, spider.height)}px`;
