@@ -13,8 +13,8 @@ document.addEventListener('click', (event) => {
     return;
   };
 
-  const coordY = event.offsetY - spider.offsetHeight / 2;
-  const coordX = event.offsetX - spider.offsetWidth / 2;
+  const coordY = event.offsetY - spiderSize / 2;
+  const coordX = event.offsetX - spiderSize / 2;
 
   function getCoords(coords) {
     if (coords > wallSize - spiderSize) {
