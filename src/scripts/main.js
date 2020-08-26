@@ -12,10 +12,14 @@ document.addEventListener('click', e => {
   const spiderY = e.offsetY - spider.offsetHeight / 2;
 
   spider.style.left = positionSpider(
-    spiderX, wall.clientWidth, spider.offsetWidth) + 'px';
+    spiderX,
+    wall.clientWidth,
+    spider.offsetWidth) + 'px';
 
   spider.style.top = positionSpider(
-    spiderY, wall.clientHeight, spider.offsetHeight) + 'px';
+    spiderY,
+    wall.clientHeight,
+    spider.offsetHeight) + 'px';
 
   function positionSpider(spiderCoords, wallSize, spiderSize) {
     if (spiderCoords < 0) {
