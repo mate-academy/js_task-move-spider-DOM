@@ -14,8 +14,8 @@ document.addEventListener('click', event => {
   x = checkBorders(x, spider.offsetWidth, wall.clientWidth);
   y = checkBorders(y, spider.offsetHeight, wall.clientHeight);
 
-  spider.style.top = `${y}px`;
   spider.style.left = `${x}px`;
+  spider.style.top = `${y}px`;
 
   function checkBorders(coord, spiderSize, wallSize) {
     if (coord < 0) {
