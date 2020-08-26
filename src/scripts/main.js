@@ -8,36 +8,30 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
 
-  const spiderStyle = window.getComputedStyle(spider);
-  const spiderWidth = parseInt(spiderStyle.width);
-  const spiderHeight = parseInt(spiderStyle.height);
+  function calculateCoord(offsetCoord, wallSize, spiderSize) {
+    if (offsetCoord > (wallSize - spiderSize)) {
+      return wallSize - spiderSize;
+    }
 
-  const wallStyle = window.getComputedStyle(wall);
-  const wallWidth = parseInt(wallStyle.width);
-  const wallHeight = parseInt(wallStyle.height);
+    if (offsetCoord < spiderSize / 2) {
+      return 0;
+    }
 
-  let transformX;
-  let transformY;
-
-  if (e.offsetX > (wallWidth - spiderWidth)) {
-    transformX = wallWidth - spiderWidth;
-  } else if (e.offsetX < spiderWidth / 2) {
-    transformX = 0;
-  } else {
-    transformX = e.offsetX - spiderWidth / 2;
+    return offsetCoord - spiderSize / 2;
   }
 
-  if (e.offsetY > (wallHeight - spiderHeight)) {
-    transformY = wallHeight - spiderHeight;
-  } else if (e.offsetY < spiderHeight / 2) {
-    transformY = 0;
-  } else {
-    transformY = e.offsetY - spiderHeight / 2;
-  }
+  const coordX = calculateCoord(
+    e.offsetX,
+    wall.clientWidth,
+    spider.offsetWidth
+  );
 
-  spider.style.transform = `
-    translate(
-      ${transformX}px,
-      ${transformY}px
-  `;
+  const coordY = calculateCoord(
+    e.offsetY,
+    wall.clientHeight,
+    spider.offsetHeight
+  );
+
+  spider.style.top = coordX;
+  spider.style.left = coordY;
 });
