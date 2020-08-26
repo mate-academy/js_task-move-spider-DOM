@@ -5,11 +5,15 @@ const spider = document.querySelector('.spider');
 const spiderHeight = spider.clientHeight;
 const spiderWidth = spider.clientWidth;
 
-document.addEventListener('click', e => {
-  const wall = e.target.closest('.wall');
+const wall = document.querySelector('.wall');
 
-  const wallHeight = wall.clientHeight;
-  const wallWidth = wall.clientWidth;
+const wallHeight = wall.clientHeight;
+const wallWidth = wall.clientWidth;
+
+document.addEventListener('click', e => {
+  if (e.target !== wall) {
+    return;
+  }
 
   let topCoord = (e.offsetY - spiderHeight / 2);
   let leftCoord = (e.offsetX - spiderWidth / 2);
@@ -30,8 +34,6 @@ document.addEventListener('click', e => {
     leftCoord = 0;
   }
 
-  if (document.contains(wall)) {
-    spider.style.top = `${topCoord}px`;
-    spider.style.left = `${leftCoord}px`;
-  }
+  spider.style.top = `${topCoord}px`;
+  spider.style.left = `${leftCoord}px`;
 });
