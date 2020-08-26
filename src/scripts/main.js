@@ -10,10 +10,12 @@ const wall = document.querySelector('.wall');
 
 spider.style.transitionTimingFunction = 'linear';
 
-wall.addEventListener('mousemove', event => {
+const spiderMovings = function(event) {
   spider.style.left = `${getRightX(event.offsetX)}px`;
   spider.style.top = `${getRightY(event.offsetY)}px`;
-});
+};
+
+wall.addEventListener('mousemove', spiderMovings);
 
 function getRightX(eventX) {
   let x = eventX;
@@ -42,3 +44,17 @@ function getRightY(eventY) {
 
   return y - spiderHeight / 2;
 }
+
+let hadEatedCursor = false;
+
+spider.addEventListener('mouseover', () => {
+  if (!hadEatedCursor) {
+    // eslint-disable-next-line max-len
+    document.body.style.cursor = wall.style.cursor = spider.style.cursor = 'none';
+    document.body.style.backgroundColor = 'red';
+    hadEatedCursor = true;
+    wall.removeEventListener('mousemove', spiderMovings);
+    spider.style.transform = 'scale(1.5)';
+    alert(`павучок з'їв курсор((`);
+  }
+});
