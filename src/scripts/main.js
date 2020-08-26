@@ -10,30 +10,37 @@ const wall = document.querySelector('.wall');
 const wallHeight = wall.clientHeight;
 const wallWidth = wall.clientWidth;
 
+const checkCoords = function(topCoord, leftCoord, elementToMove) {
+  let top = topCoord;
+  let left = leftCoord;
+
+  if (top < 0) {
+    top = 0;
+  }
+
+  if (top + spiderHeight > wallHeight) {
+    top = wallHeight - spiderHeight;
+  }
+
+  if (left + spiderWidth > wallWidth) {
+    left = wallWidth - spiderWidth;
+  }
+
+  if (left < 0) {
+    left = 0;
+  }
+
+  elementToMove.style.top = `${top}px`;
+  elementToMove.style.left = `${left}px`;
+};
+
 document.addEventListener('click', e => {
   if (e.target !== wall) {
     return;
   }
 
-  let topCoord = (e.offsetY - spiderHeight / 2);
-  let leftCoord = (e.offsetX - spiderWidth / 2);
+  const topCoord = (e.offsetY - spiderHeight / 2);
+  const leftCoord = (e.offsetX - spiderWidth / 2);
 
-  if (topCoord < 0) {
-    topCoord = 0;
-  }
-
-  if (topCoord + spiderHeight > wallHeight) {
-    topCoord = wallHeight - spiderHeight;
-  }
-
-  if (leftCoord + spiderWidth > wallWidth) {
-    leftCoord = wallWidth - spiderWidth;
-  }
-
-  if (leftCoord < 0) {
-    leftCoord = 0;
-  }
-
-  spider.style.top = `${topCoord}px`;
-  spider.style.left = `${leftCoord}px`;
+  checkCoords(topCoord, leftCoord, spider);
 });
