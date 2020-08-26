@@ -8,21 +8,24 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  let destinationX = event.offsetX - spider.offsetWidth / 2;
-  let destinationY = event.offsetY - spider.offsetHeight / 2;
+  let targetX = event.offsetX - spider.offsetWidth / 2;
+  let targetY = event.offsetY - spider.offsetHeight / 2;
 
-  if (destinationX < 0) {
-    destinationX = 0;
-  } else if (destinationX > wall.clientWidth - spider.offsetWidth) {
-    destinationX = wall.clientWidth - spider.offsetWidth;
-  };
+  function overflowCorrection(coord, spiderSize, wallSize) {
+    let result = coord;
 
-  if (destinationY < 0) {
-    destinationY = 0;
-  } else if (destinationY > wall.clientHeight - spider.offsetHeight) {
-    destinationY = wall.clientHeight - spider.offsetHeight;
-  };
+    if (result < 0) {
+      result = 0;
+    } else if (result > wallSize - spiderSize) {
+      result = wallSize - spiderSize;
+    };
 
-  spider.style.top = `${destinationY}px`;
-  spider.style.left = `${destinationX}px`;
+    return result;
+  }
+
+  targetX = overflowCorrection(targetX, spider.offsetWidth, wall.clientWidth);
+  targetY = overflowCorrection(targetY, spider.offsetHeight, wall.clientHeight);
+
+  spider.style.top = `${targetY}px`;
+  spider.style.left = `${targetX}px`;
 });
