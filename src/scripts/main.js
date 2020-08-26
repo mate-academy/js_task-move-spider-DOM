@@ -16,20 +16,17 @@ document.addEventListener('click', event => {
   const spiderBottomMax = wall.clientHeight - spider.clientHeight;
 
   if (event.target.classList.contains('wall')) {
-    if (spiderTop > spiderBottomMax) {
-      spider.style.top = spiderBottomMax + 'px';
-    } else if (spiderTop < 0) {
-      spider.style.top = 0;
-    } else {
-      spider.style.top = spiderTop + 'px';
-    }
-
-    if (spiderLeft > spiderRightMax) {
-      spider.style.left = spiderRightMax + 'px';
-    } else if (spiderLeft < 0) {
-      spider.style.left = 0;
-    } else {
-      spider.style.left = spiderLeft + 'px';
-    }
+    spider.style.top = getSpiderCoords(spiderTop, spiderBottomMax);
+    spider.style.left = getSpiderCoords(spiderLeft, spiderRightMax);
   }
 });
+
+function getSpiderCoords(actualCoord, maxCoord) {
+  if (actualCoord > maxCoord) {
+    return maxCoord + 'px';
+  } else if (actualCoord < 0) {
+    return 0;
+  }
+
+  return actualCoord + 'px';
+}
