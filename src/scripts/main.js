@@ -32,6 +32,6 @@ document.addEventListener('click', e => {
     spider.offsetHeight
   );
 
-  spider.style.top = coordX;
-  spider.style.left = coordY;
+  spider.style.top = `${coordY}px`;
+  spider.style.left = `${coordX}px`;
 });
