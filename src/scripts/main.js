@@ -12,21 +12,19 @@ document.addEventListener('click', event => {
   let coordX = event.offsetX - spiderDimensions.width / 2;
   let coordY = event.offsetY - spiderDimensions.height / 2;
 
-  if (coordX < 0) {
-    coordX = 0;
+  function boundaryCoords(coord, wallSize, spiderSize) {
+    if (coord < 0) {
+      return 0;
+    } else
+    if (coord > wallSize - spiderSize) {
+      return wallSize - spiderSize;
+    } else {
+      return coord;
+    }
   }
 
-  if (coordY < 0) {
-    coordY = 0;
-  }
-
-  if (coordX > wall.clientWidth - spiderDimensions.width) {
-    coordX = wall.clientWidth - spiderDimensions.width;
-  }
-
-  if (coordY > wall.clientHeight - spiderDimensions.height) {
-    coordY = wall.clientHeight - spiderDimensions.height;
-  }
+  coordX = boundaryCoords(coordX, wall.clientWidth, spiderDimensions.width);
+  coordY = boundaryCoords(coordY, wall.clientHeight, spiderDimensions.height);
 
   spider.style.left = `${coordX}px`;
   spider.style.top = `${coordY}px`;
