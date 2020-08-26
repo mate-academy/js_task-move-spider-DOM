@@ -2,32 +2,26 @@
 
 const spider = document.querySelector('.spider');
 
-const spiderHeight = spider.clientHeight;
-const spiderWidth = spider.clientWidth;
+const spiderSize = spider.clientHeight;
 
 const wall = document.querySelector('.wall');
 
-const wallHeight = wall.clientHeight;
-const wallWidth = wall.clientWidth;
+const wallSize = wall.clientHeight;
 
-const checkCoords = function(topCoord, leftCoord, elementToMove) {
-  let top = topCoord;
-  let left = leftCoord;
+const changeCoord = function(topCoord, leftCoord, elementToMove) {
+  const top = checkCoord(topCoord);
+  const left = checkCoord(leftCoord);
 
-  if (top < 0) {
-    top = 0;
-  }
+  function checkCoord(coord) {
+    if (coord < 0) {
+      return 0;
+    }
 
-  if (top + spiderHeight > wallHeight) {
-    top = wallHeight - spiderHeight;
-  }
+    if (coord + spiderSize > wallSize) {
+      return wallSize - spiderSize;
+    }
 
-  if (left + spiderWidth > wallWidth) {
-    left = wallWidth - spiderWidth;
-  }
-
-  if (left < 0) {
-    left = 0;
+    return coord;
   }
 
   elementToMove.style.top = `${top}px`;
@@ -39,8 +33,8 @@ document.addEventListener('click', e => {
     return;
   }
 
-  const topCoord = (e.offsetY - spiderHeight / 2);
-  const leftCoord = (e.offsetX - spiderWidth / 2);
+  const topCoord = (e.offsetY - spiderSize / 2);
+  const leftCoord = (e.offsetX - spiderSize / 2);
 
-  checkCoords(topCoord, leftCoord, spider);
+  changeCoord(topCoord, leftCoord, spider);
 });
