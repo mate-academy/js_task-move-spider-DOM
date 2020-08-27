@@ -1,35 +1,38 @@
 'use strict';
 
 document.addEventListener('click', event => {
+  const eventY = event.clientY;
+  const eventX = event.clientX;
   const wall = document.querySelector('.wall');
   const wallHeight = wall.clientHeight;
   const wallWidth = wall.clientWidth;
-  const wallSides = wall.getBoundingClientRect();
+  const wallTopCoord = wall.getBoundingClientRect().top;
+  const wallLeftCoord = wall.getBoundingClientRect().left;
+  const wallY = wall.clientTop;
+  const wallX = wall.clientLeft;
   const spider = document.querySelector('.spider');
   const spiderHeight = spider.offsetHeight;
   const spiderWidth = spider.offsetWidth;
 
-  let spiderX = event.clientX - wallSides.left
-  - wall.clientLeft - spiderWidth / 2;
+  function setSpiderCoords(eventCoord, wallSideCoord,
+    wallCoord, spiderSize, wallSize) {
+    let coord = eventCoord - wallSideCoord - wallCoord - spiderSize / 2;
 
-  let spiderY = event.clientY - wallSides.top
-  - wall.clientTop - spiderHeight / 2;
+    if (coord < 0) {
+      coord = 0;
+    }
 
-  if (spiderX < 0) {
-    spiderX = 0;
+    if (coord > wallSize - wallCoord - spiderSize) {
+      coord = wallSize - spiderSize;
+    }
+
+    return coord;
   }
 
-  if (spiderY < 0) {
-    spiderY = 0;
-  }
-
-  if (spiderX > wallWidth - wall.clientLeft - spiderWidth) {
-    spiderX = wallWidth - spiderWidth;
-  }
-
-  if (spiderY > wallHeight - wall.clientTop - spiderHeight) {
-    spiderY = wallHeight - spiderHeight;
-  }
+  const spiderY = setSpiderCoords(eventY, wallTopCoord,
+    wallY, spiderHeight, wallHeight);
+  const spiderX = setSpiderCoords(eventX, wallLeftCoord,
+    wallX, spiderWidth, wallWidth);
 
   spider.style.top = `${spiderY}px`;
   spider.style.left = `${spiderX}px`;
