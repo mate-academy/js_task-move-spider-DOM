@@ -4,38 +4,59 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', e => {
+  const eventX = e.clientX;
+  const eventY = e.clientY;
+
   const wallWidth = wall.clientWidth;
   const wallHeight = wall.clientHeight;
+  const wallOffsetTop = wall.offsetTop;
+  const wallOffsetLeft = wall.offsetLeft;
+  const wallClientTop = wall.clientTop;
+  const wallClientLeft = wall.clientLeft;
 
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  let spiderTop = e.clientY
-    - wall.offsetTop
-    - wall.clientTop
-    - spiderHeight / 2;
+  function positionCalc(
+    eventPosition,
+    containerOffset,
+    containerBorder,
+    containerSideSize,
+    innerObjectSIze
+  ) {
+    let objectPosition = eventPosition
+      - containerOffset
+      - containerBorder
+      - innerObjectSIze / 2;
 
-  let spiderLeft = e.clientX
-    - wall.offsetLeft
-    - wall.clientLeft
-    - spiderWidth / 2;
+    if (objectPosition < 0) {
+      objectPosition = 0;
+    }
 
-  if (spiderTop < 0) {
-    spiderTop = 0;
+    if (objectPosition > containerSideSize - innerObjectSIze) {
+      objectPosition = containerSideSize - innerObjectSIze;
+    }
+
+    return objectPosition;
   }
 
-  if (spiderLeft < 0) {
-    spiderLeft = 0;
-  }
+  const spiderTop = positionCalc(
+    eventY,
+    wallOffsetTop,
+    wallClientTop,
+    wallHeight,
+    spiderHeight
+  );
 
-  if (spiderTop > wallHeight - spiderHeight) {
-    spiderTop = wallHeight - spiderHeight;
-  }
-
-  if (spiderLeft > wallWidth - spiderWidth) {
-    spiderLeft = wallWidth - spiderWidth;
-  }
+  const spiderLeft = positionCalc(
+    eventX,
+    wallOffsetLeft,
+    wallClientLeft,
+    wallWidth,
+    spiderWidth
+  );
 
   spider.style.top = `${spiderTop}px`;
+
   spider.style.left = `${spiderLeft}px`;
 });
