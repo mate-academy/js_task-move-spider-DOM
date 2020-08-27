@@ -7,11 +7,9 @@ const wallSize = wall.clientWidth;
 
 document.addEventListener('click', (event) => {
   // write code here
-  const item = event.target.closest('.wall');
-
-  if (!item || !document.contains(item)) {
+  if (event.target !== wall) {
     return;
-  };
+  }
 
   const coordY = event.offsetY - spiderSize / 2;
   const coordX = event.offsetX - spiderSize / 2;
