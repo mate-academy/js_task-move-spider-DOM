@@ -1,14 +1,15 @@
 'use strict';
 
 const wall = document.querySelector('.wall');
-const wallWidth = wall.clientWidth;
-const wallHeight = wall.clientHeight;
-
 const spider = document.querySelector('.spider');
-const spiderWidth = spider.offsetWidth;
-const spiderHeight = spider.offsetHeight;
 
 document.addEventListener('click', e => {
+  const wallWidth = wall.clientWidth;
+  const wallHeight = wall.clientHeight;
+
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
+
   if (e.clientY < wall.offsetTop + wall.clientTop) {
     spider.style.top = 0;
   } else if (e.clientY > wall.offsetTop + wall.clientTop + wallHeight) {
