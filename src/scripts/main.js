@@ -8,20 +8,22 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  let spiderTop = event.offsetY - spider.clientHeight / 2;
-  let spiderLeft = event.offsetX - spider.clientWidth / 2;
+  function sideCheck(point, wallSize, spiderSize) {
+    let result = point - spiderSize / 2;
 
-  if (event.offsetY < spider.clientHeight / 2) {
-    spiderTop = 0;
-  } else if (event.offsetY > (wall.clientHeight - spider.clientHeight)) {
-    spiderTop = wall.clientHeight - spider.clientHeight;
+    if (point < spiderSize / 2) {
+      result = 0;
+    } else if (point > (wallSize - spiderSize)) {
+      result = wallSize - spiderSize;
+    }
+
+    return result;
   }
 
-  if (event.offsetX < spider.clientWidth / 2) {
-    spiderLeft = 0;
-  } else if (event.offsetX > wall.clientWidth - spider.clientWidth) {
-    spiderLeft = wall.clientWidth - spider.clientWidth;
-  }
+  const spiderTop
+  = sideCheck(event.offsetY, wall.clientHeight, spider.clientHeight);
+  const spiderLeft
+  = sideCheck(event.offsetX, wall.clientWidth, spider.clientWidth);
 
   spider.style.top = spiderTop + `px`;
   spider.style.left = spiderLeft + `px`;
