@@ -22,7 +22,7 @@ wall.addEventListener('click', (event) => {
 
   if ((left + spider.offsetWidth / 2)
     > (wall.clientWidth - spider.offsetWidth / 2)) {
-    left = wall.clientHeight - spider.offsetWidth;
+    left = wall.clientWidth - spider.offsetWidth;
   }
 
   spider.style.top = `${top}px`;
