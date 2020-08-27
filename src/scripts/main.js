@@ -4,13 +4,17 @@ const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
 wall.addEventListener('click', e => {
-  function moveSpider(offset, wallWidth, spiderWidth) {
-    if (offset > wallWidth - spiderWidth) {
-      return wallWidth - spiderWidth + 'px';
-    } else if (offset < spiderWidth) {
+  if (e.target !== wall) {
+    return;
+  }
+
+  function moveSpider(offset, wallWidth, spiderSize) {
+    if (offset > wallWidth - spiderSize) {
+      return wallWidth - spiderSize + 'px';
+    } else if (offset < spiderSize) {
       return 0 + 'px';
     } else {
-      return offset - spiderWidth / 2 + 'px';
+      return offset - spiderSize / 2 + 'px';
     }
   }
 
