@@ -10,23 +10,32 @@ document.addEventListener('click', e => {
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  if (e.clientY < wall.offsetTop + wall.clientTop) {
-    spider.style.top = 0;
-  } else if (e.clientY > wall.offsetTop + wall.clientTop + wallHeight) {
-    spider.style.top = `${wallHeight - spiderHeight}px`;
-  } else {
-    spider.style.top = `
-      ${e.clientY - wall.offsetTop - wall.clientTop - spiderHeight / 2}px
-    `;
+  let spiderTop = e.clientY
+    - wall.offsetTop
+    - wall.clientTop
+    - spiderHeight / 2;
+
+  let spiderLeft = e.clientX
+    - wall.offsetLeft
+    - wall.clientLeft
+    - spiderWidth / 2;
+
+  if (spiderTop < 0) {
+    spiderTop = 0;
   }
 
-  if (e.clientX < wall.offsetLeft + wall.clientLeft) {
-    spider.style.left = 0;
-  } else if (e.clientX > wall.offsetLeft + wall.clientLeft + wallWidth) {
-    spider.style.left = `${wallWidth - spiderWidth}px`;
-  } else {
-    spider.style.left = `
-      ${e.clientX - wall.offsetLeft - wall.clientLeft - spiderWidth / 2}px
-    `;
+  if (spiderLeft < 0) {
+    spiderLeft = 0;
   }
+
+  if (spiderTop > wallHeight - spiderHeight) {
+    spiderTop = wallHeight - spiderHeight;
+  }
+
+  if (spiderLeft > wallWidth - spiderWidth) {
+    spiderLeft = wallWidth - spiderWidth;
+  }
+
+  spider.style.top = `${spiderTop}px`;
+  spider.style.left = `${spiderLeft}px`;
 });
