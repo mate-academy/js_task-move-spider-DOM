@@ -2,35 +2,36 @@
 
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
+  const spiderHalfWidth = spider.offsetWidth / 2;
+  const spiderHalfHeight = spider.offsetHeight / 2;
   const wall = document.querySelector('.wall');
-  const spiderHalfSize = spider.offsetWidth / 2;
   const wallborderWidth = parseInt(window.getComputedStyle(wall).borderWidth);
 
   let moveX = e.clientX
     - wall.offsetLeft
     - wallborderWidth
-    - spiderHalfSize;
+    - spiderHalfWidth;
 
   let moveY = e.clientY
     - wall.offsetTop
     - wallborderWidth
-    - spiderHalfSize;
+    - spiderHalfHeight;
 
   const xMax = wall.getBoundingClientRect().right
     - wallborderWidth
-    - spiderHalfSize;
+    - spiderHalfWidth;
 
   const xMin = wall.getBoundingClientRect().left
     + wallborderWidth
-    + spiderHalfSize;
+    + spiderHalfWidth;
 
   const yMax = wall.getBoundingClientRect().bottom
     - wallborderWidth
-    - spiderHalfSize;
+    - spiderHalfHeight;
 
   const yMin = wall.getBoundingClientRect().top
     + wallborderWidth
-    + spiderHalfSize;
+    + spiderHalfHeight;
 
   if (e.target.classList.contains('wall')) {
     if (e.clientX >= xMax) {
