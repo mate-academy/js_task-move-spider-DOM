@@ -5,7 +5,9 @@ document.addEventListener('click', e => {
   const spiderHalfWidth = spider.offsetWidth / 2;
   const spiderHalfHeight = spider.offsetHeight / 2;
   const wall = document.querySelector('.wall');
-  const wallborderWidth = parseInt(window.getComputedStyle(wall).borderWidth);
+  const wallborderWidth = parseInt(
+    window.getComputedStyle(wall).borderBlockEndWidth
+  );
 
   let moveX = e.clientX
     - wall.offsetLeft
