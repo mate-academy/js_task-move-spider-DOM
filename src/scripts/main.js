@@ -10,25 +10,29 @@ wall.addEventListener('click', event => {
 
   const point = {
     x: event.offsetX - (spider.width / 2),
-    y: event.offsetY - (spider.width / 2),
+    y: event.offsetY - (spider.height / 2),
   };
 
-  if (wall.clientWidth - event.offsetX < spider.width) {
-    point.x = wall.clientWidth - spider.width;
+  function containSpider(axis) {
+    const dimension = axis === 'x'
+      ? 'width'
+      : 'height';
+
+    const offsetSide = axis === 'x'
+      ? 'offsetX'
+      : 'offsetY';
+
+    if (wall.clientWidth - event[offsetSide] < spider[dimension]) {
+      point[axis] = wall.clientWidth - spider[dimension];
+    }
+
+    if (spider[dimension] > event[offsetSide]) {
+      point[axis] = 0;
+    }
+
+    return point[axis];
   }
 
-  if (spider.width > event.offsetX) {
-    point.x = 0;
-  }
-
-  if (wall.clientHeight - event.offsetY < spider.height) {
-    point.y = wall.clientHeight - spider.height;
-  }
-
-  if (spider.height > event.offsetY) {
-    point.y = 0;
-  }
-
-  spider.style.left = `${point.x}px`;
-  spider.style.top = `${point.y}px`;
+  spider.style.left = `${containSpider('x')}px`;
+  spider.style.top = `${containSpider('y')}px`;
 });
