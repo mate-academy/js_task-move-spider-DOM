@@ -12,7 +12,7 @@ document.addEventListener('click', event => {
 
   const maxValue = wallSize - spiderSize;
 
-  if (event.offsetX >= maxValue) {
+  if (event.offsetX >= maxValue + spiderSize / 2) {
     spider.style.left = `${maxValue}px`;
   } else if (event.offsetX <= spiderSize) {
     spider.style.left = `0px`;
@@ -20,7 +20,7 @@ document.addEventListener('click', event => {
     spider.style.left = `${event.offsetX - spiderSize / 2}px`;
   }
 
-  if (event.offsetY >= maxValue) {
+  if (event.offsetY >= maxValue + spiderSize / 2) {
     spider.style.top = `${maxValue}px`;
   } else if (event.offsetY <= spiderSize) {
     spider.style.top = `0px`;
