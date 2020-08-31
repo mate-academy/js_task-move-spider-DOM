@@ -9,19 +9,21 @@ document.addEventListener('click', event => {
   }
 
   const spiderSize = window.getComputedStyle(spider).width.slice(0, -2);
-  const wallSize = window.getComputedStyle(wall).width.slice(0, -2);
-  const maxValue = wallSize - spiderSize;
+  const wallWidth = window.getComputedStyle(wall).width.slice(0, -2);
+  const wallHeight = window.getComputedStyle(wall).height.slice(0, -2);
+  const maxValueX = wallWidth - spiderSize;
+  const maxValueY = wallHeight - spiderSize;
 
-  if (event.offsetX >= maxValue + spiderSize / 2) {
-    spider.style.left = `${maxValue}px`;
+  if (event.offsetX >= maxValueX + spiderSize / 2) {
+    spider.style.left = `${maxValueX}px`;
   } else if (event.offsetX <= spiderSize) {
     spider.style.left = `0px`;
   } else {
     spider.style.left = `${event.offsetX - spiderSize / 2}px`;
   }
 
-  if (event.offsetY >= maxValue + spiderSize / 2) {
-    spider.style.top = `${maxValue}px`;
+  if (event.offsetY >= maxValueY + spiderSize / 2) {
+    spider.style.top = `${maxValueY}px`;
   } else if (event.offsetY <= spiderSize) {
     spider.style.top = `0px`;
   } else {
