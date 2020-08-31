@@ -13,21 +13,10 @@ document.addEventListener('click', (event) => {
   const maxX = wall.clientWidth - spider.width;
   const maxY = wall.clientHeight - spider.height;
 
-  if (x < 0) {
-    x = 0;
-  }
-
-  if (y < 0) {
-    y = 0;
-  }
-
-  if (x > maxX) {
-    x = maxX;
-  }
-
-  if (y > maxY) {
-    y = maxY;
-  }
+  x = Math.max(0, x);
+  x = Math.min(maxX, x);
+  y = Math.max(0, y);
+  y = Math.min(maxY, y);
   spider.style.top = y + 'px';
   spider.style.left = x + 'px';
 });
