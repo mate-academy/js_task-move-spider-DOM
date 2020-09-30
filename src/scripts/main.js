@@ -13,17 +13,17 @@ document.addEventListener('click', e => {
   let styleTop;
   let styleLeft;
 
-  if(top < 0) {
+  if (top < 0) {
     styleTop = '0px';
-  } else  if(top > maxHeight) {
+  } else if (top > maxHeight) {
     styleTop = `${maxHeight}px`;
   } else {
     styleTop = `${top}px`;
   }
 
-  if(left < 0) {
+  if (left < 0) {
     styleLeft = '0px';
-  } else  if(left > maxWidth) {
+  } else if (left > maxWidth) {
     styleLeft = `${maxWidth}px`;
   } else {
     styleLeft = `${left}px`;
