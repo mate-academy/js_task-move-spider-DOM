@@ -3,7 +3,7 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-document.body.addEventListener('click', (event => {
+document.body.addEventListener('click', event => {
   const outsideTop = (document.body.offsetHeight - wall.clientHeight) / 2;
   const outsideLeft = (document.body.offsetWidth - wall.clientWidth) / 2;
   const spiderMiddle = spider.offsetHeight / 2;
@@ -23,5 +23,4 @@ document.body.addEventListener('click', (event => {
   } else {
     spider.style.left = (event.clientX - outsideLeft - spiderMiddle) + 'px';
   }
-
-}));
+});
