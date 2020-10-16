@@ -12,20 +12,25 @@ document.addEventListener('click', e => {
 
   const gapTop = e.clientY - (wall.offsetTop + wall.clientTop);
   const gapLeft = e.clientX - (wall.offsetLeft + wall.clientLeft);
+  let xPosition = wall.clientWidth - spiderSize;
+  let yPosition = wall.clientHeight - spiderSize;
 
-  gapTop <= spiderSize
-    ? spider.style.top = '0'
-    : spider.style.top = (wall.clientHeight - spiderSize) + 'px';
-
-  gapLeft <= spiderSize
-    ? spider.style.left = '0'
-    : spider.style.left = (wall.clientWidth - spiderSize) + 'px';
-
-  if (gapTop > spiderSize && gapTop <= wall.clientHeight - spiderSize) {
-    spider.style.top = (gapTop - (spiderSize / 2)) + 'px';
+  if (gapTop <= wall.clientHeight - spiderSize) {
+    yPosition = gapTop - (spiderSize / 2);
   }
 
-  if (gapLeft > spiderSize && gapLeft <= wall.clientWidth - spiderSize) {
-    spider.style.left = (gapLeft - (spiderSize / 2)) + 'px';
+  if (gapLeft <= wall.clientWidth - spiderSize) {
+    xPosition = gapLeft - (spiderSize / 2);
   }
+
+  if (gapTop <= spiderSize) {
+    yPosition = '0';
+  }
+
+  if (gapLeft <= spiderSize) {
+    xPosition = '0';
+  }
+
+  spider.style.top = yPosition + 'px';
+  spider.style.left = xPosition + 'px';
 });
