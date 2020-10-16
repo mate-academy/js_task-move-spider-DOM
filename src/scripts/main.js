@@ -6,23 +6,23 @@ const wallGapVertical = wall.offsetTop + wall.clientTop;
 const wallGapHorizontal = wall.offsetLeft + wall.clientLeft;
 
 wall.addEventListener('click', event => {
-  let x = event.clientX - wallGapHorizontal - spider.offsetWidth / 2;
-  let y = event.clientY - wallGapVertical - spider.offsetHeight / 2;
+  let x = event.clientX - wallGapHorizontal - spider.clientWidth / 2;
+  let y = event.clientY - wallGapVertical - spider.clientHeight / 2;
 
   if (x < 0) {
     x = 0;
   }
 
-  if (x > wall.clientWidth - spider.offsetWidth) {
-    x = wall.clientWidth - spider.offsetWidth;
+  if (x > wall.clientWidth - spider.clientWidth) {
+    x = wall.clientWidth - spider.clientWidth;
   }
 
   if (y < 0) {
     y = 0;
   }
 
-  if (y > wall.clientHeight - spider.offsetHeight) {
-    y = wall.clientHeight - spider.offsetHeight;
+  if (y > wall.clientHeight - spider.clientHeight) {
+    y = wall.clientHeight - spider.clientHeight;
   }
 
   spider.style.left = `${x}px`;
