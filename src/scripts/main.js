@@ -25,7 +25,7 @@ document.addEventListener('click', e => {
     spider.style.top = '0';
   }
 
-  if (e.offsetY >= wall.clientWidth - spider.offsetWidth / 2) {
+  if (e.offsetY >= wall.clientHeight - spider.offsetHeight / 2) {
     spider.style.top = wall.clientHeight - spider.offsetHeight + 'px';
   }
 });
