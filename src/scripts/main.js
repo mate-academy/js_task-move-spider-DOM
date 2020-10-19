@@ -19,8 +19,8 @@ wall.addEventListener('click', event => {
     x = maxX;
   }
 
-  if (x > maxX) {
-    x = wallX;
+  if (y < 0) {
+    y = 0;
   } else if (y > maxY) {
     y = maxY;
   }
