@@ -11,25 +11,24 @@ document.addEventListener('click', event => {
   const leftEdge = wall.offsetLeft + wall.clientLeft;
   const topEdge = wall.offsetTop + wall.clientTop;
 
-  let positionX = event.clientX - leftEdge - spider.offsetWidth / 2;
-  let positionY = event.clientY - topEdge - spider.offsetHeight / 2;
+  const positionX = event.clientX - leftEdge - spider.offsetWidth / 2;
+  const positionY = event.clientY - topEdge - spider.offsetHeight / 2;
 
-  if (positionX < 0) {
-    positionX = 0;
+  const spiderX = wall.clientHeight - spider.offsetHeight;
+  const spiderY = wall.clientWidth - spider.offsetWidth;
+
+  function setPosition(coord, spiderPosition) {
+    if (coord < 0) {
+      return 0;
+    }
+
+    if (coord > spiderPosition) {
+      return spiderPosition;
+    }
+
+    return coord;
   }
 
-  if (positionX > wall.clientWidth - spider.offsetWidth) {
-    positionX = wall.clientWidth - spider.offsetWidth;
-  }
-
-  if (positionY < 0) {
-    positionY = 0;
-  }
-
-  if (positionY > wall.clientHeight - spider.offsetHeight) {
-    positionY = wall.clientHeight - spider.offsetHeight;
-  }
-
-  spider.style.left = `${positionX}px`;
-  spider.style.top = `${positionY}px`;
+  spider.style.left = `${setPosition(positionX, spiderX)}px`;
+  spider.style.top = `${setPosition(positionY, spiderY)}px`;
 });
