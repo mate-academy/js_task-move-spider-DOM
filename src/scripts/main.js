@@ -1,40 +1,31 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  const spider = document.querySelector('.spider');
-  const wall = document.querySelector('.wall');
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
-  if (e.target !== wall) {
-    return;
-  };
+wall.addEventListener('click', (event) => {
+  const spiderWidth = spider.width;
+  const spiderHeight = spider.height;
+  const wallWidth = wall.clientWidth;
+  const wallHeigth = wall.clientHeight;
+  const positionX = event.offsetX - spiderWidth / 2;
+  const positionY = event.offsetY - spiderHeight / 2;
 
-  let positionX = e.offsetX - spider.offsetWidth / 2;
-  let positionY = e.offsetY - spider.offsetHeight / 2;
+  function correctPosition(coord, spiderSize, wallSize) {
+    let resultCorrection = coord;
 
-  function correctionPosition(coord, spiderSize, wallSize) {
-    let resultCoord = coord;
+    if (resultCorrection < 0) {
+      resultCorrection = 0;
+    } else if (resultCorrection > wallSize - spiderSize) {
+      resultCorrection = wallSize - spiderSize;
+    }
 
-    if (resultCoord < 0) {
-      resultCoord = 0;
-    } else if (resultCoord > wallSize - spiderSize) {
-      resultCoord = wallSize - spiderSize;
-    };
-
-    return resultCoord;
+    return resultCorrection;
   }
 
-  positionX = correctionPosition(
-    positionX,
-    spider.offsetWidth,
-    wall.clientWidth
-  );
+  const readyPositionX = correctPosition(positionX, spiderWidth, wallWidth);
+  const readyPositionY = correctPosition(positionY, spiderHeight, wallHeigth);
 
-  positionY = correctionPosition(
-    positionY,
-    spider.offsetHeight,
-    wall.clientHeight
-  );
-
-  spider.style.top = `${positionY}px`;
-  spider.style.left = `${positionX}px`;
+  spider.style.top = `${readyPositionY}px`;
+  spider.style.left = `${readyPositionX}px`;
 });
