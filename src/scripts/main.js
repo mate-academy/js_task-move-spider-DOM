@@ -13,25 +13,21 @@ document.addEventListener('click', e => {
   const topGap = wall.offsetTop + wall.clientTop;
   const leftGap = wall.offsetLeft + wall.clientLeft;
 
-  let positionX = e.clientX - leftGap - spiderSize / 2;
-  let positionY = e.clientY - topGap - spiderSize / 2;
+  const positionX = e.clientX - leftGap - spiderSize / 2;
+  const positionY = e.clientY - topGap - spiderSize / 2;
 
-  if (positionY < 0) {
-    positionY = 0;
+  spider.style.top = `${getCoordinate(positionY, wall.clientHeight)}px`;
+  spider.style.left = `${getCoordinate(positionX, wall.clientWidth)}px`;
+
+  function getCoordinate(coordinate, wallSize) {
+    if (coordinate < 0) {
+      return 0;
+    }
+
+    if (coordinate > wallSize - spiderSize) {
+      return wallSize - spiderSize;
+    }
+
+    return coordinate;
   }
-
-  if (positionX < 0) {
-    positionX = 0;
-  }
-
-  if (positionX > wall.clientWidth - spiderSize) {
-    positionX = wall.clientWidth - spiderSize;
-  }
-
-  if (positionY > wall.clientHeight - spiderSize) {
-    positionY = wall.clientHeight - spiderSize;
-  }
-
-  spider.style.top = `${positionY}px`;
-  spider.style.left = `${positionX}px`;
 });
