@@ -9,24 +9,22 @@ wall.addEventListener('click', event => {
   const wallPosition = wall.getBoundingClientRect();
   const wallX = wallPosition.left + wall.clientLeft;
   const wallY = wallPosition.top + wall.clientTop;
+  console.log('wallX:', wall.clientLeft);
+  console.log('wallY:', wall.clientTop);
 
-  let x = event.clientX - wallX - spider.offsetWidth;
-  let y = event.clientY - wallY - spider.offsetHeight;
+  let x = event.clientX - wallX - (spider.offsetWidth / 2);
+  let y = event.clientY - wallY - (spider.offsetHeight / 2);
 
   if (x < 0) {
     x = 0;
+  } else if (x > maxX) {
+    x = maxX;
   }
 
   if (x > maxX) {
     x = wallX;
-  }
-
-  if (y < 0) {
-    y = 0;
-  }
-
-  if (y > maxY) {
-    y = wallY;
+  } else if (y > maxY) {
+    y = maxY;
   }
 
   spider.style.left = `${x}px`;
