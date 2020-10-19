@@ -12,26 +12,23 @@ document.addEventListener('click', e => {
     return;
   }
 
-  let xPosition = e.clientX - leftEdge - spider.clientWidth / 2;
+  const xPosition = e.clientX - leftEdge - spider.clientWidth / 2;
 
-  let yPosition = e.clientY - topEdge - spider.clientHeight / 2;
+  const yPosition = e.clientY - topEdge - spider.clientHeight / 2;
 
-  if (xPosition < 0) {
-    xPosition = 0;
-  }
+  spider.style.left = getFinalSpiderPosition(xPosition, rightMaxPosition)
+  + 'px';
 
-  if (xPosition > rightMaxPosition) {
-    xPosition = rightMaxPosition;
-  }
-
-  if (yPosition < 0) {
-    yPosition = 0;
-  }
-
-  if (yPosition > bottomMaxPosition) {
-    yPosition = bottomMaxPosition;
-  }
-
-  spider.style.left = `${xPosition}px`;
-  spider.style.top = `${yPosition}px`;
+  spider.style.top = getFinalSpiderPosition(yPosition, bottomMaxPosition)
+  + 'px';
 });
+
+function getFinalSpiderPosition(position, maxPosition) {
+  if (position < 0) {
+    return 0;
+  } else if (position > maxPosition) {
+    return maxPosition;
+  }
+
+  return position;
+}
