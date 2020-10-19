@@ -2,8 +2,8 @@
 
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
-const horizontalWallBorder = (wall.offsetWidth - wall.clientWidth) / 2;
-const verticalWallBorder = (wall.offsetHeight - wall.clientHeight) / 2;
+const leftEdge = wall.offsetLeft + wall.clientLeft;
+const topEdge = wall.offsetTop + wall.clientTop;
 const rightMaxPosition = wall.clientWidth - spider.clientWidth;
 const bottomMaxPosition = wall.clientHeight - spider.clientHeight;
 
@@ -12,15 +12,9 @@ document.addEventListener('click', e => {
     return;
   }
 
-  let xPosition = e.clientX
-  - wall.getBoundingClientRect().left
-  - horizontalWallBorder
-  - spider.clientWidth / 2;
+  let xPosition = e.clientX - leftEdge - spider.clientWidth / 2;
 
-  let yPosition = e.clientY
-  - wall.getBoundingClientRect().top
-  - verticalWallBorder
-  - spider.clientHeight / 2;
+  let yPosition = e.clientY - topEdge - spider.clientHeight / 2;
 
   if (xPosition < 0) {
     xPosition = 0;
