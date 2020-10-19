@@ -5,7 +5,17 @@ const spider = document.querySelector('.spider');
 document.addEventListener('click', e => {
   const wall = e.target.closest('.wall');
 
-  if (!wall || e.target === spider) {
+  if (!wall) {
+    return;
+  }
+
+  if (e.target === spider) {
+    spider.style.left
+      = `${Math.random() * (wall.clientWidth - spider.offsetWidth)}px`;
+
+    spider.style.top
+      = `${Math.random() * (wall.clientHeight - spider.offsetHeight)}px`;
+
     return;
   }
 
