@@ -4,25 +4,33 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', event => {
-  const maxY = wall.offsetTop + wall.clientTop;
-  const maxX = wall.offsetLeft + wall.clientLeft;
-  const spiderHalf = spider.offsetWidth / 2;
+  let xCoordinate = event.offsetX - spider.offsetWidth / 2;
+  let yCoordinate = event.offsetY - spider.offsetHeight / 2;
 
-  let yCoordinate = event.clientY - maxY - spiderHalf;
-  let xCoordinate = event.clientX - maxX - spiderHalf;
+  xCoordinate = checkBorders(
+    xCoordinate,
+    spider.offsetWidth,
+    wall.clientWidth
+  );
 
-  if (yCoordinate > wall.clientHeight - spider.offsetHeight) {
-    yCoordinate = wall.clientHeight - spider.offsetHeight;
-  } else if (yCoordinate < 0) {
-    yCoordinate = 0;
-  }
+  yCoordinate = checkBorders(
+    yCoordinate,
+    spider.offsetHeight,
+    wall.clientHeight
+  );
 
-  if (xCoordinate > wall.clientWidth - spider.offsetWidth) {
-    xCoordinate = wall.clientWidth - spider.offsetWidth;
-  } else if (xCoordinate < 0) {
-    xCoordinate = 0;
-  }
-
-  spider.style.top = yCoordinate + 'px';
   spider.style.left = xCoordinate + 'px';
+  spider.style.top = yCoordinate + 'px';
+
+  function checkBorders(coordinate, spiderSize, wallSize) {
+    if (coordinate < 0) {
+      return 0;
+    }
+
+    if (coordinate > wallSize - spiderSize) {
+      return wallSize - spiderSize;
+    }
+
+    return coordinate;
+  }
 });
