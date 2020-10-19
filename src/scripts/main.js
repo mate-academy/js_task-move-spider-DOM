@@ -9,8 +9,6 @@ wall.addEventListener('click', event => {
   const wallPosition = wall.getBoundingClientRect();
   const wallX = wallPosition.left + wall.clientLeft;
   const wallY = wallPosition.top + wall.clientTop;
-  console.log('wallX:', wall.clientLeft);
-  console.log('wallY:', wall.clientTop);
 
   let x = event.clientX - wallX - (spider.offsetWidth / 2);
   let y = event.clientY - wallY - (spider.offsetHeight / 2);
