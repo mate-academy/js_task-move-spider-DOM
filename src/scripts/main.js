@@ -30,7 +30,7 @@ function moveSpider(event) {
   }
 
   if (coordY > spiderMaxCoordY) {
-    coordX = spiderMaxCoordY;
+    coordY = spiderMaxCoordY;
   }
 
   spider.style.left = `${coordX}px`;
