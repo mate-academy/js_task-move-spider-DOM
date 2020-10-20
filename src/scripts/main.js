@@ -4,23 +4,20 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', event => {
-  let xCoordinate = event.offsetX - spider.offsetWidth / 2;
-  let yCoordinate = event.offsetY - spider.offsetHeight / 2;
+  const xCoordinate = event.offsetX - spider.offsetWidth / 2;
+  const yCoordinate = event.offsetY - spider.offsetHeight / 2;
 
-  xCoordinate = checkBorders(
+  spider.style.left = checkBorders(
     xCoordinate,
     spider.offsetWidth,
     wall.clientWidth
-  );
+  ) + 'px';
 
-  yCoordinate = checkBorders(
+  spider.style.top = checkBorders(
     yCoordinate,
     spider.offsetHeight,
     wall.clientHeight
-  );
-
-  spider.style.left = xCoordinate + 'px';
-  spider.style.top = yCoordinate + 'px';
+  ) + 'px';
 
   function checkBorders(coordinate, spiderSize, wallSize) {
     if (coordinate < 0) {
