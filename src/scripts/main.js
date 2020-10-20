@@ -25,21 +25,17 @@ document.addEventListener('click', e => {
   const cursorX = e.offsetX - spiderWidth / 2;
   const cursorY = e.offsetY - spiderHeight / 2;
 
-  spider.style.left = `${calculateCoords(cursorX, 'x')}px`;
-  spider.style.top = `${calculateCoords(cursorY, 'y')}px`;
+  spider.style.left = calculateCoords(cursorX, wallWidth, spiderWidth) + 'px';
+  spider.style.top = calculateCoords(cursorY, wallHeight, spiderHeight) + 'px';
 });
 
-function calculateCoords(coords, dimension) {
+function calculateCoords(coords, wallSize, spiderSize) {
   if (coords < 0) {
-    return '0';
+    return 0;
   }
 
-  if (dimension === 'x' && coords > wallWidth - spiderWidth) {
-    return String(wallWidth - spiderWidth);
-  }
-
-  if (dimension === 'y' && coords > wallHeight - spiderHeight) {
-    return String(wallHeight - spiderHeight);
+  if (coords > wallSize - spiderSize) {
+    return wallSize - spiderSize;
   }
 
   return coords;
