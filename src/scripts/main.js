@@ -3,7 +3,7 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-document.addEventListener('click', event => {
+wall.addEventListener('click', event => {
   if (!event.target.closest('.wall') || event.target === spider) {
     return;
   }
