@@ -1,17 +1,13 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  // write code here
-  const wallHeight = document.querySelector('.wall').clientHeight;
-  const wallWidth = document.querySelector('.wall').clientWidth;
+const wall = document.querySelector('.wall');
+
+wall.addEventListener('click', e => {
+  const { clientHeight: wallHeight, clientWidth: wallWidth } = wall;
 
   const spider = document.querySelector('.spider');
   const spiderHeigth = spider.clientHeight;
   const spiderWidth = spider.clientWidth;
-
-  if (!e.target.classList.contains('wall')) {
-    return;
-  }
 
   let coordsX = `${e.offsetX - spiderWidth / 2}px`;
   let coordsY = `${e.offsetY - spiderHeigth / 2}px`;
