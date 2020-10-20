@@ -3,15 +3,12 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-document.addEventListener('click', e => {
-  const spiderTerritory = e.target.closest('.wall');
+wall.addEventListener('click', e => {
+  const spiderCoordsX = e.offsetX - spider.offsetWidth / 2 + 'px';
+  const spiderCoordsY = e.offsetY - spider.offsetHeight / 2 + 'px';
 
-  if (!spiderTerritory) {
-    return;
-  }
-
-  spider.style.left = e.offsetX - spider.offsetWidth / 2 + 'px';
-  spider.style.top = e.offsetY - spider.offsetHeight / 2 + 'px';
+  spider.style.left = spiderCoordsX;
+  spider.style.top = spiderCoordsY;
 
   if (e.offsetX <= spider.offsetWidth / 2) {
     spider.style.left = '0';
