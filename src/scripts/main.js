@@ -6,33 +6,29 @@ const wall = document.querySelector('.wall');
 wall.addEventListener('click', moveSpider);
 
 function moveSpider(event) {
-  const leftEdge = wall.offsetLeft;
-  const topEdge = wall.offsetTop;
+  const spiderMaxCoordX = this.clientWidth - spider.clientWidth;
+  const spiderMaxCoordY = this.clientHeight - spider.clientHeight;
 
-  const spiderMaxCoordX = wall.clientWidth - spider.clientWidth;
-  const spiderMinCoordX = 0;
-  const spiderMaxCoordY = wall.clientHeight - spider.clientHeight;
-  const spiderMinCoordY = 0;
+  let coordX = event.offsetX - spider.offsetWidth / 2;
+  let coordY = event.offsetY - spider.offsetWidth / 2;
 
-  let coordX = event.clientX - leftEdge - spider.clientWidth / 2;
-  let coordY = event.clientY - topEdge - spider.clientHeight / 2;
-
-  if (coordX < spiderMinCoordX) {
-    coordX = spiderMinCoordX;
-  }
-
-  if (coordX > spiderMaxCoordX) {
-    coordX = spiderMaxCoordX;
-  }
-
-  if (coordY < spiderMinCoordY) {
-    coordY = spiderMinCoordY;
-  }
-
-  if (coordY > spiderMaxCoordY) {
-    coordY = spiderMaxCoordY;
-  }
+  coordX = checkCoords(coordX, spiderMaxCoordX);
+  coordY = checkCoords(coordY, spiderMaxCoordY);
 
   spider.style.left = `${coordX}px`;
   spider.style.top = `${coordY}px`;
+
+  function checkCoords(currCoord, spiderMaxCoord) {
+    let resultCoord = currCoord;
+
+    if (currCoord < 0) {
+      resultCoord = 0;
+    }
+
+    if (currCoord > spiderMaxCoord) {
+      resultCoord = spiderMaxCoord;
+    }
+
+    return resultCoord;
+  }
 }
