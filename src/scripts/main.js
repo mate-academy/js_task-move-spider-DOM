@@ -6,10 +6,13 @@ const wall = document.querySelector('.wall');
 wall.addEventListener('click', e => {
   const spiderHalf = spider.offsetWidth / 2;
   const spiderSize = spiderHalf * 2;
+
   const coordsX = e.offsetX;
   const coordsY = e.offsetY;
+
   const wallWidth = wall.clientWidth;
   const wallHeight = wall.clientHeight;
+
   let spiderCoordsX = coordsX - spiderHalf + 'px';
   let spiderCoordsY = coordsY - spiderHalf + 'px';
 
