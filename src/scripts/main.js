@@ -14,15 +14,13 @@ wall.addEventListener('click', event => {
   const positionY = event.clientY - topWall - spider.offsetWidth / 2;
 
   function correctPosition(coord, spiderSize, wallSize) {
-    let resultCorrection = coord;
-
-    if (resultCorrection < 0) {
+    if (coord < 0) {
       return 0;
-    } else if (resultCorrection > wallSize - spiderSize) {
-      resultCorrection = wallSize - spiderSize;
+    } else if (coord > wallSize - spiderSize) {
+      return wallSize - spiderSize;
     }
 
-    return resultCorrection;
+    return coord;
   }
 
   const readyPositionX = correctPosition(positionX, spiderHeight, wallHeigth);
