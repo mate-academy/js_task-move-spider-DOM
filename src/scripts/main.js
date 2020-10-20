@@ -12,10 +12,10 @@ document.addEventListener('click', event => {
     return;
   }
 
-  spiderWay(event.offsetX, event.offsetY);
+  spiderMovement(event.offsetX, event.offsetY);
 });
 
-function spiderWay(x, y) {
+function spiderMovement(x, y) {
   if (x > (wallWidth - spiderWidth)) {
     spider.style.left = `${wall.clientWidth - spiderWidth}px`;
   } else if (x < spiderWidth) {
