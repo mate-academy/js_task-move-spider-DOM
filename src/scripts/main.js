@@ -6,15 +6,12 @@ const spiderSize = spider.offsetWidth;
 document.addEventListener('click', e => {
   const wall = e.target.closest('.wall');
 
-  if (!wall) {
+  if (!wall || e.target !== wall) {
     return;
   }
 
-  const topGap = wall.offsetTop + wall.clientTop;
-  const leftGap = wall.offsetLeft + wall.clientLeft;
-
-  const positionX = e.clientX - leftGap - spiderSize / 2;
-  const positionY = e.clientY - topGap - spiderSize / 2;
+  const positionX = e.offsetX - spiderSize / 2;
+  const positionY = e.offsetY - spiderSize / 2;
 
   spider.style.top = `${getCoordinate(positionY, wall.clientHeight)}px`;
   spider.style.left = `${getCoordinate(positionX, wall.clientWidth)}px`;
