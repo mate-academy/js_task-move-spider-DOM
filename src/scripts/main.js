@@ -5,20 +5,22 @@ document.addEventListener('click', e => {
     return;
   }
 
-  function checkPosition(coordinate) {
-    const halfSpiderSize = spider.clientWidth / 2;
-    const wallSize = e.target.clientWidth;
+  const spider = document.querySelector('.spider');
+  const halfSpiderSize = spider.clientWidth / 2;
+  const wallSize = e.target.clientWidth;
 
+  function checkPosition(coordinate) {
     if (coordinate < halfSpiderSize) {
       return halfSpiderSize;
-    } else if (coordinate > wallSize - halfSpiderSize) {
+    }
+
+    if (coordinate > wallSize - halfSpiderSize) {
       return wallSize - halfSpiderSize;
     }
 
     return coordinate;
   };
 
-  const spider = document.querySelector('.spider');
   const topPosition = checkPosition(e.offsetY);
   const leftPosition = checkPosition(e.offsetX);
 
