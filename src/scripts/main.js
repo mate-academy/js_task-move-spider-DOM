@@ -2,34 +2,31 @@
 
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
+const spiderWidth = spider.offsetWidth;
+const spiderHeight = spider.offsetHeight;
+const wallWidth = wall.clientWidth;
+const wallHeight = wall.clientHeight;
 
 wall.addEventListener('click', event => {
-  if (!event.target.closest('.wall') || event.target === spider) {
+  if (event.target === spider) {
     return;
   }
 
-  moveSomeObject(event, spider, wall);
+  const positionX = event.offsetX - spiderWidth / 2;
+  const positionY = event.offsetY - spiderHeight / 2;
+
+  spider.style.left = `${calcPosition(positionX, spiderWidth, wallWidth)}px`;
+  spider.style.top = `${calcPosition(positionY, spiderHeight, wallHeight)}px`;
 });
 
-function moveSomeObject(event, someObject, area) {
-  const maxRight = area.clientWidth - someObject.offsetWidth;
-  const halfObjectWidth = someObject.offsetWidth / 2;
-  const maxDown = area.clientHeight - someObject.offsetHeight;
-  const halfObjectHeight = someObject.offsetHeight / 2;
+function calcPosition(position, objectSize, areaSize) {
+  const maxPosition = areaSize - objectSize;
 
-  if (event.offsetX <= halfObjectWidth) {
-    someObject.style.left = '0px';
-  } else if (event.offsetX >= maxRight + halfObjectWidth) {
-    someObject.style.left = `${maxRight}px`;
+  if (position <= 0) {
+    return 0;
+  } else if (position >= maxPosition) {
+    return maxPosition;
   } else {
-    someObject.style.left = `${event.offsetX - halfObjectWidth}px`;
-  }
-
-  if (event.offsetY <= halfObjectHeight) {
-    someObject.style.top = '0px';
-  } else if (event.offsetY >= maxDown + halfObjectHeight) {
-    someObject.style.top = `${maxDown}px`;
-  } else {
-    someObject.style.top = `${event.offsetY - halfObjectHeight}px`;
+    return position;
   }
 }
