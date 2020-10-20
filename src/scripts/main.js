@@ -3,28 +3,27 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-wall.addEventListener('click', event => {
-  let coordX = event.offsetX - spider.offsetWidth / 2;
-  let coordY = event.offsetY - spider.offsetWidth / 2;
-  const maxCoordX = wall.clientWidth - spider.offsetWidth;
-  const maxCoordY = wall.clientHeight - spider.offsetWidth;
+wall.addEventListener('click', (event) => {
+  const leftSideOfWall = wall.clientLeft + wall.offsetLeft;
+  const topSideOfWall = wall.clientTop + wall.offsetTop;
 
-  if (coordX < 0) {
-    coordX = 0;
-  }
+  const positionX = event.clientX - leftSideOfWall - spider.offsetWidth / 2;
+  const positionY = event.clientY - topSideOfWall - spider.offsetWidth / 2;
 
-  if (coordY < 0) {
-    coordY = 0;
-  }
-
-  if (coordX > maxCoordX) {
-    coordX = maxCoordX;
-  }
-
-  if (coordY > maxCoordY) {
-    coordY = maxCoordY;
-  }
-
-  spider.style.left = `${coordX}px`;
-  spider.style.top = `${coordY}px`;
+  spider.style.left = `${positionOfSpider(positionX)}px`;
+  spider.style.top = `${positionOfSpider(positionY)}px`;
 });
+
+function positionOfSpider(position) {
+  let correctPosition = position;
+
+  if (correctPosition < 0) {
+    correctPosition = 0;
+  }
+
+  if (correctPosition > wall.clientHeight - spider.offsetHeight) {
+    correctPosition = wall.clientHeight - spider.offsetHeight;
+  }
+
+  return correctPosition;
+}
