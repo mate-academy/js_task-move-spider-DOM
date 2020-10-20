@@ -3,26 +3,31 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-wall.addEventListener('click', e => {
-  let x = e.offsetX - spider.offsetWidth / 2;
-  let y = e.offsetY - spider.offsetHeight / 2;
+wall.addEventListener('click', event => {
+  let coordX = event.offsetX - spider.offsetWidth / 2;
+  let coordY = event.offsetY - spider.offsetHeight / 2;
 
-  if (x < 0) {
-    x = 0;
+  const extremeTopCoordY = 0;
+  const extremeRightCoordX = wall.clientWidth - spider.offsetWidth;
+  const extremeBottomCoordY = wall.clientHeight - spider.offsetHeight;
+  const extremeLeftCoordX = 0;
+
+  if (coordX < extremeLeftCoordX) {
+    coordX = extremeLeftCoordX;
   }
 
-  if (x > wall.clientWidth - spider.offsetWidth) {
-    x = wall.clientWidth - spider.offsetWidth;
+  if (coordX > extremeRightCoordX) {
+    coordX = extremeRightCoordX;
   }
 
-  if (y < 0) {
-    y = 0;
+  if (coordY < extremeTopCoordY) {
+    coordY = extremeTopCoordY;
   }
 
-  if (y > wall.clientHeight - spider.offsetHeight) {
-    y = wall.clientHeight - spider.offsetHeight;
+  if (coordY > extremeBottomCoordY) {
+    coordY = extremeBottomCoordY;
   }
 
-  spider.style.left = x + 'px';
-  spider.style.top = y + 'px';
+  spider.style.left = coordX + 'px';
+  spider.style.top = coordY + 'px';
 });
