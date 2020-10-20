@@ -6,21 +6,25 @@ const spider = document.querySelector('.spider');
 wall.addEventListener('click', event => {
   const leftBoundary = wall.offsetLeft + wall.clientLeft;
   const topBoundary = wall.offsetTop + wall.clientTop;
-  let posY = event.clientY - topBoundary - spider.offsetHeight / 2;
-  let posX = event.clientX - leftBoundary - spider.offsetWidth / 2;
 
-  if (posX < 0) {
-    posX = 0;
-  } else if (posX > wall.clientWidth - spider.offsetWidth) {
-    posX = wall.clientWidth - spider.offsetWidth;
+  let positionY = event.clientY - topBoundary - spider.offsetHeight / 2;
+  let positionX = event.clientX - leftBoundary - spider.offsetWidth / 2;
+
+  const widthDifference = wall.clientWidth - spider.offsetWidth;
+  const heightDifference = wall.clientHeight - spider.offsetHeight;
+
+  if (positionX < 0) {
+    positionX = 0;
+  } else if (positionX > widthDifference) {
+    positionX = widthDifference;
   }
 
-  if (posY < 0) {
-    posY = 0;
-  } else if (posY > wall.clientHeight - spider.offsetHeight) {
-    posY = wall.clientHeight - spider.offsetHeight;
+  if (positionY < 0) {
+    positionY = 0;
+  } else if (positionY > heightDifference) {
+    positionY = heightDifference;
   }
 
-  spider.style.top = `${posY}px`;
-  spider.style.left = `${posX}px`;
+  spider.style.top = `${positionY}px`;
+  spider.style.left = `${positionX}px`;
 });
