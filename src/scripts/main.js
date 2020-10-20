@@ -1,28 +1,28 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
-const wall = document.querySelector('.wall');
+const spiderItem = document.querySelector('.spider');
+const wallItem = document.querySelector('.wall');
 
-wall.addEventListener('click', event => {
-  let x = event.offsetX - spider.offsetWidth / 2;
-  let y = event.offsetY - spider.offsetHeight / 2;
+wallItem.addEventListener('click', event => {
+  let coordX = event.offsetX - spiderItem.offsetWidth / 2;
+  let coordY = event.offsetY - spiderItem.offsetHeight / 2;
 
-  if (x < 0) {
-    x = 0;
+  if (coordX < 0) {
+    coordX = 0;
   }
 
-  if (x > wall.clientWidth - spider.offsetWidth) {
-    x = wall.clientWidth - spider.offsetWidth;
+  if (coordX > wallItem.clientWidth - spiderItem.offsetWidth) {
+    coordX = wallItem.clientWidth - spiderItem.offsetWidth;
   }
 
-  if (y < 0) {
-    y = 0;
+  if (coordY < 0) {
+    coordY = 0;
   }
 
-  if (y > wall.clientHeight - spider.offsetHeight) {
-    y = wall.clientHeight - spider.offsetHeight;
+  if (coordY > wallItem.clientHeight - spiderItem.offsetHeight) {
+    coordY = wallItem.clientHeight - spiderItem.offsetHeight;
   }
 
-  spider.style.left = x + 'px';
-  spider.style.top = y + 'px';
+  spiderItem.style.left = coordX + 'px';
+  spiderItem.style.top = coordY + 'px';
 });
