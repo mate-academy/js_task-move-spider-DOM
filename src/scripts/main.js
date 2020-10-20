@@ -8,19 +8,23 @@ document.addEventListener('click', event => {
     return;
   }
 
-  if (event.offsetX <= spider.offsetWidth / 2) {
-    spider.style.left = '0px';
-  } else if (event.offsetX >= wall.clientWidth - spider.offsetWidth / 2) {
-    spider.style.left = `${wall.clientWidth - spider.offsetWidth}px`;
+  moveSomeObject(event, spider);
+});
+
+function moveSomeObject(event, someObject) {
+  if (event.offsetX <= someObject.offsetWidth / 2) {
+    someObject.style.left = '0px';
+  } else if (event.offsetX >= wall.clientWidth - someObject.offsetWidth / 2) {
+    someObject.style.left = `${wall.clientWidth - someObject.offsetWidth}px`;
   } else {
-    spider.style.left = `${event.offsetX - spider.offsetWidth / 2}px`;
+    someObject.style.left = `${event.offsetX - someObject.offsetWidth / 2}px`;
   }
 
-  if (event.offsetY <= spider.offsetHeight / 2) {
-    spider.style.top = '0px';
-  } else if (event.offsetY >= wall.clientHeight - spider.offsetHeight / 2) {
-    spider.style.top = `${wall.clientHeight - spider.offsetHeight}px`;
+  if (event.offsetY <= someObject.offsetHeight / 2) {
+    someObject.style.top = '0px';
+  } else if (event.offsetY >= wall.clientHeight - someObject.offsetHeight / 2) {
+    someObject.style.top = `${wall.clientHeight - someObject.offsetHeight}px`;
   } else {
-    spider.style.top = `${event.offsetY - spider.offsetHeight / 2}px`;
+    someObject.style.top = `${event.offsetY - someObject.offsetHeight / 2}px`;
   }
-});
+}
