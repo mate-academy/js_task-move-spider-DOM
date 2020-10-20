@@ -6,29 +6,24 @@ const wall = document.querySelector('.wall');
 wall.addEventListener('click', moveSpider);
 
 function moveSpider(event) {
-  const spiderMaxCoordX = this.clientWidth - spider.clientWidth;
-  const spiderMaxCoordY = this.clientHeight - spider.clientHeight;
+  const spiderMaxCoordX = this.clientWidth - spider.offsetWidth;
+  const spiderMaxCoordY = this.clientHeight - spider.offsetHeight;
 
-  let coordX = event.offsetX - spider.offsetWidth / 2;
-  let coordY = event.offsetY - spider.offsetWidth / 2;
+  const coordX = event.offsetX - spider.offsetWidth / 2;
+  const coordY = event.offsetY - spider.offsetHeight / 2;
 
-  coordX = checkCoords(coordX, spiderMaxCoordX);
-  coordY = checkCoords(coordY, spiderMaxCoordY);
-
-  spider.style.left = `${coordX}px`;
-  spider.style.top = `${coordY}px`;
+  spider.style.left = `${checkCoords(coordX, spiderMaxCoordX)}px`;
+  spider.style.top = `${checkCoords(coordY, spiderMaxCoordY)}px`;
 
   function checkCoords(currCoord, spiderMaxCoord) {
-    let resultCoord = currCoord;
-
     if (currCoord < 0) {
-      resultCoord = 0;
+      return 0;
     }
 
     if (currCoord > spiderMaxCoord) {
-      resultCoord = spiderMaxCoord;
+      return spiderMaxCoord;
     }
 
-    return resultCoord;
+    return currCoord;
   }
 }
