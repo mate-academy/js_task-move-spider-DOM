@@ -1,9 +1,9 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  const wall = document.querySelector('.wall');
-  const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
+document.addEventListener('click', e => {
   if (e.target !== wall) {
     return;
   }
