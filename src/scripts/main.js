@@ -14,18 +14,18 @@ theWall.addEventListener('click', (event) => {
 
   const yPosition = event.clientY - topWallEdge - (theSpider.offsetHeight / 2);
 
-  function checkCoordinates(coords, maxCoords) {
-    if (coords < 0) {
-      return 0;
-    }
-
-    if (coords > maxCoords) {
-      return maxCoords;
-    }
-
-    return coords;
-  }
-
   theSpider.style.left = `${checkCoordinates(xPosition, maxCoordsX)}px`;
   theSpider.style.top = `${checkCoordinates(yPosition, maxCoordsY)}px`;
 });
+
+function checkCoordinates(coords, maxCoords) {
+  if (coords < 0) {
+    return 0;
+  }
+
+  if (coords > maxCoords) {
+    return maxCoords;
+  }
+
+  return coords;
+}
