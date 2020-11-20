@@ -1,8 +1,8 @@
 'use strict';
 
-describe('Test', () => {
+describe('Spider move', () => {
   beforeEach('Open site', () => {
-    cy.visit('http://localhost:8080/');
+    cy.visit('/');
   });
 
   it('spider follow up', () => {
