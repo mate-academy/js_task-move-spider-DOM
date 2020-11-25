@@ -1,11 +1,11 @@
 'use strict';
 
 describe('Spider', () => {
-  beforeEach('Open site', () => {
+  beforeEach(() => {
     cy.visit('');
   });
 
-  it('spider should go down left', () => {
+  it('should go down left', () => {
     cy.get('.wall').click('bottomLeft');
     cy.get('.spider').should(($spider) => {
       const spider = $spider.get(0);
@@ -17,7 +17,7 @@ describe('Spider', () => {
     });
   });
 
-  it('spider should go up right', () => {
+  it('should go up right', () => {
     cy.get('.wall').click('topRight');
     cy.get('.spider').should(($spider) => {
       const spider = $spider.get(0);
@@ -29,7 +29,7 @@ describe('Spider', () => {
     });
   });
 
-  it('spider should go up', () => {
+  it('should go up', () => {
     cy.get('.wall').click('top');
     cy.get('.spider').should(($spider) => {
       const spider = $spider.get(0);
@@ -41,7 +41,7 @@ describe('Spider', () => {
     });
   });
 
-  it('spider should go to the center', () => {
+  it('should go to the center', () => {
     cy.get('.wall').click('center');
     cy.get('.spider').should(($spider) => {
       const spider = $spider.get(0);
@@ -53,7 +53,7 @@ describe('Spider', () => {
     });
   });
 
-  it('spider should go down right', () => {
+  it('should go down right', () => {
     cy.get('.wall').click('bottomRight');
     cy.get('.spider').should(($spider) => {
       const spider = $spider.get(0);
@@ -65,7 +65,7 @@ describe('Spider', () => {
     });
   });
 
-  it(`spider should not move on 
+  it(`should not move on 
       the click out of the wall`, () => {
     cy.get('body').click('top');
     cy.get('.spider').should(($spider) => {
