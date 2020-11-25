@@ -2,15 +2,14 @@
 
 describe('Spider', () => {
   beforeEach(() => {
-    cy.visit('');
+    cy.visit('/');
   });
 
   it('should go down left', () => {
     cy.get('.wall').click('bottomLeft');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(350);
       expect(spiderLeft).to.equal(0);
@@ -20,9 +19,8 @@ describe('Spider', () => {
   it('should go up right', () => {
     cy.get('.wall').click('topRight');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(0);
       expect(spiderLeft).to.equal(350);
@@ -32,9 +30,8 @@ describe('Spider', () => {
   it('should go up', () => {
     cy.get('.wall').click('top');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(0);
       expect(spiderLeft).to.equal(175);
@@ -44,9 +41,8 @@ describe('Spider', () => {
   it('should go to the center', () => {
     cy.get('.wall').click('center');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(175);
       expect(spiderLeft).to.equal(175);
@@ -56,9 +52,8 @@ describe('Spider', () => {
   it('should go down right', () => {
     cy.get('.wall').click('bottomRight');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(350);
       expect(spiderLeft).to.equal(350);
@@ -69,9 +64,8 @@ describe('Spider', () => {
       the click out of the wall`, () => {
     cy.get('body').click('top');
     cy.get('.spider').should(($spider) => {
-      const spider = $spider.get(0);
-      const spiderTop = spider.offsetTop;
-      const spiderLeft = spider.offsetLeft;
+      const spiderTop = $spider.position().top;
+      const spiderLeft = $spider.position().left;
 
       expect(spiderTop).to.equal(0);
       expect(spiderLeft).to.equal(0);
