@@ -1,13 +1,9 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  if (!e.target.classList.contains('wall')) {
-    return;
-  }
+const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
 
-  const spider = document.querySelector('.spider');
-  const wall = document.querySelector('.wall');
-
+wall.addEventListener('click', e => {
   const boundMinX = wall.offsetLeft + wall.clientLeft;
   const boundMinY = wall.offsetTop + wall.clientTop;
   const boundMaxX = wall.offsetLeft + wall.clientWidth;
