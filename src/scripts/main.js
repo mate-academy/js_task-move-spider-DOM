@@ -5,10 +5,10 @@ const wall = document.querySelector('.wall');
 
 const wallBorder = wall.clientTop;
 
-const spyderWidth = parseInt(spider.clientWidth);
-const spyderHeight = parseInt(spider.clientHeight);
-const wallWidth = parseInt(wall.clientWidth);
-const wallHeight = parseInt(wall.clientHeight);
+const spyderWidth = spider.clientWidth;
+const spyderHeight = spider.clientHeight;
+const wallWidth = wall.clientWidth;
+const wallHeight = wall.clientHeight;
 
 const distanceFromTop = wall.offsetTop;
 const distanceFromLeft = wall.offsetLeft;
