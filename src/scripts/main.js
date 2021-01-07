@@ -1,17 +1,17 @@
 'use strict';
 
+const spider = document.querySelector('.spider');
+const spiderX = spider.clientWidth;
+const spiderY = spider.clientHeight;
+
+const wall = document.querySelector('.wall');
+const wallX = wall.clientWidth;
+const wallY = wall.clientHeight;
+
 document.addEventListener('click', e => {
   if (e.target.tagName === 'BODY') {
     return;
   }
-
-  const spider = document.querySelector('.spider');
-  const spiderX = spider.clientWidth;
-  const spiderY = spider.clientHeight;
-
-  const wall = document.querySelector('.wall');
-  const wallX = wall.clientWidth;
-  const wallY = wall.clientHeight;
 
   let x = e.offsetX;
   let y = e.offsetY;
