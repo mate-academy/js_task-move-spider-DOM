@@ -5,8 +5,11 @@ const spiderWidth = spider.offsetWidth;
 
 const spiderMovementHandler = (e) => {
   const wall = e.target.closest('.wall');
-  const positionX = e.offsetX - spiderWidth / 2;
-  const positionY = e.offsetY - spiderWidth / 2;
+  const wallPosition = wall.getBoundingClientRect();
+  const wallXCoordsOfLeftCorner = wallPosition.left + wall.clientLeft;
+  const wallYCoordsOfLeftCorner = wallPosition.top + wall.clientTop;
+  const positionX = e.clientX - wallXCoordsOfLeftCorner - spiderWidth / 2;
+  const positionY = e.clientY - wallYCoordsOfLeftCorner - spiderWidth / 2;
   const wallWidth = wall.clientWidth;
   const wallHeight = wall.clientHeight;
 
