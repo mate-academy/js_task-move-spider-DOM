@@ -1,20 +1,43 @@
 'use strict';
 
+function verticaDestinationComponent(
+  vertMouseCoord, spiderHeight, fieldHeight) {
+  const normalPosition = vertMouseCoord - spiderHeight / 2;
+
+  if (normalPosition <= 0) {
+    return 0;
+  }
+
+  if (normalPosition >= fieldHeight - spiderHeight) {
+    return fieldHeight - spiderHeight;
+  }
+
+  return normalPosition;
+}
+
+function horizontalDestinationComponent(
+  horizMouseCoord, spiderWidth, fieldWidth) {
+  const normalPosition = horizMouseCoord - spiderWidth / 2;
+
+  if (normalPosition <= 0) {
+    return 0;
+  }
+
+  if (normalPosition >= fieldWidth - spiderWidth) {
+    return fieldWidth - spiderWidth;
+  }
+
+  return normalPosition;
+}
+
 document.addEventListener('click', e => {
   if (e.target.classList.contains('wall')) {
     const spider = document.querySelector('.spider');
-    let verticalPosition = (e.offsetY - spider.clientHeight / 2)
-     > 0 ? e.offsetY - spider.clientHeight / 2 : 0;
-    let horizontalPosition = (e.offsetX - spider.clientWidth / 2)
-    > 0 ? e.offsetX - spider.clientWidth / 2 : 0;
+    const verticalPosition = verticaDestinationComponent(
+      e.offsetY, spider.clientHeight, e.target.clientHeight);
+    const horizontalPosition = horizontalDestinationComponent(
+      e.offsetX, spider.clientWidth, e.target.clientWidth);
 
-    if (horizontalPosition >= e.target.clientWidth - spider.clientWidth) {
-      horizontalPosition = e.target.clientWidth - spider.clientWidth;
-    }
-
-    if (verticalPosition >= e.target.clientHeight - spider.clientHeight) {
-      verticalPosition = e.target.clientHeight - spider.clientHeight;
-    }
     spider.style.top = `${verticalPosition}px`;
     spider.style.left = `${horizontalPosition}px`;
   }
