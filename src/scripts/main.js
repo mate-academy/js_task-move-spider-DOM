@@ -3,8 +3,6 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 const border = (wall.offsetHeight - wall.clientHeight) / 2;
-const wallLeft = wall.getBoundingClientRect().left;
-const wallTop = wall.getBoundingClientRect().top;
 const halfSpider = (spider.offsetHeight / 2);
 
 function coord(click, halfSp, wallPosition, wallSize) {
@@ -26,6 +24,8 @@ function coord(click, halfSp, wallPosition, wallSize) {
 }
 
 document.addEventListener('click', e => {
+  const wallLeft = wall.getBoundingClientRect().left;
+  const wallTop = wall.getBoundingClientRect().top;
   const item = e.target.closest('.wall');
 
   if (!document.contains(item)) {
