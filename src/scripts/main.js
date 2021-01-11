@@ -10,7 +10,7 @@ document.addEventListener('click', el => {
   const bottomSide = wall.getBoundingClientRect().bottom;
 
   if (el.target !== wall) {
-    return
+    return;
   }
 
   if (event.clientX < leftSide + spider.width) {
