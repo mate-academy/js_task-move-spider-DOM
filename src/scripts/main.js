@@ -10,7 +10,9 @@ wall.addEventListener('click', e => {
   const x = e.offsetX;
   const y = e.offsetY;
 
-  function calculateCoords(coord, objLength) {
+  function calculateCoords(coordinate, objLength) {
+    let coord = coordinate;
+
     if (coord < 0) {
       coord = 0;
     }
