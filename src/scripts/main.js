@@ -27,7 +27,7 @@ wall.addEventListener('click', e => {
       return `${wall.clientHeight - objLength}px`;
     }
 
-    return `${coord - (objLength / 2) - bordWidth}px`;
+    return `${coord - (objLength / 2)}px`;
   }
 
   spider.style.left = calculateCoords(x, objWidth);
