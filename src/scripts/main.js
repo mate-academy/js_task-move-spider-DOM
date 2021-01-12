@@ -3,7 +3,7 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-document.addEventListener('click', e => {
+wall.addEventListener('click', e => {
   let x = e.offsetX - spider.clientWidth / 2;
   let y = e.offsetY - spider.clientHeight / 2;
   const maxX = wall.clientWidth - spider.clientWidth;
