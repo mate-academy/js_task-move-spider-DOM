@@ -3,11 +3,7 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-document.addEventListener('click', e => {
-  if (e.target !== wall) {
-    return;
-  }
-
+wall.addEventListener('click', e => {
   const rectangle = e.target.getBoundingClientRect();
   const x = e.clientX - rectangle.left
     - parseInt(getComputedStyle(wall).borderLeftWidth);
