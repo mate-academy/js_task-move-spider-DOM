@@ -1,18 +1,14 @@
 'use strict';
 
-document.addEventListener('click', el => {
-  const spider = document.querySelector('.spider');
-  const wall = document.querySelector('.wall');
-  const borderWidth = getComputedStyle(wall).borderLeftWidth;
-  const leftSide = wall.getBoundingClientRect().left;
-  const rightSide = wall.getBoundingClientRect().right;
-  const topSide = wall.getBoundingClientRect().top;
-  const bottomSide = wall.getBoundingClientRect().bottom;
+const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
+const borderWidth = getComputedStyle(wall).borderLeftWidth;
+const leftSide = wall.getBoundingClientRect().left;
+const rightSide = wall.getBoundingClientRect().right;
+const topSide = wall.getBoundingClientRect().top;
+const bottomSide = wall.getBoundingClientRect().bottom;
 
-  if (el.target !== wall) {
-    return;
-  }
-
+wall.addEventListener('click', el => {
   if (event.clientX < leftSide + spider.width) {
     spider.style.left = 0;
   } else if (event.clientX > rightSide - spider.width) {
