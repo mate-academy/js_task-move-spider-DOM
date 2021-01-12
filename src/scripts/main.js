@@ -5,8 +5,6 @@ const spider = document.querySelector('.spider');
 const spiderHeight = spider.clientHeight;
 const spiderWidth = spider.clientWidth;
 
-spider.addEventListener('click', ev => {});
-
 wall.addEventListener('click', ev => {
   const offsetY = (ev.target === spider)
     ? spider.offsetTop + ev.offsetY
