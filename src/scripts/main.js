@@ -13,6 +13,8 @@ document.addEventListener('click', e => {
 
   let coordsY = e.offsetY - spiderParams.width / 2;
   let coordsX = e.offsetX - spiderParams.height / 2;
+  const maxHeight = wall.clientHeight - spiderParams.height;
+  const maxWidth = wall.clientWidth - spiderParams.width;
   const isSpider = item.classList.contains('spider');
 
   if (isSpider) {
@@ -20,16 +22,16 @@ document.addEventListener('click', e => {
     coordsX += parseFloat(spider.style.left);
   }
 
-  if (e.offsetX > wall.clientWidth - spiderParams.width && !isSpider) {
-    spider.style.left = `${wall.clientWidth - spiderParams.width}px`;
+  if (e.offsetX > maxWidth && !isSpider) {
+    spider.style.left = `${maxWidth}px`;
   } else if (e.offsetX < 0 + spiderParams.width && !isSpider) {
     spider.style.left = `${0}px`;
   } else {
     spider.style.left = `${coordsX}px`;
   }
 
-  if (e.offsetY > wall.clientHeight - spiderParams.height && !isSpider) {
-    spider.style.top = `${wall.clientHeight - spiderParams.height}px`;
+  if (e.offsetY > maxHeight && !isSpider) {
+    spider.style.top = `${maxHeight}px`;
   } else if (e.offsetY < 0 + spiderParams.height && !isSpider) {
     spider.style.top = `${0}px`;
   } else {
