@@ -16,9 +16,9 @@ const coords = (eventX) => {
     return [];
   }
 
-  spider.coordsY = event.offsetY - spider.height / 2;
+  spider.coordsY = eventX.offsetY - spider.height / 2;
   spider.coordsY = Math.min(Math.max(spider.coordsY, 0), wall.edgeY);
-  spider.coordsX = event.offsetX - spider.width / 2;
+  spider.coordsX = eventX.offsetX - spider.width / 2;
   spider.coordsX = Math.min(Math.max(spider.coordsX, 0), wall.edgeX);
 
   return [spider.coordsY + 'px', spider.coordsX + 'px'];
