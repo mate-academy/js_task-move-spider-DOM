@@ -7,25 +7,21 @@ document.addEventListener('click', e => {
   }
 
   const spider = document.querySelector('.spider');
-  const spiderSize = spider.clientHeight;
+  const halfSpiderSize = spider.clientHeight / 2;
   const wall = document.querySelector('.wall');
-  const wallLimit = wall.clientWidth - spiderSize;
+  const wallLimit = wall.clientWidth - halfSpiderSize * 2;
 
-  let coorX = e.offsetX - spiderSize / 2;
-  let coorY = e.offsetY - spiderSize / 2;
+  
+  const [left, top] = [e.offsetX, e.offsetY].map((el) => {
+    const coordinate = el - halfSpiderSize;
 
-  if (coorX > wallLimit || coorX < 0) {
-    coorX = coorX > wallLimit
-      ? coorX = wallLimit
-      : 0;
-  }
+    if (coordinate > wallLimit || coordinate < 0) {
+      return coordinate > wallLimit ? wallLimit : 0;
+    }
 
-  if (coorY > wallLimit || coorY < 0) {
-    coorY = coorY > wallLimit
-      ? coorY = wallLimit
-      : 0;
-  }
+    return coordinate;
+  });
 
-  spider.style.top = coorY + 'px';
-  spider.style.left = coorX + 'px';
+  spider.style.top = top + 'px';
+  spider.style.left = left + 'px';
 });
