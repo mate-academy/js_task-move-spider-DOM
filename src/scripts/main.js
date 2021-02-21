@@ -1,40 +1,29 @@
 'use strict';
 
-const spider = document.querySelector('img');
-const spiderParams = spider.getBoundingClientRect();
-const wall = document.querySelector('div');
+const wall = document.querySelector('.wall');
 
-document.addEventListener('click', e => {
-  const item = e.target;
-
-  if (!item.classList.contains('wall') && !item.classList.contains('spider')) {
-    return;
-  }
-
-  let coordsY = e.offsetY - spiderParams.width / 2;
-  let coordsX = e.offsetX - spiderParams.height / 2;
+wall.addEventListener('click', e => {
+  const spider = document.querySelector('.spider');
+  const spiderParams = spider.getBoundingClientRect();
+  let coordsY = e.clientY - wall.offsetTop
+    - wall.clientTop - spiderParams.width / 2;
+  let coordsX = e.clientX - wall.offsetLeft
+    - wall.clientLeft - spiderParams.height / 2;
   const maxHeight = wall.clientHeight - spiderParams.height;
   const maxWidth = wall.clientWidth - spiderParams.width;
-  const isSpider = item.classList.contains('spider');
 
-  if (isSpider) {
-    coordsY += parseFloat(spider.style.top);
-    coordsX += parseFloat(spider.style.left);
+  if (coordsX > maxWidth) {
+    coordsX = maxWidth;
+  } else if (coordsX < 0) {
+    coordsX = 0;
   }
 
-  if (e.offsetX > maxWidth && !isSpider) {
-    spider.style.left = `${maxWidth}px`;
-  } else if (e.offsetX < 0 + spiderParams.width && !isSpider) {
-    spider.style.left = `${0}px`;
-  } else {
-    spider.style.left = `${coordsX}px`;
+  if (coordsY > maxHeight) {
+    coordsY = maxHeight;
+  } else if (coordsY < 0) {
+    coordsY = 0;
   }
 
-  if (e.offsetY > maxHeight && !isSpider) {
-    spider.style.top = `${maxHeight}px`;
-  } else if (e.offsetY < 0 + spiderParams.height && !isSpider) {
-    spider.style.top = `${0}px`;
-  } else {
-    spider.style.top = `${coordsY}px`;
-  }
+  spider.style.top = `${coordsY}px`;
+  spider.style.left = `${coordsX}px`;
 });
