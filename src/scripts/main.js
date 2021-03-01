@@ -7,11 +7,11 @@ document.addEventListener('click', e => {
   const spiderY = spider.clientHeight / 2;
   const spiderX = spider.clientHeight / 2;
 
-  const wallTarget = wall.getBoundingClientRect();
+  const wallCoords = wall.getBoundingClientRect();
 
   const spiderCoords = {
-    top: e.clientY - wallTarget.top - wall.clientTop - spiderY,
-    left: e.clientX - wallTarget.left - wall.clientLeft - spiderX,
+    top: e.clientY - wallCoords.top - wall.clientTop - spiderY,
+    left: e.clientX - wallCoords.left - wall.clientLeft - spiderX,
   };
 
   if (spiderCoords.top < 0) {
