@@ -18,27 +18,21 @@ wall.addEventListener('click', e => {
     return;
   }
 
-  switch (true) {
-    case coordinateX <= spiderWidth / 2:
-      positionLeft = 0;
-      break;
-    case coordinateX >= wallWidth - spiderWidth:
-      positionLeft = wallWidth - spiderWidth + 'px';
-      break;
-    default:
-      positionLeft = coordinateX - (spiderWidth / 2) + 'px';
+  if (coordinateX <= spiderWidth / 2) {
+    positionLeft = 0;
+  } else if (coordinateX >= wallWidth - spiderWidth) {
+    positionLeft = wallWidth - spiderWidth + 'px';
+  } else {
+    positionLeft = coordinateX - (spiderWidth / 2) + 'px';
   }
 
-  switch (true) {
-    case coordinateY <= spiderHeight / 2:
-      positionTop = 0;
-      break;
-    case coordinateY >= wallHeight - spiderHeight:
-      positionTop = wallHeight - spiderHeight + 'px';
-      break;
-    default:
-      positionTop = coordinateY - (spiderHeight / 2) + 'px';
-  };
+  if (coordinateY <= spiderHeight / 2) {
+    positionTop = 0;
+  } else if (coordinateY >= wallHeight - spiderHeight) {
+    positionTop = wallHeight - spiderHeight + 'px';
+  } else {
+    positionTop = coordinateY - (spiderHeight / 2) + 'px';
+  }
 
   spider.style.top = positionTop;
   spider.style.left = positionLeft;
