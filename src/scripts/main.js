@@ -22,11 +22,13 @@ document.addEventListener('click', e => {
   const spiderWidth = spider.clientWidth;
   const spiderHeight = spider.clientHeight;
 
-  let calculatedSpiderLeft = (clickCoordinateX - wallCoordinateX
-    - wallBorderLeft - spiderWidth / 2);
+  let calculatedSpiderLeft = (
+    clickCoordinateX - wallCoordinateX - wallBorderLeft - spiderWidth / 2
+  );
 
-  let calculatedSpiderTop = (clickCoordinateY - wallCoordinateY
-    - wallBorderTop - spiderHeight / 2);
+  let calculatedSpiderTop = (
+    clickCoordinateY - wallCoordinateY - wallBorderTop - spiderHeight / 2
+  );
 
   if (calculatedSpiderLeft < 0) {
     calculatedSpiderLeft = 0;
