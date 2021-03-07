@@ -7,13 +7,13 @@ document.addEventListener('click', (e) => {
 
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
-  const borderPaddingWidth = (wall.getBoundingClientRect().width - wall.clientWidth) / 2;
-  const spiderCenterX = spider.width / 2;
-  const spiderCenterY = spider.width / 2;
-  let spiderPositionY = e.clientY - wall.offsetTop - borderPaddingWidth - spiderCenterY;
-  let spiderPositionX = e.clientX - wall.offsetLeft - borderPaddingWidth - spiderCenterX;
+  const borderWidth = (
+    wall.getBoundingClientRect().width - wall.clientWidth) / 2;
+  const spiderCntr = spider.width / 2;
+  let spiderPositionY = e.clientY - wall.offsetTop - borderWidth - spiderCntr;
+  let spiderPositionX = e.clientX - wall.offsetLeft - borderWidth - spiderCntr;
 
-  if (e.clientX < wall.offsetLeft + borderPaddingWidth) {
+  if (e.clientX < wall.offsetLeft + borderWidth) {
     spiderPositionX = 0;
   }
 
@@ -21,7 +21,7 @@ document.addEventListener('click', (e) => {
     spiderPositionX = wall.clientWidth - spider.width;
   }
 
-  if (e.clientY < wall.offsetTop + borderPaddingWidth) {
+  if (e.clientY < wall.offsetTop + borderWidth) {
     spiderPositionY = 0;
   }
 
