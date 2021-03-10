@@ -10,7 +10,7 @@ const wallHeight = parseInt(wall.clientHeight);
 
 document.addEventListener('click', e => {
   if (e.target !== wall) {
-    return 0;
+    return;
   }
 
   const coordinateOfX = e.offsetX;
