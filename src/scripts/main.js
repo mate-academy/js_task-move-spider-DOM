@@ -12,6 +12,10 @@ wall.addEventListener('click', (eventClick) => {
   const spiderX = eventClick.offsetX;
   const spiderY = eventClick.offsetY;
 
+  if (eventClick.target !== wall) {
+    return;
+  }
+
   if (maxSpiderX < spiderX) {
     spider.style.left = maxSpiderX + 'px';
   } else {
