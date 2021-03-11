@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 'use strict';
 
 const wall = document.querySelector('.wall');
@@ -10,9 +9,9 @@ const wallHeight = wall.clientHeight;
 const spiderWidth = spider.clientWidth;
 const spiderHeight = spider.clientHeight;
 
-wall.addEventListener('click', (event) => {
-  const clickPositionX = event.offsetX;
-  const clickPositionY = event.offsetY;
+wall.addEventListener('click', (clickEvent) => {
+  const clickPositionX = clickEvent.offsetX;
+  const clickPositionY = clickEvent.offsetY;
 
   let xPosition = clickPositionX - spiderWidth / 2;
   let yPosition = clickPositionY - spiderHeight / 2;
