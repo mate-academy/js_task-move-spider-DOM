@@ -7,8 +7,8 @@ const border = parseInt(window.getComputedStyle(wall).border);
 const maxSpiderX = wall.clientWidth - spider.clientWidth;
 const maxSpiderY = wall.clientHeight - spider.clientHeight;
 
-wall.addEventListener('click', e => {
-  let spiderX = e.clientX
+wall.addEventListener('click', clickEvent => {
+  let spiderX = clickEvent.clientX
     - wall.offsetLeft - border - spider.clientWidth / 2;
 
   if (spiderX < 0) {
@@ -21,7 +21,7 @@ wall.addEventListener('click', e => {
 
   spider.style.left = spiderX + 'px';
 
-  let spiderY = e.clientY
+  let spiderY = clickEvent.clientY
     - wall.offsetTop - border - spider.clientHeight / 2;
 
   if (spiderY < 0) {
