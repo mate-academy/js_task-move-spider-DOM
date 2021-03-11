@@ -8,11 +8,11 @@ const spiderHeight = spider.clientHeight;
 const maxSpiderX = wall.clientWidth - spiderWidth;
 const maxSpiderY = wall.clientHeight - spiderHeight;
 
-wall.addEventListener('click', (eventClick) => {
-  const spiderX = eventClick.offsetX;
-  const spiderY = eventClick.offsetY;
+wall.addEventListener('click', (clickEvent) => {
+  const spiderX = clickEvent.offsetX;
+  const spiderY = clickEvent.offsetY;
 
-  if (eventClick.target !== wall) {
+  if (clickEvent.target !== wall) {
     return;
   }
 
