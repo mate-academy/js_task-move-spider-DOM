@@ -13,8 +13,8 @@ wall.addEventListener('click', e => {
   const spiderWidth = spider.clientWidth;
   const spiderHeight = spider.clientHeight;
 
-  let calcultedPositionY = (clickCoordinateY - spiderHeight / 2) || 0;
-  let calcultedPositionX = (clickCoordinateX - spiderWidth / 2) || 0;
+  let calcultedPositionY = (clickCoordinateY - spiderHeight / 2);
+  let calcultedPositionX = (clickCoordinateX - spiderWidth / 2);
 
   if (calcultedPositionX < 0) {
     calcultedPositionX = 0;
