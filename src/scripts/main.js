@@ -3,39 +3,38 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 const spiderSize = [
-  parseInt(getComputedStyle(spider).height) / 2,
-  parseInt(getComputedStyle(spider).width) / 2,
+  spider.clientWidth / 2,
+  spider.clientHeight / 2,
 ];
+const borderSide = wall.clientLeft;
 
 document.addEventListener('click', e => {
-  const x = e.offsetX - spiderSize[0];
-  const y = e.offsetY - spiderSize[1];
-  const borderSide = parseInt(getComputedStyle(wall).borderLeftWidth);
-  const maxOpenWidth = parseInt(getComputedStyle(wall).width)
-    - spiderSize[0];
-  const maxOpenHeight = parseInt(getComputedStyle(wall).height)
-    - spiderSize[1];
+  const spiderX = e.offsetX - spiderSize[0];
+  const spiderY = e.offsetY - spiderSize[1];
+
+  const maxOpenWidth = wall.clientWidth - spiderSize[0];
+  const maxOpenHeight = wall.clientWidth - spiderSize[1];
 
   if (e.target.className !== 'wall') {
     return;
   }
 
-  spider.style.top = y + 'px';
-  spider.style.left = x + 'px';
+  spider.style.top = spiderY + 'px';
+  spider.style.left = spiderX + 'px';
 
-  if (x >= maxOpenWidth) {
-    spider.style.left = (x - spiderSize[1] - borderSide + 1) + 'px';
+  if (spiderX > maxOpenWidth - spiderSize[0] - borderSide) {
+    spider.style.left = (maxOpenWidth - spiderSize[1]) + 'px';
   }
 
-  if (x <= 0) {
+  if (spiderX <= 0) {
     spider.style.left = 0;
   }
 
-  if (y >= maxOpenHeight) {
-    spider.style.top = (y - spiderSize[0] - borderSide + 1) + 'px';
+  if (spiderY > maxOpenHeight - spiderSize[1] - borderSide) {
+    spider.style.top = (maxOpenHeight - spiderSize[1]) + 'px';
   }
 
-  if (y <= 0) {
+  if (spiderY <= 0) {
     spider.style.top = 0;
   }
 });
