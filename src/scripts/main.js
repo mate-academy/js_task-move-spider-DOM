@@ -6,11 +6,11 @@ const wall = document.querySelector('.wall');
 const spiderWidth = spider.offsetWidth;
 const spiderHeight = spider.offsetHeight;
 
-const reachableHeight = wall.offsetHeigth - spiderHeight;
-const reachableWidth = wall.offsteWidth - spiderWidth;
+const reachableHeight = wall.clientHeight - spiderHeight;
+const reachableWidth = wall.clientWidth - spiderWidth;
 
 document.addEventListener('click', e => {
-  if (e.target === spider && e.target !== wall) {
+  if (e.target === spider || e.target !== wall) {
     return;
   }
 
