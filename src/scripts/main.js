@@ -2,20 +2,19 @@
 
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
-const wallCoords = wall.getBoundingClientRect();
 const spiderCenterY = spider.clientHeight / 2;
 const spiderCenterX = spider.clientWidth / 2;
 
-document.addEventListener('click', e => {
+document.addEventListener('click', clickEvent => {
   // write code here
 
-  if (e.target !== wall) {
+  if (clickEvent.target !== wall) {
     return;
   }
 
   const spiderCoords = {
-    top: e.clientY - wallCoords.top - wall.clientTop - spiderCenterY,
-    left: e.clientX - wallCoords.left - wall.clientLeft - spiderCenterX,
+    top: clickEvent.offsetY - spiderCenterY,
+    left: clickEvent.offsetX - spiderCenterX,
   };
 
   if (spiderCoords.top < 0) {
