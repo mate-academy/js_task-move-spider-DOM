@@ -25,13 +25,17 @@ document.addEventListener('click', e => {
 
   if (spiderPositionFromTop > maxHeight) {
     spiderPositionFromTop = maxHeight;
-  } else if (spiderPositionFromTop < 0) {
+  }
+
+  if (spiderPositionFromTop < 0) {
     spiderPositionFromTop = 0;
   }
 
   if (spiderPositionFromLeft > maxWidth) {
     spiderPositionFromLeft = maxWidth;
-  } else if (spiderPositionFromLeft < 0) {
+  }
+
+  if (spiderPositionFromLeft < 0) {
     spiderPositionFromLeft = 0;
   }
 
