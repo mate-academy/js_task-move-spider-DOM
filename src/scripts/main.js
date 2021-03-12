@@ -4,30 +4,30 @@ function moveSpider(wall) {
   const spider = wall.querySelector('.spider');
 
   wall.addEventListener('click', (clickEvent) => {
-    let x = clickEvent.offsetX - spider.offsetWidth / 2;
-    let y = clickEvent.offsetY - spider.offsetHeight / 2;
+    let coordinateX = clickEvent.offsetX - spider.offsetWidth / 2;
+    let coordinateY = clickEvent.offsetY - spider.offsetHeight / 2;
 
-    const maxX = wall.clientWidth - spider.offsetWidth;
-    const maxY = wall.clientHeight - spider.offsetHeight;
+    const borderX = wall.clientWidth - spider.offsetWidth;
+    const borderY = wall.clientHeight - spider.offsetHeight;
 
-    if (x < 0) {
-      x = 0;
+    if (coordinateX < 0) {
+      coordinateX = 0;
     }
 
-    if (x > maxX) {
-      x = maxX;
+    if (coordinateX > borderX) {
+      coordinateX = borderX;
     }
 
-    if (y < 0) {
-      y = 0;
+    if (coordinateY < 0) {
+      coordinateY = 0;
     }
 
-    if (y > maxY) {
-      y = maxY;
+    if (coordinateY > borderY) {
+      coordinateY = borderY;
     }
 
-    spider.style.top = `${y}px`;
-    spider.style.left = `${x}px`;
+    spider.style.top = `${coordinateY}px`;
+    spider.style.left = `${coordinateX}px`;
   });
 }
 
