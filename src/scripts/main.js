@@ -16,20 +16,24 @@ document.addEventListener('click', e => {
   const wallWidth = wall.clientWidth;
   const spiderWidth = spider.clientHeight;
   const spiderHeight = spider.clientWidth;
+  const spiderHalfWidth = spiderWidth / 2;
+  const spiderHalfHeight = spiderHeight / 2;
+  const maxWidth = wallWidth - spiderWidth;
+  const maxHeight = wallHeight - spiderHeight;
 
-  if (positionY > wallHeight - spiderHeight / 2) {
-    spider.style.top = `${wallHeight - spiderHeight}px`;
-  } else if (positionY < spiderHeight / 2) {
+  if (positionY > maxHeight) {
+    spider.style.top = `${maxHeight}px`;
+  } else if (positionY < spiderHalfHeight) {
     spider.style.top = `0px`;
   } else {
-    spider.style.top = `${positionY - spiderHeight / 2}px`;
+    spider.style.top = `${positionY - spiderHalfHeight}px`;
   }
 
-  if (positionX > wallWidth - spiderWidth / 2) {
-    spider.style.left = `${wallWidth - spiderWidth}px`;
-  } else if (positionX < spiderWidth / 2) {
+  if (positionX > maxWidth) {
+    spider.style.left = `${maxWidth}px`;
+  } else if (positionX < spiderHalfWidth) {
     spider.style.left = `0px`;
   } else {
-    spider.style.left = `${positionX - spiderWidth / 2}px`;
+    spider.style.left = `${positionX - spiderHalfWidth}px`;
   }
 });
