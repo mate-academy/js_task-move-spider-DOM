@@ -4,7 +4,9 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', e => {
-  if (e.target === spider) {
+  const wallTarget = e.target.closest('.wall');
+
+  if (e.target === spider || !wallTarget) {
     return;
   }
 
@@ -30,6 +32,7 @@ document.addEventListener('click', e => {
   if (mouseY >= wallHeight - spiderHeight / 2) {
     mouseY = wallHeight - (spiderHeight / 2);
   }
+
   spider.style.top = `${mouseY - spider.offsetHeight / 2}px`;
   spider.style.left = `${mouseX - spider.offsetWidth / 2}px`;
 });
