@@ -3,7 +3,7 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-document.addEventListener('click', e => {
+wall.addEventListener('click', e => {
   const field = wall.getBoundingClientRect();
 
   const spiderCoords = {
