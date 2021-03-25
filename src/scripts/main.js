@@ -20,7 +20,7 @@ wall.addEventListener('click', e => {
   }
 
   if (coordY < 0) {
-    spiderCoordY = 0;
+    coordY = 0;
   }
 
   if (coordY + spider.clientHeight > wall.clientHeight) {
