@@ -5,28 +5,28 @@ const wall = document.querySelector('.wall');
 
 wall.addEventListener('click', e => {
   // write code here
-  let spiderCoordX = e.clientX - wall.getBoundingClientRect().x
+  let coordX = e.clientX - wall.getBoundingClientRect().x
     - wall.clientLeft - spider.clientWidth / 2;
 
-  let spiderCoordY = e.clientY - wall.getBoundingClientRect().y
+  let coordY = e.clientY - wall.getBoundingClientRect().y
     - wall.clientTop - spider.clientHeight / 2;
 
-  if (spiderCoordX < 0) {
-    spiderCoordX = 0;
+  if (coordX < 0) {
+    coordX = 0;
   }
 
-  if (spiderCoordX + spider.clientWidth > wall.clientWidth) {
-    spiderCoordX = wall.clientWidth - spider.clientWidth;
+  if (coordX + spider.clientWidth > wall.clientWidth) {
+    coordX = wall.clientWidth - spider.clientWidth;
   }
 
-  if (spiderCoordY < 0) {
+  if (coordY < 0) {
     spiderCoordY = 0;
   }
 
-  if (spiderCoordY + spider.clientHeight > wall.clientHeight) {
-    spiderCoordY = wall.clientHeight - spider.clientHeight;
+  if (coordY + spider.clientHeight > wall.clientHeight) {
+    coordY = wall.clientHeight - spider.clientHeight;
   }
 
-  spider.style.left = `${spiderCoordX}px`;
-  spider.style.top = `${spiderCoordY}px`;
+  spider.style.left = `${coordX}px`;
+  spider.style.top = `${coordY}px`;
 });
