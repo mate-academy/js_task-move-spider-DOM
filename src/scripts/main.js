@@ -8,8 +8,8 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
 
-  let spiderTop = e.offsetY;
-  let spiderLeft = e.offsetX;
+  let spiderTop = e.offsetY - spider.clientWidth / 2;
+  let spiderLeft = e.offsetX - spider.clientWidth / 2;
 
   if (spiderLeft + spider.clientWidth > wall.clientWidth) {
     spiderLeft = wall.clientWidth - spider.clientWidth;
