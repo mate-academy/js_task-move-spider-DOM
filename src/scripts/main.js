@@ -4,16 +4,13 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', e => {
-  let xCoordinate
-    = e.clientX
-    - wall.getBoundingClientRect().x
-    - parseInt(getComputedStyle(wall).borderTopWidth)
-    - spider.clientWidth / 2;
-  let yCoordinate
-    = e.clientY
-    - wall.getBoundingClientRect().y
-    - parseInt(getComputedStyle(wall).borderLeftWidth)
-    - spider.clientHeight / 2;
+  const wallLeftBorder = parseInt(getComputedStyle(wall).borderLeftWidth);
+  const wallTopBorder = parseInt(getComputedStyle(wall).borderTopWidth);
+
+  let xCoordinate = e.clientX - wall.getBoundingClientRect().x
+    - wallTopBorder - spider.clientWidth / 2;
+  let yCoordinate = e.clientY - wall.getBoundingClientRect().y
+    - wallLeftBorder - spider.clientHeight / 2;
 
   if (yCoordinate < spider.clientHeight / 2) {
     yCoordinate = 0;
