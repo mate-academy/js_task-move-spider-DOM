@@ -4,15 +4,6 @@ function spiderRun() {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  wall.style.position = 'relative';
-
-  spider.style.cssText = `
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: 1s all;
-  `;
-
   wall.onclick = function(move) {
     const wallCooords = this.getBoundingClientRect();
 
