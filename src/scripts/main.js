@@ -4,8 +4,8 @@ const spider = document.getElementsByClassName('spider')[0];
 const wall = document.getElementsByClassName('wall')[0];
 
 document.addEventListener('click', e => {
-  const startOfWallX = wall.getClientRects()[0].x + wall.clientLeft;
-  const startOfWallY = wall.getClientRects()[0].y + wall.clientTop;
+  const startOfWallX = wall.getBoundingClientRect().x + wall.clientLeft;
+  const startOfWallY = wall.getBoundingClientRect().y + wall.clientTop;
   const endOfWallX = wall.clientWidth + startOfWallX;
   const endOfWallY = wall.clientHeight + startOfWallY;
 
