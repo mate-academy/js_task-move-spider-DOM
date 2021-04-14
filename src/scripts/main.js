@@ -9,9 +9,19 @@ document.addEventListener('click', e => {
     return;
   }
 
-  spider.style.top = `${e.clientY - wall.offsetTop
-    - (parseFloat(getComputedStyle(spider).height) / 2)}px`;
+  spider.style.top = (e.clientY - wall.getBoundingClientRect().top
+  + spider.clientHeight > wall.offsetHeight)
+    ? `${wall.clientHeight - (spider.clientHeight)}px`
+    : (e.clientY - wall.getBoundingClientRect().top < spider.clientHeight / 2)
+      ? `${0}px`
+      : `${e.clientY + window.pageYOffset - wall.offsetTop
+      - (spider.clientHeight / 2)}px`;
 
-  spider.style.left = `${e.clientX - wall.offsetLeft
-    - (parseFloat(getComputedStyle(spider).width) / 2)}px`;
+  spider.style.left = (e.clientX - wall.getBoundingClientRect().left
+  + spider.clientWidth > wall.offsetWidth)
+    ? `${wall.clientWidth - (spider.clientWidth)}px`
+    : (e.clientX - wall.getBoundingClientRect().left < spider.clientWidth / 2)
+      ? `${0}px`
+      : `${e.clientX + window.pageXOffset - wall.offsetLeft
+      - (spider.clientWidth / 2)}px`;
 });
