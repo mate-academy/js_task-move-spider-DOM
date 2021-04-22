@@ -85,15 +85,8 @@ class Spider extends Shape {
     this.edges.bottom = this.centerY + (this.bottom - this.top) / 2;
   }
 
-  moveTo(pageX, pageY) {
-    // if (pageX < this.surface.super.left || pageX > this.surface.super.right) {
-    //   return;
-    // }
-
-    // if (pageY < this.surface.super.top || pageY > this.surface.super.bottom) {
-    //   return;
-    // }
-    this.setEdges(pageX, pageY);
+  moveTo(clientX, clientY) {
+    this.setEdges(clientX, clientY);
 
     let newLeft = `${this.edges.left - this.surface.left}px`;
     let newTop = `${this.edges.top - this.surface.top}px`;
@@ -115,9 +108,11 @@ class Spider extends Shape {
   }
 }
 
-document.addEventListener('click', e => {
+document.querySelector('.wall').addEventListener('click', e => {
   const wall = new Wall(document.querySelector('.wall'));
   const spider = new Spider(document.querySelector('.spider'), wall);
 
-  spider.moveTo(e.pageX, e.pageY);
+  spider.element.style['background-color'] = 'pink';
+
+  spider.moveTo(e.clientX, e.clientY);
 });
