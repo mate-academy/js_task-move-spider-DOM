@@ -4,31 +4,31 @@ class Shape {
   constructor(element) {
     this.element = element;
     this.compStyles = getComputedStyle(this.element);
-    this.rect = this.element.getBoundingClientRect();
+    this.clientRect = this.element.getBoundingClientRect();
   };
 
   get height() {
-    return this.rect.bottom - this.rect.top;
+    return this.clientRect.bottom - this.clientRect.top;
   }
 
   get width() {
-    return this.rect.right - this.rect.left;
+    return this.clientRect.right - this.clientRect.left;
   }
 
   get top() {
-    return this.rect.top + window.pageYOffset;
+    return this.clientRect.top + window.pageYOffset;
   }
 
   get bottom() {
-    return this.rect.bottom + window.pageYOffset;
+    return this.clientRect.bottom + window.pageYOffset;
   }
 
   get right() {
-    return this.rect.right + window.pageXOffset;
+    return this.clientRect.right + window.pageXOffset;
   }
 
   get left() {
-    return this.rect.left + window.pageXOffset;
+    return this.clientRect.left + window.pageXOffset;
   }
 }
 
@@ -74,32 +74,30 @@ class Spider extends Shape {
     this.surface = surface;
   }
 
-  setEdges(x, y) {
-    this.centerX = x;
-    this.centerY = y;
-
-    this.edges = {};
-    this.edges.left = this.centerX - (this.right - this.left) / 2;
-    this.edges.right = this.centerX + (this.right - this.left) / 2;
-    this.edges.top = this.centerY - (this.bottom - this.top) / 2;
-    this.edges.bottom = this.centerY + (this.bottom - this.top) / 2;
+  getNewCoords(x, y) {
+    return {
+      left: x - (this.width) / 2,
+      right: x + (this.width) / 2,
+      top: y - (this.height) / 2,
+      bottom: y + (this.height) / 2,
+    };
   }
 
   moveTo(clientX, clientY) {
-    this.setEdges(clientX, clientY);
+    const newCoords = this.getNewCoords(clientX, clientY);
 
-    let newLeft = `${this.edges.left - this.surface.left}px`;
-    let newTop = `${this.edges.top - this.surface.top}px`;
+    let newLeft = `${newCoords.left - this.surface.left}px`;
+    let newTop = `${newCoords.top - this.surface.top}px`;
 
-    if (this.edges.left < this.surface.left) {
+    if (newCoords.left < this.surface.left) {
       newLeft = '0px';
-    } else if (this.edges.right > this.surface.right) {
+    } else if (newCoords.right > this.surface.right) {
       newLeft = `${this.surface.width - this.width}px`;
     }
 
-    if (this.edges.top < this.surface.top) {
+    if (newCoords.top < this.surface.top) {
       newTop = '0px';
-    } else if (this.edges.bottom > this.surface.bottom) {
+    } else if (newCoords.bottom > this.surface.bottom) {
       newTop = `${this.surface.height - this.height}px`;
     }
 
