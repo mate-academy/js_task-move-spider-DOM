@@ -19,8 +19,8 @@ document.addEventListener('click', e => {
     spiderTop = wall.clientTop - (spider.offsetHeight / 5);
   }
 
-  if (e.clientY > wall.clientTop + wall.clientHeight
-    - (spider.offsetHeight / 10)) {
+  if (e.clientY > coordsWall.top + wall.clientTop + wall.clientHeight
+    - (spider.offsetHeight / 2)) {
     spiderTop = wall.clientTop + wall.clientHeight
     - (spider.offsetHeight * 1.2);
   }
