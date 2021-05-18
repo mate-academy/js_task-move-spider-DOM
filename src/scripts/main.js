@@ -1,12 +1,8 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  const spider = document.querySelector('.spider');
+document.querySelector('.list').addEventListener('click', e => {
   const wall = e.target.closest('.wall');
-
-  if (!wall) {
-    return;
-  }
+  const spider = wall.querySelector('.spider');
 
   const wallBorder = Number.parseInt(getComputedStyle(wall).border);
 
