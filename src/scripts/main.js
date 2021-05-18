@@ -5,7 +5,6 @@ document.querySelector('.list').addEventListener('click', e => {
   const spider = wall.querySelector('.spider');
 
   const wallBorder = Number.parseInt(getComputedStyle(wall).border);
-
   const wallX = wall.getBoundingClientRect().x;
   const wallY = wall.getBoundingClientRect().y;
 
