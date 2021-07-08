@@ -21,7 +21,7 @@ document.addEventListener('click', e => {
     const calcY = e.clientY - wall.offsetTop;
 
     if (calcY > maxTopPosition) {
-      calcTop = 350;
+      calcTop = maxTopPosition;
     } else if (calcY > halfOfSpider) {
       calcTop = calcY - halfOfSpider;
     } else {
@@ -29,7 +29,7 @@ document.addEventListener('click', e => {
     }
 
     if (calcX > maxLeftPosition) {
-      calcLeft = 350;
+      calcLeft = maxLeftPosition;
     } else if (calcX > halfOfSpider) {
       calcLeft = calcX - halfOfSpider;
     } else {
