@@ -9,7 +9,7 @@ wall.addEventListener('click', e => {
   let topPosition = e.offsetY - (spiderSize.height / 2);
   let leftPosition = e.offsetX - (spiderSize.width / 2);
 
-  if (e.path[0].classList.contains('spider')) {
+  if (e.target.classList.contains('spider')) {
     return;
   }
 
