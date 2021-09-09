@@ -5,48 +5,31 @@ document.addEventListener('click', e => {
 
   const spider = document.querySelector('.spider');
 
+  const heightSpider = parseFloat(getComputedStyle(spider).height);
+  const widthSpider = parseFloat(getComputedStyle(spider).width);
+
+  const heightWall = parseFloat(getComputedStyle(wall).height);
+  const widthWall = parseFloat(getComputedStyle(wall).width);
+
+  function createCursorPosition(sizeSpider, sizeWall, coordinateCursor) {
+    let positionSpider;
+    const minCursor = sizeSpider / 2;
+    const maxCursor = sizeWall - (sizeSpider / 2);
+
+    if (coordinateCursor < minCursor) {
+      positionSpider = `0px`;
+    } else if (coordinateCursor > maxCursor) {
+      positionSpider = `${sizeWall - sizeSpider}px`;
+    } else {
+      positionSpider = `${coordinateCursor - (sizeSpider / 2)}px`;
+    }
+
+    return positionSpider;
+  }
+
   if (wall.classList.contains('wall')) {
-    let topSpider;
-    let leftSpider;
-
-    const minCursorTop = parseFloat(getComputedStyle(wall).border);
-
-    const minCursorBottom = parseFloat(getComputedStyle(wall).height)
-      - (parseFloat(getComputedStyle(spider).height) / 2
-      + parseFloat(getComputedStyle(wall).border));
-
-    const minCursorLeft = parseFloat(getComputedStyle(wall).border);
-
-    const minCursorRight = parseFloat(getComputedStyle(wall).width)
-      - (parseFloat(getComputedStyle(spider).width) / 2
-      + parseFloat(getComputedStyle(wall).border));
-
-    if (e.offsetY <= minCursorTop) {
-      topSpider
-        = `${e.offsetY + parseFloat(getComputedStyle(wall).border)}px`;
-    } else if (e.offsetY >= minCursorBottom) {
-      topSpider
-        = `${e.offsetY - parseFloat(getComputedStyle(spider).height)
-        - parseFloat(getComputedStyle(wall).border)}px`;
-    } else {
-      topSpider
-        = `${e.offsetY - (parseFloat(getComputedStyle(spider).height) / 2)}px`;
-    }
-
-    if (e.offsetX <= minCursorLeft) {
-      leftSpider
-        = `${e.offsetX + parseFloat(getComputedStyle(wall).border)}px`;
-    } else if (e.offsetX >= minCursorRight) {
-      leftSpider
-        = `${e.offsetX - parseFloat(getComputedStyle(spider).width)
-        - parseFloat(getComputedStyle(wall).border)}px`;
-    } else {
-      leftSpider
-        = `${e.offsetX - (parseFloat(getComputedStyle(spider).width) / 2)}px`;
-    }
-
-    spider.style.top = topSpider;
-
-    spider.style.left = leftSpider;
+    spider.style.top
+      = createCursorPosition(heightSpider, heightWall, e.offsetY);
+    spider.style.left = createCursorPosition(widthSpider, widthWall, e.offsetX);
   }
 });
