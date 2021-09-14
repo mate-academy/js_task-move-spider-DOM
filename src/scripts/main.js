@@ -17,11 +17,15 @@ wall.addEventListener('click', e => {
   let x = e.offsetX - (widthSpider / 2);
   let y = e.offsetY - (heightSpider / 2);
 
-  if (x > widthLimit) {
+  if (e.offsetX - spider.width < 0) {
+    x = 0;
+  } else if (x > widthLimit) {
     x = widthLimit;
   }
 
-  if (y > heigthLimit) {
+  if (e.offsetY - spider.width < 0) {
+    y = 0;
+  } else if (y > heigthLimit) {
     y = heigthLimit;
   }
 
