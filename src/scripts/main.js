@@ -3,12 +3,6 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-spider.onclick = (e) => {
-  e.preventDefault();
-  // expected spider to stop moving to start position, but it still does...
-  alert(`no poking, please. Heading back to start.`);
-};
-
 document.addEventListener('click', e => {
   // write code here
   const x = e.offsetX;
@@ -21,6 +15,13 @@ document.addEventListener('click', e => {
 
   let spiderLeft;
   let spiderTop;
+
+  if (e.target.className === 'spider') {
+    // prevents further code if we click on 'spider'
+    // otherwise (x, y) will always be set to (0, 0)
+    // since offset calculates from parent element of event.target
+    return;
+  }
 
   if (e.target.closest('.wall')) {
   // cuts-off all clicks outside '.wall' class
