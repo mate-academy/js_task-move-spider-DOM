@@ -14,7 +14,7 @@ document.addEventListener('click', e => {
   const yMaxValue = field.clientHeight - itemRect.height;
 
   if (e.clientX > fieldRect.left && e.clientX < fieldRect.right
-    && e.clientX > fieldRect.top && e.clientY < fieldRect.bottom) {
+    && e.clientY > fieldRect.top && e.clientY < fieldRect.bottom) {
     let x = e.clientX - fieldRect.left - itemRect.width / 2;
     let y = e.clientY - fieldRect.top - itemRect.height / 2;
 
