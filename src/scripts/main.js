@@ -6,6 +6,8 @@ document.addEventListener('click', e => {
   const itemRect = item.getBoundingClientRect();
 
   const field = document.querySelector('.wall');
+  const fieldSyle = window.getComputedStyle(field);
+  const fieldBorder = parseInt(fieldSyle.borderWidth);
   const fieldRect = field.getBoundingClientRect();
 
   const xMinValue = 0;
@@ -15,8 +17,8 @@ document.addEventListener('click', e => {
 
   if (e.clientX > fieldRect.left && e.clientX < fieldRect.right
     && e.clientY > fieldRect.top && e.clientY < fieldRect.bottom) {
-    let x = e.clientX - fieldRect.left - itemRect.width / 2;
-    let y = e.clientY - fieldRect.top - itemRect.height / 2;
+    let x = e.clientX - fieldRect.left - fieldBorder - itemRect.width / 2;
+    let y = e.clientY - fieldRect.top - fieldBorder - itemRect.height / 2;
 
     if (x > xMaxValue) {
       x = xMaxValue;
@@ -36,5 +38,6 @@ document.addEventListener('click', e => {
 
     item.style.top = `${y}px`;
     item.style.left = `${x}px`;
+    // item.style.transform = `translate(50%, 50%)`;
   }
 });
