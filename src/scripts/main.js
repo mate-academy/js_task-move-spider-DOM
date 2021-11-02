@@ -14,42 +14,42 @@ document.addEventListener('click', e => {
     return;
   }
 
-  function getCoordX(point) {
+  function getCoords(input) {
     let coord = 0;
 
-    if ((point - wallLeft) <= (spiderWidth / 2)) {
-      coord = wallLeft + (spiderWidth / 2);
+    if (input === e.clientX) {
+      if ((input - wallLeft) <= (spiderWidth / 2)) {
+        coord = wallLeft + (spiderWidth / 2);
 
-      return coord;
+        return coord;
+      }
+
+      if ((wallRight - input) <= (spiderWidth / 2)) {
+        coord = wallRight - (spiderWidth / 2);
+
+        return coord;
+      }
+
+      return input;
     }
 
-    if ((wallRight - point) <= (spiderWidth / 2)) {
-      coord = wallRight - (spiderWidth / 2);
+    if (input === e.clientY) {
+      if ((input - wallTop) <= (spiderWidth / 2)) {
+        coord = wallTop + (spiderWidth / 2);
 
-      return coord;
+        return coord;
+      }
+
+      if ((wallBottom - input) <= (spiderWidth / 2)) {
+        coord = wallBottom - (spiderWidth / 2);
+
+        return coord;
+      }
+
+      return input;
     }
-
-    return point;
-  };
-
-  function getCoordY(point) {
-    let coord = 0;
-
-    if ((point - wallTop) <= (spiderWidth / 2)) {
-      coord = wallTop + (spiderWidth / 2);
-
-      return coord;
-    }
-
-    if ((wallBottom - point) <= (spiderWidth / 2)) {
-      coord = wallBottom - (spiderWidth / 2);
-
-      return coord;
-    }
-
-    return point;
   }
 
-  spider.style.left = `${getCoordX(e.clientX) - wallLeft - spiderWidth / 2}px`;
-  spider.style.top = `${getCoordY(e.clientY) - wallTop - spiderWidth / 2}px`;
+  spider.style.left = `${getCoords(e.clientX) - wallLeft - spiderWidth / 2}px`;
+  spider.style.top = `${getCoords(e.clientY) - wallTop - spiderWidth / 2}px`;
 });
