@@ -14,42 +14,27 @@ document.addEventListener('click', e => {
     return;
   }
 
-  function getCoords(input) {
+  function getCoords(input, sideA, sideB) {
     let coord = 0;
 
-    if (input === e.clientX) {
-      if ((input - wallLeft) <= (spiderWidth / 2)) {
-        coord = wallLeft + (spiderWidth / 2);
+    if ((input - sideA) <= (spiderWidth / 2)) {
+      coord = sideA + (spiderWidth / 2);
 
-        return coord;
-      }
-
-      if ((wallRight - input) <= (spiderWidth / 2)) {
-        coord = wallRight - (spiderWidth / 2);
-
-        return coord;
-      }
-
-      return input;
+      return coord;
     }
 
-    if (input === e.clientY) {
-      if ((input - wallTop) <= (spiderWidth / 2)) {
-        coord = wallTop + (spiderWidth / 2);
+    if ((sideB - input) <= (spiderWidth / 2)) {
+      coord = sideB - (spiderWidth / 2);
 
-        return coord;
-      }
-
-      if ((wallBottom - input) <= (spiderWidth / 2)) {
-        coord = wallBottom - (spiderWidth / 2);
-
-        return coord;
-      }
-
-      return input;
+      return coord;
     }
+
+    return input;
   }
 
-  spider.style.left = `${getCoords(e.clientX) - wallLeft - spiderWidth / 2}px`;
-  spider.style.top = `${getCoords(e.clientY) - wallTop - spiderWidth / 2}px`;
+  spider.style.left = `${getCoords(e.clientX, wallLeft, wallRight)
+    - wallLeft - spiderWidth / 2}px`;
+
+  spider.style.top = `${getCoords(e.clientY, wallTop, wallBottom)
+    - wallTop - spiderWidth / 2}px`;
 });
