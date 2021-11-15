@@ -9,7 +9,7 @@ document.addEventListener('click', e => {
   }
 
   const spider = document.querySelector('img.spider');
-  const brd = 10;
+  const brd = parseFloat(getComputedStyle(wall).borderWidth);
   const difX = brd + spider.clientWidth / 2;
   const difY = brd + spider.clientHeight / 2;
   const minX = 0;
