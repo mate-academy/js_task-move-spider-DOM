@@ -2,12 +2,11 @@
 
 document.addEventListener('click', e => {
   // write code here
+  const clickArea = e.target.closest('.wall');
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
-  const spiderSizes = spider.getBoundingClientRect();
-  const wallSizes = wall.getBoundingClientRect();
-  const border = parseFloat(getComputedStyle(wall).borderWidth);
-  const clickArea = e.target.closest('.wall');
+  const xLimit = wall.offsetWidth - spider.offsetWidth - wall.clientLeft * 2;
+  const yLimit = wall.offsetHeight - spider.offsetHeight - wall.clientTop * 2;
 
   if (!clickArea) {
     return;
@@ -16,38 +15,32 @@ document.addEventListener('click', e => {
   spider.style.left = `${
     e.clientX
     - wall.offsetLeft
-    - spiderSizes.width / 2
-    - border
+    - wall.clientLeft
+    - spider.offsetWidth / 2
     + window.pageXOffset
   }px`;
 
-  const spiderLeftEdge = parseFloat(spider.style.left);
-  const leftLimit = wallSizes.width - spiderSizes.width - border * 2;
-
-  if (spiderLeftEdge < 0) {
+  if (parseFloat(spider.style.left) < 0) {
     spider.style.left = '0px';
   }
 
-  if (spiderLeftEdge > leftLimit) {
-    spider.style.left = `${leftLimit}px`;
+  if (parseFloat(spider.style.left) > xLimit) {
+    spider.style.left = `${xLimit}px`;
   }
 
   spider.style.top = `${
     e.clientY
     - wall.offsetTop
-    - spiderSizes.height / 2
-    - border
+    - wall.clientTop
+    - spider.offsetHeight / 2
     + window.pageYOffset
   }px`;
 
-  const spiderTopEdge = parseFloat(spider.style.top);
-  const bottomLimit = wallSizes.height - spiderSizes.height - border * 2;
-
-  if (spiderTopEdge < 0) {
+  if (parseFloat(spider.style.top) < 0) {
     spider.style.top = '0px';
   }
 
-  if (spiderTopEdge > bottomLimit) {
-    spider.style.top = `${bottomLimit}px`;
+  if (parseFloat(spider.style.top) > yLimit) {
+    spider.style.top = `${yLimit}px`;
   }
 });
