@@ -10,8 +10,8 @@ document.addEventListener('click', e => {
 
   const coordSp = spider.getBoundingClientRect();
   const coordWl = wall.getBoundingClientRect();
-  const border =
-  parseInt(getComputedStyle(wall).getPropertyValue('border-top-width'));
+  const border
+  = parseInt(getComputedStyle(wall).getPropertyValue('border-top-width'));
 
   const x = e.clientX - coordWl.left - border;
   const y = e.clientY - coordWl.top - border;
