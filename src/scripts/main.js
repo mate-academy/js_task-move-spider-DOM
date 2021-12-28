@@ -16,8 +16,20 @@ document.addEventListener('click', e => {
   const x = e.clientX - coordWl.left - border;
   const y = e.clientY - coordWl.top - border;
 
-  const coordTop = y - coordSp.width / 2;
-  const coordLeft = x - coordSp.height / 2;
+  let coordTop = y - coordSp.width / 2;
+  let coordLeft = x - coordSp.height / 2;
+
+  if (coordTop < 0) {
+    coordTop = 0;
+  } else if (coordTop > coordWl.height - border - coordSp.height - border) {
+    coordTop = coordWl.height - border - coordSp.height - border;
+  }
+
+  if (coordLeft < 0) {
+    coordLeft = 0;
+  } else if (coordLeft > coordWl.width - border - coordSp.width - border) {
+    coordLeft = coordWl.width - border - coordSp.width - border;
+  }
 
   spider.style.top = coordTop + 'px';
   spider.style.left = coordLeft + 'px';
