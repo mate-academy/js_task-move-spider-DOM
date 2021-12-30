@@ -20,7 +20,7 @@
     "@linthtml/linthtml": "^0.4.2",
     "@mate-academy/eslint-config": "*",
     "@mate-academy/linthtml-config": "0.0.1",
-    "@mate-academy/scripts": "^0.7.12",
+    "@mate-academy/scripts": "^0.9.14",
     "@mate-academy/stylelint-config": "*",
     "browser-sync": "^2.26.3",
     "colors": "^1.3.3",
@@ -37,7 +37,6 @@
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-scss": "^3.18.0"
   },
-  "dependencies": {},
   "mateAcademy": {
     "projectType": "layoutDOM"
   }
