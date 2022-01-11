@@ -12,6 +12,16 @@ document.addEventListener('click', e => {
   let topPos = (coordsY - wall.offsetTop) - wall.clientTop
     - spider.height / 2;
 
+  if (coordsY < wall.getBoundingClientRect().top
+    || coordsY > wall.getBoundingClientRect().bottom) {
+    return;
+  }
+
+  if (coordsX < wall.getBoundingClientRect().left
+    || coordsX > wall.getBoundingClientRect().right) {
+    return;
+  }
+
   if (topPos < 0) {
     topPos = 0;
   }
