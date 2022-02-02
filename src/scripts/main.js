@@ -4,6 +4,10 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
 
+  if (!e.target.closest('.wall')) {
+    return;
+  }
+
   let topValue
     = e.clientY - wall.offsetTop - wall.clientTop - (spider.clientHeight / 2);
   let leftValue
