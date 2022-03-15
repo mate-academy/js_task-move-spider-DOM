@@ -16,8 +16,9 @@ document.addEventListener('click', e => {
   let movementY = (e.clientY - initialY
   - parseFloat(spider.offsetHeight) / 2);
 
-  if (movementX > (wall.offsetWidth - spider.offsetWidth)) {
-    movementX = wall.offsetWidth - spider.offsetWidth;
+  if (movementX > (wall.offsetWidth - spider.offsetWidth
+    - wall.style.borderWidth)) {
+    movementX = wall.offsetWidth - spider.offsetWidth - wall.style.borderWidth;
   }
 
   if (movementY > (wall.offsetHeight - spider.offsetHeight)) {
