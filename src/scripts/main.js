@@ -3,8 +3,8 @@
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
-  const initialX = wall.offsetLeft + wall.style.borderWidth;
-  const initialY = wall.offsetTop + wall.style.borderWidth;
+  const initialX = wall.offsetLeft - wall.style.borderWidth;
+  const initialY = wall.offsetTop - wall.style.borderWidth;
 
   if (e.target !== wall) {
     return false;
