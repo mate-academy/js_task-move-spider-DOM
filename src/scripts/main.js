@@ -3,7 +3,6 @@
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
 
-  spider.left = e.clientX;
-
-  spider.top = e.clientY;
+  spider.style.left = e.clientX + 'px';
+  spider.style.top = e.clientY + 'px';
 });
