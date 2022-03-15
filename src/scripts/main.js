@@ -11,22 +11,28 @@ document.addEventListener('click', e => {
   }
 
   let movementX = (e.clientX - initialX
-  - parseFloat(spider.offsetWidth) / 2);
+  - spider.offsetWidth / 2);
 
   let movementY = (e.clientY - initialY
-  - parseFloat(spider.offsetHeight) / 2);
+  - spider.offsetHeight / 2);
+
+  const maxX = wall.offsetWidth - spider.offsetWidth
+  - parseFloat(wall.style.borderWidth);
 
   if (movementX > (wall.offsetWidth - spider.offsetWidth
     - wall.style.borderWidth)) {
-    movementX = wall.offsetWidth - spider.offsetWidth - wall.style.borderWidth;
+    movementX = maxX;
   }
 
   if (movementX < 0) {
     movementX = 0;
   }
 
-  if (movementY > (wall.offsetHeight - spider.offsetHeight)) {
-    movementY = wall.offsetHeight - spider.offsetHeight;
+  const maxY = (wall.offsetHeight - spider.offsetHeight
+  - parseFloat(wall.style.borderWidth));
+
+  if (movementY > maxY) {
+    movementY = maxY;
   }
 
   if (movementY < 0) {
