@@ -10,9 +10,21 @@ document.addEventListener('click', e => {
     return false;
   }
 
-  spider.style.left = e.clientX - initialX
-  - parseFloat(spider.offsetWidth) / 2 + 'px';
+  let movementX = (e.clientX - initialX
+  - parseFloat(spider.offsetWidth) / 2);
 
-  spider.style.top = e.clientY - initialY
-  - parseFloat(spider.offsetHeight) / 2 + 'px';
+  let movementY = (e.clientY - initialY
+  - parseFloat(spider.offsetHeight) / 2);
+
+  if (movementX > (wall.offsetWidth - spider.offsetWidth)) {
+    movementX = wall.offsetWidth - spider.offsetWidth;
+  }
+
+  if (movementY > (wall.offsetHeight - spider.offsetHeight)) {
+    movementY = wall.offsetHeight - spider.offsetHeight;
+  }
+
+  spider.style.left = movementX + 'px';
+
+  spider.style.top = movementY + 'px';
 });
