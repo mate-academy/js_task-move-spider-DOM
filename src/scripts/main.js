@@ -10,8 +10,7 @@ document.addEventListener('click', e => {
     return false;
   }
 
-  let movementX = (e.clientX - initialX
-  - parseFloat(spider.offsetWidth) / 2);
+  let movementX = initialX;
 
   let movementY = (e.clientY - initialY
   - parseFloat(spider.offsetHeight) / 2);
