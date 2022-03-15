@@ -4,7 +4,7 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
   const initialX = wall.offsetRight;
-  const initialY = wall.offsetTop - wall.style.borderWidth;
+  const initialY = wall.offsetBottom;
 
   if (e.target !== wall) {
     return false;
@@ -14,7 +14,7 @@ document.addEventListener('click', e => {
 
   let movementY = initialY;
   /* (e.clientY - initialY
-  - parseFloat(spider.offsetHeight) / 2);*/
+  - parseFloat(spider.offsetHeight) / 2); */
 
   if (movementX > (wall.offsetWidth - spider.offsetWidth)) {
     movementX = wall.offsetWidth - wall.style.borderWidth / 2
