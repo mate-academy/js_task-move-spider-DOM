@@ -6,6 +6,13 @@ document.addEventListener('click', e => {
   const initialX = wall.offsetLeft;
   const initialY = wall.offsetTop;
 
-  spider.style.left = e.clientX - initialX + 'px';
-  spider.style.top = e.clientY - initialY + 'px';
+  if (e.target !== wall) {
+    return false;
+  }
+
+  spider.style.left = e.clientX - initialX
+  - parseFloat(spider.offsetWidth) / 2 + 'px';
+
+  spider.style.top = e.clientY - initialY
+  - parseFloat(spider.offsetHeight) / 2 + 'px';
 });
