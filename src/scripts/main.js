@@ -21,8 +21,16 @@ document.addEventListener('click', e => {
     movementX = wall.offsetWidth - spider.offsetWidth - wall.style.borderWidth;
   }
 
+  if (movementX < 0) {
+    movementX = 0;
+  }
+
   if (movementY > (wall.offsetHeight - spider.offsetHeight)) {
     movementY = wall.offsetHeight - spider.offsetHeight;
+  }
+
+  if (movementY < 0) {
+    movementY = 0;
   }
 
   spider.style.left = movementX + 'px';
