@@ -19,8 +19,7 @@ document.addEventListener('click', e => {
   const maxX = wall.offsetWidth - spider.offsetWidth
   - parseFloat(wall.style.borderWidth);
 
-  if (movementX > (wall.offsetWidth - spider.offsetWidth
-    - wall.style.borderWidth)) {
+  if (movementX > maxX) {
     movementX = maxX;
   }
 
