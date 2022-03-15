@@ -17,12 +17,12 @@ document.addEventListener('click', e => {
   - parseFloat(spider.offsetHeight) / 2);
 
   if (movementX > (wall.offsetWidth - spider.offsetWidth)) {
-    movementX = wall.offsetWidth - wall.style.borderWidth * 2
+    movementX = wall.offsetWidth - wall.style.borderWidth / 2
     - spider.offsetWidth;
   }
 
   if (movementY > (wall.offsetHeight - spider.offsetHeight)) {
-    movementY = wall.offsetHeight - wall.style.borderWidth * 2
+    movementY = wall.offsetHeight - wall.style.borderWidth / 2
     - spider.offsetHeight;
   }
 
