@@ -3,8 +3,8 @@
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
-  const initialX = wall.offsetLeft;
-  const initialY = wall.offsetTop;
+  const initialX = wall.offsetLeft + wall.clientLeft;
+  const initialY = wall.offsetTop + wall.clientTop;
 
   if (e.target !== wall) {
     return false;
@@ -16,8 +16,7 @@ document.addEventListener('click', e => {
   let movementY = (e.clientY - initialY
   - spider.offsetHeight / 2);
 
-  const maxX = wall.offsetWidth - spider.offsetWidth
-  - parseFloat(wall.style.borderWidth) * 2;
+  const maxX = wall.clientWidth - spider.offsetWidth;
 
   if (movementX > maxX) {
     movementX = maxX;
@@ -27,8 +26,7 @@ document.addEventListener('click', e => {
     movementX = 0;
   }
 
-  const maxY = (wall.offsetHeight - spider.offsetHeight
-  - parseFloat(wall.style.borderWidth) * 2);
+  const maxY = (wall.clientHeight - spider.offsetHeight);
 
   if (movementY > maxY) {
     movementY = maxY;
