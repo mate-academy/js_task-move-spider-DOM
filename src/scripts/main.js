@@ -16,13 +16,17 @@ document.addEventListener('click', e => {
 
   if (y < 0) {
     y = 0;
-  } else if (x < 0) {
+  }
+
+  if (x < 0) {
     x = 0;
   }
 
   if (y > yWall) {
     y = yWall;
-  } else if (x > xWall) {
+  }
+
+  if (x > xWall) {
     x = xWall;
   }
 
