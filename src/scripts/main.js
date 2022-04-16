@@ -5,9 +5,7 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  if (e.target.tagName === 'BODY') {
-    return;
-  } else if (e.target.classList.contains('spider')) {
+  if (!e.target.classList.contains('wall')) {
     return;
   }
 
