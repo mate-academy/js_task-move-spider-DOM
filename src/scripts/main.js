@@ -22,6 +22,14 @@ document.addEventListener('click', e => {
     spiderY = MaxY;
   }
 
+  if (spiderX < 0) {
+    spiderX = 0;
+  }
+
+  if (spiderY < 0) {
+    spiderY = 0;
+  }
+
   spider.style.top = spiderY + 'px';
   spider.style.left = spiderX + 'px';
 });
