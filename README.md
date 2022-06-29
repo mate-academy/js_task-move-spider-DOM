@@ -1,5 +1,5 @@
 1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task-move-spider-DOM/)
+    - [DEMO LINK](https://pushkalov.github.io/js_task-move-spider-DOM/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
     - Run `npm run test` command to test your code;
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
@@ -8,19 +8,25 @@
 ### Task: Move the spider
 
 Move the spider to the cursor on click.
+Перемещайте паука к курсору по клику.
 
 **Requirements:**
 
 - The spider center should come exactly under the pointer on click (without crossing the wall edge).
 - The spider can not cross wall boundaries.
 - When the page is scrolled, nothing should break.
+- Центр паука должен находиться точно под указателем при нажатии (не пересекая край стены).
+- Паук не может пересекать границы стены.
+- При прокрутке страницы ничего не должно ломаться.
 
 **Notes:**
 
 - The code should work with spider and walls of any sizes, do not use hardcoded sizes values.
 - Use properties event.clientX/event.clientY to get click coordinates.
 - You can modify only `src/scripts/main.js` file.
-
+- Код должен работать с пауками и стенами любых размеров, не используйте жестко заданные значения размеров.
+- Используйте свойства event.clientX/event.clientY, чтобы получить координаты щелчка.
+- Вы можете изменить только файл `src/scripts/main.js`.
 
 ### Gif of result
 ![](example/example.gif)
