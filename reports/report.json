@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-07-02T16:10:41.809Z",
+    "end": "2022-07-02T16:10:48.434Z",
+    "duration": 6479,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "776aa63b-46ec-47f3-bb99-8804b45881a9",
+      "title": "",
+      "fullFile": "cypress\\integration\\jsTaskMoveSpiderDOM.spec.js",
+      "file": "cypress\\integration\\jsTaskMoveSpiderDOM.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+          "title": "Spider",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should go down left",
+              "fullTitle": "Spider should go down left",
+              "timedOut": null,
+              "duration": 1442,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('bottomLeft');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(350);\n  expect(spiderLeft).to.equal(0);\n});",
+              "err": {},
+              "uuid": "335da474-a593-4292-9dca-655832b772d6",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go up right",
+              "fullTitle": "Spider should go up right",
+              "timedOut": null,
+              "duration": 1208,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('topRight');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(350);\n});",
+              "err": {},
+              "uuid": "06dfa951-faf7-4dee-ad0e-46d7f18711b5",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go up",
+              "fullTitle": "Spider should go up",
+              "timedOut": null,
+              "duration": 1183,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('top');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(175);\n});",
+              "err": {},
+              "uuid": "e242484e-75e1-4f69-86fe-15fe0c8354e7",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go to the center",
+              "fullTitle": "Spider should go to the center",
+              "timedOut": null,
+              "duration": 1179,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('center');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(175);\n  expect(spiderLeft).to.equal(175);\n});",
+              "err": {},
+              "uuid": "607d74d2-2ab5-4703-853d-d16139871840",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go down right",
+              "fullTitle": "Spider should go down right",
+              "timedOut": null,
+              "duration": 1199,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('bottomRight');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(350);\n  expect(spiderLeft).to.equal(350);\n});",
+              "err": {},
+              "uuid": "e5d9c8d5-f4b3-4be7-b54a-98069f3b90bd",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not move on \n      the click out of the wall",
+              "fullTitle": "Spider should not move on \n      the click out of the wall",
+              "timedOut": null,
+              "duration": 268,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('body').click('top');\ncy.get('.spider').should(function ($spider) {\n  var spiderTop = $spider.position().top;\n  var spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(0);\n});",
+              "err": {},
+              "uuid": "6d343f2e-7291-46e5-9036-0d6315cf68bf",
+              "parentUUID": "05318317-1822-4d4e-9267-d6dc97bcbf11",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "335da474-a593-4292-9dca-655832b772d6",
+            "06dfa951-faf7-4dee-ad0e-46d7f18711b5",
+            "e242484e-75e1-4f69-86fe-15fe0c8354e7",
+            "607d74d2-2ab5-4703-853d-d16139871840",
+            "e5d9c8d5-f4b3-4be7-b54a-98069f3b90bd",
+            "6d343f2e-7291-46e5-9036-0d6315cf68bf"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6479,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "raw_reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
