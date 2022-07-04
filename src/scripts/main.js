@@ -4,23 +4,29 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', e => {
-  if (e.target !== wall) {
-    return;
+  const wallCoords = wall.getBoundingClientRect();
+
+  let spiderTop = e.clientY - wallCoords.top - wall.clientTop
+  - spider.offsetHeight / 2;
+  let spiderLeft = e.clientX - wallCoords.left - wall.clientLeft
+  - spider.offsetWidth / 2;
+
+  if (spiderTop < 0) {
+    spiderTop = 0;
   }
 
-  let x = e.offsetX - spider.offsetWidth / 2;
-  let y = e.offsetY - spider.offsetHeight / 2;
+  if (spiderLeft < 0) {
+    spiderLeft = 0;
+  }
 
-  [x, y] = [x, y].map(el => {
-    if (el > wall.clientWidth - spider.offsetWidth) {
-      return wall.clientWidth - spider.offsetWidth;
-    } else if (el < 0) {
-      return 0;
-    }
+  if (spiderTop + spider.offsetHeight > wall.clientHeight) {
+    spiderTop = wall.clientHeight - spider.offsetHeight;
+  }
 
-    return el;
-  });
+  if (spiderLeft + spider.offsetWidth > wall.clientWidth) {
+    spiderLeft = wall.clientWidth - spider.offsetWidth;
+  }
 
-  spider.style.left = x + 'px';
-  spider.style.top = y + 'px';
+  spider.style.top = spiderTop + 'px';
+  spider.style.left = spiderLeft + 'px';
 });
