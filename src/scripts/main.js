@@ -18,15 +18,19 @@ document.addEventListener('click', e => {
   const maxHeight = wallHeight - spiderHeight;
   const minCoord = '0px';
 
-  spider.style.top = (coordTop >= maxHeight)
-    ? `${maxHeight}px`
-    : (coordTop <= spiderHeight)
-      ? minCoord
-      : `${coordTop - (spiderHeight / 2)}px`;
+  if (coordTop >= maxHeight) {
+    spider.style.top = `${maxHeight}px`;
+  } else if (coordTop <= spiderHeight) {
+    spider.style.top = minCoord;
+  } else {
+    spider.style.top = `${coordTop - (spiderHeight / 2)}px`;
+  }
 
-  spider.style.left = (coordLeft >= maxLeft)
-    ? `${maxLeft}px`
-    : (coordLeft <= spiderWidth)
-      ? minCoord
-      : `${coordLeft - (spiderWidth / 2)}px`;
+  if (coordLeft >= maxLeft) {
+    spider.style.left = `${maxLeft}px`;
+  } else if (coordLeft <= spiderWidth) {
+    spider.style.left = minCoord;
+  } else {
+    spider.style.left = `${coordLeft - (spiderWidth / 2)}px`;
+  }
 });
