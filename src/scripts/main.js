@@ -5,25 +5,28 @@ document.addEventListener('click', e => {
     return;
   }
 
-  const spiderDiagonal = spider.clientWidth / 2;
-  const topPosition = e.offsetY - spiderDiagonal;
-  const leftPosition = e.offsetX - spiderDiagonal;
+  const centerPosition = spider.clientWidth / 2;
+  let topPosition = e.offsetY - centerPosition;
+  let leftPosition = e.offsetX - centerPosition;
 
-  spider.style.top = `${
-    e.offsetY < spiderDiagonal
-      ? 0
-      : e.offsetY > wall.clientHeight - spiderDiagonal
-        ? wall.clientHeight - spider.clientHeight
-        : topPosition
-  }px`;
+  if (e.offsetY < centerPosition) {
+    topPosition = 0;
+  }
 
-  spider.style.left = `${
-    e.offsetX < spiderDiagonal
-      ? 0
-      : e.offsetX > wall.clientWidth - spiderDiagonal
-        ? wall.clientWidth - spider.clientWidth
-        : leftPosition
-  }px`;
+  if (e.offsetY > wall.clientHeight - centerPosition) {
+    topPosition = wall.clientHeight - spider.clientHeight;
+  }
+
+  if (e.offsetX < centerPosition) {
+    leftPosition = 0;
+  }
+
+  if (e.offsetX > wall.clientWidth - centerPosition) {
+    leftPosition = wall.clientWidth - spider.clientWidth;
+  }
+
+  spider.style.top = `${topPosition}px`;
+  spider.style.left = `${leftPosition}px`;
 });
 
 const spider = document.querySelector('.spider');
