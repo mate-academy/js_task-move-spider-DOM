@@ -2,22 +2,23 @@
 
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
-const coords = wall.getBoundingClientRect();
 
 wall.addEventListener('click', e => {
-  let topCoord = e.clientY - coords.top - (spider.clientHeight / 2);
-  let leftCoord = e.clientX - coords.left - (spider.clientWidth / 2);
+  const coords = wall.getBoundingClientRect();
+
+  const topCoord = e.clientY - coords.top - (spider.clientHeight / 2);
+  const leftCoord = e.clientX - coords.left - (spider.clientWidth / 2);
 
   if (topCoord <= 0 || leftCoord <= 0) {
     return;
   }
 
   if (topCoord >= (coords.height - spider.clientHeight)) {
-    topCoord = wall.clientHeight - spider.clientHeight;
+    return;
   }
 
   if (leftCoord >= (coords.width - spider.clientWidth)) {
-    leftCoord = wall.clientWidth - spider.clientWidth;
+    return;
   }
 
   spider.style.top = topCoord + 'px';
