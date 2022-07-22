@@ -3,15 +3,15 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
+const wallCoordinates = wall.getBoundingClientRect();
+
+const halfOfSpiderWidth = spider.clientWidth / 2;
+const halfOfSpiderHeight = spider.clientHeight / 2;
+
 document.addEventListener('click', e => {
   if (e.target === wall) {
-    const wallCoordinates = wall.getBoundingClientRect();
-
     let fromLeft = e.clientX - wallCoordinates.left - wall.clientLeft;
     let fromTop = e.clientY - wallCoordinates.top - wall.clientTop;
-
-    const halfOfSpiderWidth = spider.clientWidth / 2;
-    const halfOfSpiderHeight = spider.clientHeight / 2;
 
     if (fromLeft <= halfOfSpiderWidth) {
       fromLeft = halfOfSpiderWidth;
