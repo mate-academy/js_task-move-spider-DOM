@@ -3,42 +3,42 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-document.addEventListener('click', e => {
-  const eventClick = e.target;
+const shiftX = spider.offsetWidth / 2;
+const shiftY = spider.offsetHeight / 2;
 
-  if (eventClick !== wall) {
+const wallStyles = getComputedStyle(wall);
+const wallBorder = parseFloat(wallStyles.border);
+
+const wallInfo = wall.getBoundingClientRect();
+const maxPositionX = wallInfo.left + wall.offsetWidth - wallBorder - shiftX;
+const maxPositionY = wallInfo.top + wall.offsetHeight - wallBorder - shiftY;
+
+document.addEventListener('click', e => {
+  if (e.target !== wall) {
     return;
   }
 
-  const shift = spider.offsetWidth / 2;
-  const wallStyles = getComputedStyle(wall);
-  const wallBorder = parseFloat(wallStyles.border);
-
-  const position = eventClick.getBoundingClientRect();
-
-  let positionX = e.clientX - position.left - wallBorder;
-  const maxPositionX = position.left + wall.offsetWidth - wallBorder - shift;
+  let positionX = e.clientX - wallInfo.left - wallBorder;
 
   if (e.clientX > maxPositionX) {
-    positionX = maxPositionX - position.left - wallBorder;
+    positionX = maxPositionX - wallInfo.left - wallBorder;
   }
 
-  spider.style.left = (positionX - shift) + 'px';
+  spider.style.left = (positionX - shiftX) + 'px';
 
-  if (positionX < shift) {
+  if (positionX < shiftX) {
     spider.style.left = 0;
   }
 
-  let positionY = e.clientY - position.top - wallBorder;
-  const maxPositionY = position.top + wall.offsetHeight - wallBorder - shift;
+  let positionY = e.clientY - wallInfo.top - wallBorder;
 
   if (e.clientY > maxPositionY) {
-    positionY = maxPositionY - position.top - wallBorder;
+    positionY = maxPositionY - wallInfo.top - wallBorder;
   }
 
-  spider.style.top = (positionY - shift) + 'px';
+  spider.style.top = (positionY - shiftY) + 'px';
 
-  if (positionY < shift) {
+  if (positionY < shiftY) {
     spider.style.top = 0;
   }
 });
