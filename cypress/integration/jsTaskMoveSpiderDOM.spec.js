@@ -7,6 +7,7 @@ describe('Spider', () => {
 
   it('should go down left', () => {
     cy.get('.wall').click('bottomLeft');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
@@ -18,6 +19,7 @@ describe('Spider', () => {
 
   it('should go up right', () => {
     cy.get('.wall').click('topRight');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
@@ -29,6 +31,7 @@ describe('Spider', () => {
 
   it('should go up', () => {
     cy.get('.wall').click('top');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
@@ -40,6 +43,7 @@ describe('Spider', () => {
 
   it('should go to the center', () => {
     cy.get('.wall').click('center');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
@@ -51,6 +55,7 @@ describe('Spider', () => {
 
   it('should go down right', () => {
     cy.get('.wall').click('bottomRight');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
@@ -63,6 +68,7 @@ describe('Spider', () => {
   it(`should not move on 
       the click out of the wall`, () => {
     cy.get('body').click('top');
+
     cy.get('.spider').should(($spider) => {
       const spiderTop = $spider.position().top;
       const spiderLeft = $spider.position().left;
