@@ -29,7 +29,6 @@ document.addEventListener('click', events => {
   if (moveY < 0) {
     moveY = 0;
   }
-
-  spider.style.left = `${moveH}px`;
   spider.style.top = `${moveY}px`;
+  spider.style.left = `${moveH}px`;
 });
