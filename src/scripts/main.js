@@ -41,9 +41,7 @@ function validateAxisValue(axis, value) {
 }
 
 document.addEventListener('click', e => {
-  const clickedArea = e.target.closest('.wall');
-
-  if (!clickedArea) {
+  if (!wall.contains(e.target)) {
     return;
   }
 
