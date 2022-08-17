@@ -8,25 +8,21 @@ document.addEventListener('click', e => {
     return;
   }
 
-  const x = e.offsetX;
-  const y = e.offsetY;
+  // eslint-disable-next-line no-shadow
+  let top = e.offsetY - spider.height / 2;
+  let left = e.offsetX - spider.width / 2;
 
-  spider.style.left = x - spider.width / 2 + 'px';
-  spider.style.top = y - spider.height / 2 + 'px';
+  const bottomLimit = wall.clientHeight - spider.height;
+  const rightLimit = wall.clientWidth - spider.width;
 
-  if (parseInt(spider.style.left) < 0) {
-    spider.style.left = 0 + 'px';
-  }
+  top = (top < 0) ? 0
+    : (top > bottomLimit) ? bottomLimit
+      : top;
 
-  if (parseInt(spider.style.left) + spider.width > wall.clientWidth) {
-    spider.style.left = wall.clientWidth - spider.width + 'px';
-  }
+  left = (left < 0) ? 0
+    : (left > rightLimit) ? rightLimit
+      : left;
 
-  if (parseInt(spider.style.top) < 0) {
-    spider.style.top = 0 + 'px';
-  }
-
-  if (parseInt(spider.style.top) + spider.height > wall.clientHeight) {
-    spider.style.top = wall.clientHeight - spider.height + 'px';
-  }
+  spider.style.top = top + 'px';
+  spider.style.left = left + 'px';
 });
