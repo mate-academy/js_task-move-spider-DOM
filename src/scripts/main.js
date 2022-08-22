@@ -42,15 +42,19 @@ document.addEventListener('click', e => {
 
   left = left < limits.x.min
     ? limits.x.min
-    : left > limits.x.max
-      ? limits.x.max
-      : left;
+    : left;
+
+  left = left > limits.x.max
+    ? limits.x.max
+    : left;
 
   top = top < limits.y.min
     ? limits.y.min
-    : top > limits.y.max
-      ? limits.y.max
-      : top;
+    : top;
+
+  top = top > limits.y.max
+    ? limits.y.max
+    : top;
 
   spider.style.left = left + 'px';
   spider.style.top = top + 'px';
