@@ -13,14 +13,21 @@ document.addEventListener('click', e => {
   const coordY = e.offsetY - (spider.clientHeight / 2);
   const coordX = e.offsetX - (spider.clientWidth / 2);
 
-  coordX < 0 ? spider.style.left = 0 + 'px'
-    : spider.style.left = `${coordX}px`;
+  if (coordX < 0) {
+    spider.style.left = 0 + 'px';
+  } else {
+    spider.style.left = `${coordX}px`;
+  }
 
   if (coordX > coordXmax) {
     spider.style.left = `${coordXmax}px`;
   }
 
-  coordY < 0 ? spider.style.top = '0px' : spider.style.top = `${coordY}px`;
+  if (coordY < 0) {
+    spider.style.top = '0px';
+  } else {
+    spider.style.top = `${coordY}px`;
+  }
 
   if (coordY > coordYmax) {
     spider.style.top = `${coordYmax}px`;
