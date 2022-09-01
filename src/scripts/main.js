@@ -19,22 +19,22 @@ document.addEventListener('click', e => {
     return;
   }
 
-  let X = e.offsetX - centerSpiderWidth;
+  let coordX = e.offsetX - centerSpiderWidth;
 
   if (e.offsetX > wallWidth - centerSpiderWidth) {
-    X = wallWidth - spiderWidth;
-  } else if (X < 0) {
-    X = e.offsetX;
+    coordX = wallWidth - spiderWidth;
+  } else if (coordX < 0) {
+    coordX = e.offsetX;
   };
 
-  let Y = e.offsetY - centerSpiderHeight;
+  let coordY = e.offsetY - centerSpiderHeight;
 
   if (e.offsetY > wallHeight - centerSpiderHeight) {
-    Y = wallHeight - spiderHeight;
-  } else if (Y < 0) {
-    Y = e.offsetY;
+    coordY = wallHeight - spiderHeight;
+  } else if (coordY < 0) {
+    coordY = e.offsetY;
   }
 
-  spider.style.top = Y + 'px';
-  spider.style.left = X + 'px';
+  spider.style.top = coordY + 'px';
+  spider.style.left = coordX + 'px';
 });
