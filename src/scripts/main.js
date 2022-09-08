@@ -8,8 +8,8 @@ const startWallLeft = wall.getBoundingClientRect().left
   + window.scrollX + wall.clientLeft;
 const startWallTop = wall.getBoundingClientRect().top
   + window.scrollY + wall.clientTop;
-const endWallRight = startWallLeft + wall.clientWidth;
-const endWallBottom = startWallTop + wall.clientHeight;
+const endWallRight = startWallLeft + wall.clientWidth - spider.clientWidth;
+const endWallBottom = startWallTop + wall.clientHeight - spider.clientHeight;
 
 document.addEventListener('click', e => {
   if (!e.target.matches('.wall')) {
@@ -43,7 +43,7 @@ function getPosition(objParam) {
     { clientCoordinate, startOfArea, endOfArea, areaSize, itemSize, position }
     = objParam;
 
-  if (clientCoordinate < startOfArea) {
+  if (clientCoordinate < startOfArea || position < 0) {
     return `0px`;
   }
 
