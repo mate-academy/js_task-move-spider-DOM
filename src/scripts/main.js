@@ -10,7 +10,6 @@ document.addEventListener('click', e => {
   }
 
   const wallPosition = wall.getBoundingClientRect();
-  const wallBorderSizes = wall.clientTop * 2;
 
   // In this case we can make our code shorter in two times (cuz we have square)
   // But the code should work with spiders and walls of any sizes && proportions
@@ -30,7 +29,7 @@ document.addEventListener('click', e => {
   }
 
   if (e.clientY > bottomBorder) {
-    spiderYPosition = wall.offsetHeight - wallBorderSizes - spider.offsetHeight;
+    spiderYPosition = wall.clientHeight - spider.offsetHeight;
   }
 
   if (e.clientX < leftBorder) {
@@ -38,7 +37,7 @@ document.addEventListener('click', e => {
   }
 
   if (e.clientX > rightBorder) {
-    spiderXPosition = wall.offsetWidth - wallBorderSizes - spider.offsetWidth;
+    spiderXPosition = wall.clientWidth - spider.offsetWidth;
   }
 
   spider.style.top = spiderYPosition + 'px';
