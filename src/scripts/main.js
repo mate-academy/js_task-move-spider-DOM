@@ -1,11 +1,10 @@
 'use strict';
 
-const wall = document.querySelector('.wall');
-const coordsWall = wall.getBoundingClientRect();
-const spider = document.querySelector('.spider');
-const coordsSpider = {};
-
 document.addEventListener('click', e => {
+  const wall = document.querySelector('.wall');
+  const coordsWall = wall.getBoundingClientRect();
+  const spider = document.querySelector('.spider');
+  const coordsSpider = {};
   const coordsMouse = {
     x: e.clientX,
     y: e.clientY,
