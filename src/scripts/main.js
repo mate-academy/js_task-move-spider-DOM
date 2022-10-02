@@ -7,13 +7,13 @@ const spiderProp = spider.getBoundingClientRect();
 
 // eslint-disable-next-line no-shadow
 document.addEventListener('click', event => {
-  if (event.clientX < (wallProp.left + wall.clientLeft)
-    || event.clientX > (wallProp.left + wallProp.width - wall.clientLeft)) {
+  if (event.clientX < wallProp.left
+    || event.clientX > (wallProp.left + wallProp.width)) {
     return;
   }
 
-  if (event.clientY < (wallProp.top + wall.clientTop)
-    || event.clientY > (wallProp.top + wallProp.height - wall.clientTop)) {
+  if (event.clientY < wallProp.top
+    || event.clientY > (wallProp.top + wallProp.height)) {
     return;
   }
 
