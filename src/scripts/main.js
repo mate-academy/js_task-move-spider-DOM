@@ -1,12 +1,12 @@
 'use strict';
 
-const wall = document.querySelector('.wall');
-const spider = document.querySelector('.spider');
-const wallProp = wall.getBoundingClientRect();
-const spiderProp = spider.getBoundingClientRect();
-
 // eslint-disable-next-line no-shadow
 document.addEventListener('click', event => {
+  const wall = document.querySelector('.wall');
+  const spider = document.querySelector('.spider');
+  const wallProp = wall.getBoundingClientRect();
+  const spiderProp = spider.getBoundingClientRect();
+
   if (event.clientX < wallProp.left
     || event.clientX > (wallProp.left + wallProp.width)) {
     return;
