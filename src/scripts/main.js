@@ -6,12 +6,15 @@ document.querySelector('.wall').addEventListener('click', e => {
   let topCords = e.offsetY;
   let leftCords = e.offsetX;
 
-  const maxWidth = document.querySelector('.wall')
-    .clientWidth - document.querySelector('.spider').clientWidth / 2;
-  const maxHeight = document.querySelector('.wall')
-    .clientHeight - document.querySelector('.spider').clientHeight / 2;
-  const minHeight = document.querySelector('.spider').clientHeight / 2;
-  const minWidth = document.querySelector('.spider').clientHeight / 2;
+  const spiderWidth = document.querySelector('.spider').clientWidth;
+  const spiderHeight = document.querySelector('.spider').clientHeight;
+  const wallWidth = document.querySelector('.wall').clientWidth;
+  const wallHeight = document.querySelector('.wall').clientHeight;
+
+  const maxWidth = wallWidth - spiderWidth / 2;
+  const maxHeight = wallHeight - spiderHeight / 2;
+  const minHeight = spiderHeight / 2;
+  const minWidth = spiderHeight / 2;
 
   if (e.target.classList.contains('spider')) {
     if (parseFloat(spider.style.top) >= maxHeight
