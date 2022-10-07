@@ -7,6 +7,13 @@ document.querySelector('.wall').addEventListener('click', e => {
   let left = e.offsetX;
 
   if (e.target.classList.contains('spider')) {
+    if (parseFloat(spider.style.top) >= 375
+      || parseFloat(spider.style.top) <= 25
+      || parseFloat(spider.style.left) <= 25
+      || parseFloat(spider.style.left) >= 365) {
+      return;
+    }
+    // console.log(spider.style.left)
     spider.style.top = `${parseFloat(spider.style.top) + topp - 25}px`;
     spider.style.left = `${parseFloat(spider.style.left) + left - 25}px`;
 
