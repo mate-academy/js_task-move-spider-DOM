@@ -8,6 +8,10 @@ document.addEventListener('click', e => {
     return;
   }
 
+  if (e.target === spider) {
+    return;
+  }
+
   const maxX = wall.clientWidth - spider.clientWidth;
   const maxY = wall.clientHeight - spider.clientHeight;
   let moveX = e.offsetX - spider.width / 2;
