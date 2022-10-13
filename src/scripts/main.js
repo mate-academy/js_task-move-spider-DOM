@@ -22,27 +22,20 @@ document.addEventListener('click', e => {
       && e.clientY <= wallCoord.y + wallHeight) {
     if (innerCoordX - spiderWidth / 2 - pointerHalfWidth < 0) {
       spider.style.left = 0;
-    }
-
-    if (innerCoordX + spiderWidth / 2 - pointerHalfWidth > wallWidth) {
+    } else if (innerCoordX + spiderWidth / 2 - pointerHalfWidth > wallWidth) {
       spider.style.left = wallWidth - spiderWidth - wallBorderWidth + 'px';
-    }
-
-    if (innerCoordX + spiderWidth
+    } else if (innerCoordX + spiderWidth
       / 2 - pointerHalfWidth < wallWidth - wallBorderWidth) {
       spider.style.left = innerCoordX - spiderWidth
       / 2 - pointerHalfWidth + 'px';
     }
 
     if (innerCoordY - spiderHeight / 2 - pointerHalfHeight < 0) {
-      spider.style.top = 0;
-    }
-
-    if (innerCoordY + spiderHeight / 2 - pointerHalfHeight > wallHeight) {
+      spider.style.top = 0 + 'px';
+    } else if (innerCoordY + spiderHeight
+      / 2 - pointerHalfHeight > wallHeight) {
       spider.style.top = wallHeight - spiderHeight - wallBorderWidth + 'px';
-    }
-
-    if (innerCoordY + spiderHeight
+    } else if (innerCoordY + spiderHeight
       / 2 - pointerHalfHeight < wallHeight - wallBorderWidth) {
       spider.style.top = innerCoordY - spiderHeight
       / 2 - pointerHalfHeight + 'px';
