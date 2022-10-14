@@ -7,15 +7,15 @@ document.addEventListener('click', e => {
   const halfOfSpider = spider.clientHeight / 2;
 
   if (e.target.contains(wall)) {
-    spider.style.left = e.offsetX - halfOfSpider + 'px';
-    spider.style.top = e.offsetY - halfOfSpider + 'px';
+    spider.style.left = `${e.offsetX - halfOfSpider}px`;
+    spider.style.top = `${e.offsetY - halfOfSpider}px`;
 
     if (e.offsetX < halfOfSpider) {
       spider.style.left = 0;
     }
 
     if (e.offsetX > wall.clientWidth - halfOfSpider) {
-      spider.style.left = wall.clientWidth - spider.clientHeight + 'px';
+      spider.style.left = `${wall.clientWidth - spider.clientWidth}px`;
     }
 
     if (e.offsetY < halfOfSpider) {
@@ -23,7 +23,7 @@ document.addEventListener('click', e => {
     }
 
     if (e.offsetY > wall.clientHeight - halfOfSpider) {
-      spider.style.top = wall.clientHeight - spider.clientHeight + 'px';
+      spider.style.top = `${wall.clientHeight - spider.clientHeight}px`;
     }
   }
 });
