@@ -9,19 +9,21 @@ document.addEventListener('click', e => {
     return;
   };
 
-  const maxX = wall.clientWidth - spider.clientWidth / 2;
+  const border = spider.clientWidth / 2;
 
-  const maxY = wall.clientHeight - spider.clientHeight / 2;
+  const maxX = wall.clientWidth - border;
+
+  const maxY = wall.clientHeight - border;
 
   let moveX = e.offsetX;
   let moveY = e.offsetY;
 
-  if (moveX < spider.clientHeight / 2) {
-    moveX = spider.clientHeight / 2;
+  if (moveX < border) {
+    moveX = border;
   }
 
-  if (moveY < spider.clientHeight / 2) {
-    moveY = spider.clientHeight / 2;
+  if (moveY < border) {
+    moveY = border;
   }
 
   if (moveX > maxX) {
