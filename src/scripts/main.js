@@ -6,7 +6,7 @@ document.addEventListener('click', e => {
 
   const halfOfSpider = spider.clientHeight / 2;
 
-  if (e.target.contains(wall)) {
+  if (e.target === wall) {
     spider.style.left = `${e.offsetX - halfOfSpider}px`;
     spider.style.top = `${e.offsetY - halfOfSpider}px`;
 
