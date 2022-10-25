@@ -11,22 +11,25 @@ wall.addEventListener('click', e => {
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  spider.style.left = e.clientX - leftCoord - (spiderWidth / 2) + 'px';
-  spider.style.top = e.clientY - topCoord - (spiderHeight / 2) + 'px';
+  let moveX = e.clientX - leftCoord - (spiderWidth / 2);
+  let moveY = e.clientY - topCoord - (spiderHeight / 2);
 
   if (e.clientX - leftCoord < (spiderWidth / 2)) {
-    spider.style.left = 0;
+    moveX = 0;
   }
 
   if (e.clientY - topCoord < (spiderHeight / 2)) {
-    spider.style.top = 0;
+    moveY = 0;
   }
 
   if (e.clientX - leftCoord > wallWidth - (spiderWidth / 2)) {
-    spider.style.left = wallWidth - spiderWidth + 'px';
+    moveX = wallWidth - spiderWidth;
   }
 
   if (e.clientY - topCoord > wallHeight - (spiderHeight / 2)) {
-    spider.style.top = wallHeight - spiderHeight + 'px';
+    moveY = wallHeight - spiderHeight;
   }
+
+  spider.style.left = moveX + 'px';
+  spider.style.top = moveY + 'px';
 });
