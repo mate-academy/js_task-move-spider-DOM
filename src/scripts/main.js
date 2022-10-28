@@ -11,8 +11,8 @@ document.addEventListener('click', e => {
   let x = e.offsetX - spider.offsetWidth / 2;
   let y = e.offsetY - spider.offsetHeight / 2;
 
-  const CoordsX = wall.clientWidth - spider.offsetWidth;
-  const CoordsY = wall.clientHeight - spider.offsetHeight;
+  const coordsX = wall.clientWidth - spider.offsetWidth;
+  const coordsY = wall.clientHeight - spider.offsetHeight;
 
   if (x < 0) {
     x = 0;
@@ -22,12 +22,12 @@ document.addEventListener('click', e => {
     y = 0;
   }
 
-  if (x > CoordsX) {
-    x = CoordsX;
+  if (x > coordsX) {
+    x = coordsX;
   }
 
-  if (y > CoordsY) {
-    y = CoordsY;
+  if (y > coordsY) {
+    y = coordsY;
   }
 
   spider.style.top = `${y}px`;
