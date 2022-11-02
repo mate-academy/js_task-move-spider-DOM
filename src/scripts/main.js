@@ -7,18 +7,10 @@ document.addEventListener('click', e => {
   const wallBorderTop = parseFloat(getComputedStyle(wall).borderTop);
   const wallBorderLeft = parseFloat(getComputedStyle(wall).borderLeft);
 
-  const centeredY = spider.clientHeight / 2;
-  const centeredX = spider.clientWidth / 2;
+  let y = e.clientY - wall.offsetTop - wallBorderTop - spider.clientHeight / 2;
+  let x = e.clientX - wall.offsetLeft - wallBorderLeft - spider.clientWidth / 2;
 
-  let y = e.clientY - wall.offsetTop - wallBorderTop - centeredY;
-  let x = e.clientX - wall.offsetLeft - wallBorderLeft - centeredX;
-
-  const underTop = y < -centeredY;
-  const overTop = y >= wall.clientHeight - centeredY;
-  const underLeft = x < -centeredX;
-  const overRight = x >= wall.clientWidth - centeredX;
-
-  if (underTop || overTop || underLeft || overRight) {
+  if (!wall === e.target) {
     return;
   };
 
