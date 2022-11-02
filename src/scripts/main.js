@@ -11,19 +11,23 @@ document.addEventListener('click', e => {
     left: e.clientX - wallCoords.left - spider.clientWidth / 2,
   };
 
-  if (coords.top < 0) {
-    coords.top = 0;
+  if (e.target !== wall) {
+    return;
   }
 
-  if (coords.top > wall.clientHeight) {
-    coords.top = wall.clientHeight - spider.clientHeight;
+  if (coords.top < 0) {
+    coords.top = 0;
   }
 
   if (coords.left < 0) {
     coords.left = 0;
   }
 
-  if (coords.left > wall.clientHeight) {
+  if (coords.top > (wall.clientHeight - spider.clientHeight)) {
+    coords.top = wall.clientHeight - spider.clientHeight;
+  }
+
+  if (coords.left > (wall.clientWidth - spider.clientWidth)) {
     coords.left = wall.clientWidth - spider.clientWidth;
   }
 
