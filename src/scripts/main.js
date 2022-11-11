@@ -29,6 +29,4 @@ document.addEventListener('click', e => {
   }
 
   spider.style.transform = 'translate(-50%, -50%)';
-
-  // console.log(e.offsetX);
 });
