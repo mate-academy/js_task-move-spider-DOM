@@ -8,9 +8,9 @@ document.addEventListener('click', e => {
     return;
   }
 
-  // 10px just for the perfection
-  let x = e.offsetX - spider.width / 2 - 10;
-  let y = e.offsetY - spider.height / 2 - 10;
+  const borderWidth = 10;
+  let x = e.offsetX - spider.width / 2 - borderWidth;
+  let y = e.offsetY - spider.height / 2 - borderWidth;
 
   const borderX = wall.clientWidth - spider.clientWidth;
   const borderY = wall.clientHeight - spider.clientHeight;
