@@ -1,10 +1,8 @@
 'use strict';
 
 document.addEventListener('click', e => {
-  const target = e.target;
-
-  if (!target.classList.contains('wall')) {
-    // return false;
+  if (!e.target.classList.contains('wall')) {
+    return false;
   }
 
   const wall = document.querySelector('.wall');
