@@ -12,10 +12,13 @@ const topBorder = parseInt(getStyle(wall, 'border-top-width'));
 const maxRightCoord = parseInt(getStyle(wall, 'width')) - spider.width;
 const maxBottomCoord = parseInt(getStyle(wall, 'height')) - spider.height;
 
-const addHorizontalMove = wall.offsetLeft + spider.width - leftBorder;
-const addVerticalMove = wall.offsetTop + spider.height - topBorder;
+const addHorizontalMove = wall.offsetLeft + spider.width - leftBorder * 1.5;
+const addVerticalMove = wall.offsetTop + spider.height - topBorder * 1.5;
 
 document.addEventListener('click', e => {
-  spider.style.left = `${Math.min(Math.max(e.clientX - addHorizontalMove, 0), maxRightCoord)}px`;
-  spider.style.top = `${Math.min(Math.max(e.clientY - addVerticalMove, 0), maxBottomCoord)}px`;
+  const currentRightCoord = Math.max(e.clientX - addHorizontalMove, 0);
+  const currentBottomCoord = Math.max(e.clientY - addVerticalMove, 0);
+
+  spider.style.left = `${Math.min(currentRightCoord, maxRightCoord)}px`;
+  spider.style.top = `${Math.min(currentBottomCoord, maxBottomCoord)}px`;
 });
