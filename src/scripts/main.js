@@ -8,28 +8,28 @@ document.addEventListener('click', e => {
     return;
   }
 
-  let x = e.offsetX - spider.clientHeight / 2;
-  let y = e.offsetY - spider.clientHeight / 2;
+  let spiderNewX = e.offsetX - spider.clientWidth / 2;
+  let spiderNewY = e.offsetY - spider.clientHeight / 2;
 
-  const coordX = wall.clientWidth - spider.clientWidth;
-  const coordY = wall.clientHeight - spider.clientHeight;
+  const boundarieX = wall.clientWidth - spider.clientWidth;
+  const boundarieY = wall.clientHeight - spider.clientHeight;
 
-  if (x < 0) {
-    x = 0;
+  if (spiderNewX < 0) {
+    spiderNewX = 0;
   }
 
-  if (y < 0) {
-    y = 0;
+  if (spiderNewY < 0) {
+    spiderNewY = 0;
   }
 
-  if (x > coordX) {
-    x = coordX;
+  if (spiderNewX > boundarieX) {
+    spiderNewX = boundarieX;
   }
 
-  if (y > coordY) {
-    y = coordY;
+  if (spiderNewY > boundarieY) {
+    spiderNewY = boundarieY;
   }
 
-  spider.style.top = y + 'px';
-  spider.style.left = x + 'px';
+  spider.style.top = spiderNewY + 'px';
+  spider.style.left = spiderNewX + 'px';
 });
