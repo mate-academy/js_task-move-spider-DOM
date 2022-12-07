@@ -5,16 +5,20 @@ const wall = document.querySelector('.wall');
 const coordsWall = wall.getBoundingClientRect();
 
 const borderWidth = parseInt(getComputedStyle(wall)
-.getPropertyValue('border-width'));
+  .getPropertyValue('border-width'));
 
-const wallX = coordsWall['x'] + borderWidth;
-const wallY = coordsWall['y'] + borderWidth;
 const wallW = coordsWall['width'] - 2 * borderWidth;
 const wallH = coordsWall['height'] - 2 * borderWidth;
+const wallXLeft = coordsWall['x'] + borderWidth;
+const wallXRight = wallXLeft + wallW;
+const wallYTop = coordsWall['y'] + borderWidth;
+const wallYBottom = wallYTop + wallH;
 
-spider.style.top = wallY + 'px';
-spider.style.left = wallX + 'px';
+spider.style.top = wallYTop + 'px';
+spider.style.left = wallXLeft + 'px';
 spider.style.position = 'fixed';
+const spiderHHalf = spider.offsetHeight / 2;
+const spiderWHalf = spider.offsetWidth / 2;
 
 document.addEventListener('click', e => {
   const item = e.target;
@@ -27,19 +31,19 @@ document.addEventListener('click', e => {
   const x = e.clientX;
   const y = e.clientY;
 
-  if (x < (wallX + spider.offsetWidth)) {
-    spider.style.left = wallX + 'px';
-  } else if (x > (wallX + wallW - spider.offsetWidth / 2)) {
-    spider.style.left = wallX + wallW - spider.offsetWidth + 'px';
+  if (x < (wallXLeft + spider.offsetWidth)) {
+    spider.style.left = wallXLeft + 'px';
+  } else if (x > (wallXRight - spiderWHalf)) {
+    spider.style.left = wallXRight - spider.offsetWidth + 'px';
   } else {
-    spider.style.left = x - (spider.offsetWidth / 2) + 'px';
+    spider.style.left = x - spiderWHalf + 'px';
   }
 
-  if (y < (wallY + spider.offsetHeight)) {
-    spider.style.top = wallY + 'px';
-  } else if (y > (wallY + wallH - spider.clientHeight / 2)) {
-    spider.style.top = wallY + wallH - spider.clientHeight + 'px';
+  if (y < (wallYTop + spider.offsetHeight)) {
+    spider.style.top = wallYTop + 'px';
+  } else if (y > (wallYBottom - spiderHHalf)) {
+    spider.style.top = wallYBottom - spider.clientHeight + 'px';
   } else {
-    spider.style.top = y - (spider.offsetHeight / 2) + 'px';
+    spider.style.top = y - spiderHHalf + 'px';
   }
 });
