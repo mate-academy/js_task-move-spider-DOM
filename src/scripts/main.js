@@ -6,11 +6,15 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
 
   const checkOutOfBounds = (coord) => {
-    const corectCoord = coord < 0
-      ? 0
-      : coord > wall.clientHeight - spider.clientHeight
-        ? wall.clientHeight - spider.clientHeight
-        : coord;
+    let corectCoord = coord;
+
+    if(coord < 0) {
+      corectCoord = 0;
+    }
+
+    if (coord > wall.clientHeight - spider.clientHeight) {
+      corectCoord = wall.clientHeight - spider.clientHeight;
+    }
 
     return corectCoord;
   };
