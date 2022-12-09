@@ -12,7 +12,7 @@ document.addEventListener('click', e => {
     = e.clientX - wall.offsetLeft - wall.clientLeft - spider.offsetWidth / 2;
 
   let topPosition
-  = e.clientY - wall.offsetTop - wall.clientTop - spider.offsetHeight / 2;
+    = e.clientY - wall.offsetTop - wall.clientTop - spider.offsetHeight / 2;
 
   const leftMaxPosition = wall.clientWidth - spider.offsetWidth;
   const topMaxPosition = wall.clientHeight - spider.offsetHeight;
