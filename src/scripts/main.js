@@ -16,27 +16,31 @@ document.addEventListener('click', e => {
   const y = e.clientY - wall.offsetTop;
 
   const roundCoord = (coord, direction = 'y') => {
+    const isX = direction === 'x';
     const spiderWidth = spider.clientWidth;
     const spiderHeight = spider.clientHeight;
+    const halfOfSpider = (isX ? spiderWidth : spiderHeight) / 2;
 
-    const max = direction === 'x'
-      ? wall.clientWidth - spiderWidth / 2 + borderWidth
-      : wall.clientHeight - spiderHeight / 2 + borderWidth;
-    const min = (
-      direction === 'x' ? spiderWidth : spiderHeight
-    ) / 2 + borderWidth;
+    const wallWidth = wall.clientWidth;
+    const wallHeight = wall.clientHeight;
+
+    const min = halfOfSpider + borderWidth;
+    const max = isX ? wallWidth - min : wallHeight - min;
+
+    const minCoord = 0;
+    const maxCoord = isX
+      ? wallWidth - spiderHeight
+      : wallHeight - spiderHeight;
 
     if (coord >= max) {
-      return wall.clientWidth - spiderWidth;
+      return maxCoord;
     }
 
     if (coord <= min) {
-      return 0;
+      return minCoord;
     }
 
-    return coord - (
-      direction === 'x' ? spiderWidth : spiderHeight
-    ) / 2 - borderWidth;
+    return coord - halfOfSpider - borderWidth;
   };
 
   spider.style = `
