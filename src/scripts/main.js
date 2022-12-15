@@ -2,47 +2,53 @@
 
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
+  const spiderOfW = spider.offsetWidth;
   const windEl = document.querySelector('.wall');
   const wind = e.target.closest('.wall');
+  const windElBoLe = windEl.clientLeft;
+  const windElBorderTop = windEl.clientTop;
+  const windElOfW = windEl.offsetWidth;
+  const windElOfL = windEl.offsetLeft;
+  const windElOfT = windEl.offsetTop;
+  const windElOfH = windEl.offsetHeight;
 
   if (!wind) {
     return;
   }
 
   if (
-    (e.clientX - windEl.offsetLeft
-      - (spider.offsetWidth / 2 + windEl.clientLeft))
-      > (windEl.offsetWidth - (spider.offsetWidth + windEl.clientLeft * 2))
+    (
+      e.clientX - windElOfL - (spiderOfW / 2 + windElBoLe)
+    ) > (
+      windElOfW - (spiderOfW + windElBoLe * 2)
+    )
   ) {
-    spider.style.left = (windEl.offsetWidth - (
-      spider.offsetWidth + windEl.clientLeft * 2
-    )) + 'px';
-  } else if (
-    (e.clientX - windEl.offsetLeft)
-     < (spider.offsetWidth / 2 + windEl.clientLeft)
-  ) {
+    spider.style.left = (
+      windElOfW - (spiderOfW + windElBoLe * 2)
+    ) + 'px';
+  } else if ((e.clientX - windElOfL) < (spiderOfW / 2 + windElBoLe)) {
     spider.style.left = 0 + 'px';
   } else {
     spider.style.left = (
-      e.clientX - windEl.offsetLeft
-       - (spider.offsetWidth / 2 + windEl.clientLeft)
+      e.clientX - windElOfL - (spiderOfW / 2 + windElBoLe)
     ) + 'px';
   }
 
   if (
-    (e.clientY - windEl.offsetTop - (spider.offsetWidth / 2 + windEl.clientTop))
-     > (windEl.offsetHeight - (spider.offsetWidth + windEl.clientTop * 2))
+    (
+      e.clientY - windElOfT - (spiderOfW / 2 + windElBorderTop)
+    ) > (
+      windElOfH - (spiderOfW + windElBorderTop * 2)
+    )
   ) {
     spider.style.top = (
-      windEl.offsetHeight - (spider.offsetWidth + windEl.clientTop * 2)
+      windElOfH - (spiderOfW + windElBorderTop * 2)
     ) + 'px';
-  } else if (
-    (e.clientY - windEl.offsetTop) < (spider.offsetWidth / 2 + windEl.clientTop)
-  ) {
+  } else if ((e.clientY - windElOfT) < (spiderOfW / 2 + windElBorderTop)) {
     spider.style.top = 0 + 'px';
   } else {
     spider.style.top = (
-      e.clientY - windEl.offsetTop - (spider.offsetWidth / 2 + windEl.clientTop)
+      e.clientY - windElOfT - (spiderOfW / 2 + windElBorderTop)
     ) + 'px';
   }
 });
