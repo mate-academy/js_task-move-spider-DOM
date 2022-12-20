@@ -5,27 +5,27 @@ const wall = document.querySelector('.wall');
 
 document.addEventListener('click', e => {
   const wallCoordinats = wall.getBoundingClientRect();
-  const positionTop = e.clientY - wallCoordinats.top - spider.clientHeight / 2;
-  const positionLeft = e.clientX - wallCoordinats.left - spider.clientWidth / 2;
+  let positionTop = e.clientY - wallCoordinats.top - spider.clientHeight / 2;
+  let positionLeft = e.clientX - wallCoordinats.left - spider.clientWidth / 2;
 
   if (e.target.className === 'wall') {
-    spider.style.top = `${positionTop}px`;
-    spider.style.left = `${positionLeft}px`;
-
     if (positionTop < 0) {
-      spider.style.top = '0px';
+      positionTop = 0;
     }
 
     if (positionLeft < 0) {
-      spider.style.left = '0px';
+      positionLeft = 0;
     }
 
     if (positionLeft + spider.clientWidth > wall.clientWidth) {
-      spider.style.left = `${wall.clientWidth - spider.clientWidth}px`;
+      positionLeft = wall.clientWidth - spider.clientWidth;
     }
 
     if (positionTop + spider.clientHeight > wall.clientHeight) {
-      spider.style.top = `${wall.clientHeight - spider.clientHeight}px`;
+      positionTop = wall.clientHeight - spider.clientHeight;
     }
+
+    spider.style.top = `${positionTop}px`;
+    spider.style.left = `${positionLeft}px`;
   }
 });
