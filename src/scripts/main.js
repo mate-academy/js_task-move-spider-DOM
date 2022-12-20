@@ -8,24 +8,22 @@ document.addEventListener('click', e => {
   let positionTop = e.clientY - wallCoordinats.top - spider.clientHeight / 2;
   let positionLeft = e.clientX - wallCoordinats.left - spider.clientWidth / 2;
 
-  if (e.target.className === 'wall') {
-    if (positionTop < 0) {
-      positionTop = 0;
-    }
-
-    if (positionLeft < 0) {
-      positionLeft = 0;
-    }
-
-    if (positionLeft + spider.clientWidth > wall.clientWidth) {
-      positionLeft = wall.clientWidth - spider.clientWidth;
-    }
-
-    if (positionTop + spider.clientHeight > wall.clientHeight) {
-      positionTop = wall.clientHeight - spider.clientHeight;
-    }
-
-    spider.style.top = `${positionTop}px`;
-    spider.style.left = `${positionLeft}px`;
+  if (positionTop < 0) {
+    positionTop = 0;
   }
+
+  if (positionLeft < 0) {
+    positionLeft = 0;
+  }
+
+  if (positionLeft + spider.clientWidth > wall.clientWidth) {
+    positionLeft = wall.clientWidth - spider.clientWidth;
+  }
+
+  if (positionTop + spider.clientHeight > wall.clientHeight) {
+    positionTop = wall.clientHeight - spider.clientHeight;
+  }
+
+  spider.style.top = `${positionTop}px`;
+  spider.style.left = `${positionLeft}px`;
 });
