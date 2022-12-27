@@ -1,7 +1,5 @@
 'use strict';
 
-// const { get } = require("browser-sync");
-
 document.addEventListener('click', event => {
   if (!event.target.closest('.wall')) {
     return;
@@ -11,15 +9,6 @@ document.addEventListener('click', event => {
   const spider = document.querySelector('.spider');
 
   const wallCoordinate = wall.getBoundingClientRect();
-
-  // const spiderStyle = getComputedStyle(spider);
-  // const wallStyle = getComputedStyle(wall);
-
-  // const wallSize = parseFloat(wallStyle.height);
-  // const spiderSize = parseFloat(spiderStyle.height);
-
-  // console.log(wallCoordinate.x);
-  // console.log(wallCoordinate.y);
 
   console.log(event);
 
