@@ -11,9 +11,10 @@ document.addEventListener('click', e => {
 
   const point = (direction = 'offsetX', prop = 'clientWidth') => {
     let spiderCenter = e[direction] - spider[prop] / 2;
+    const spaceToPoint = (wall[prop] - spider[prop] / 2);
 
-    if (e[direction] > (wall[prop] - spider[prop] / 2)) {
-      spiderCenter -= e[direction] - (wall[prop] - spider[prop] / 2);
+    if (e[direction] > spaceToPoint) {
+      spiderCenter -= e[direction] - spaceToPoint;
     }
 
     return spiderCenter < 0 ? 0 : spiderCenter;
