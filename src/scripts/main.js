@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('click', event => {
+document.addEventListener('click', (event) => {
   if (!event.target.closest('.wall')) {
     return;
   }
@@ -10,10 +10,10 @@ document.addEventListener('click', event => {
 
   const wallCoordinate = wall.getBoundingClientRect();
 
-  console.log(event);
-
-  let coordX = event.clientX - wallCoordinate.x - wall.clientLeft - spider.clientWidth / 2;
-  let coordY = event.clientY - wallCoordinate.y - wall.clientTop - spider.clientHeight / 2;
+  let coordX = event.clientX - wallCoordinate.x
+    - wall.clientLeft - spider.clientWidth / 2;
+  let coordY = event.clientY - wallCoordinate.y
+    - wall.clientTop - spider.clientHeight / 2;
 
   if (coordX < 0) {
     coordX = 0;
