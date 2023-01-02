@@ -14,15 +14,24 @@ wall.addEventListener('click', e => {
   const centerY = e.clientY - coords.top - border - spiderWidth / 2;
   const centerX = e.clientX - coords.left - border - spiderWidth / 2;
 
-  centerY < 0
-    ? spider.style.top = `0px`
-    : centerY <= maxTrail
-      ? spider.style.top = `${centerY}px`
-      : spider.style.top = `${maxTrail}px`;
+  let spiderY = `${centerY}px`;
+  let spiderX = `${centerX}px`;
 
-  centerX < 0
-    ? spider.style.left = `0px`
-    : centerX <= maxTrail
-      ? spider.style.left = `${centerX}px`
-      : spider.style.left = `${maxTrail}px`;
+  if (centerY < 0) {
+    spiderY = `0px`;
+  }
+
+  if (centerY > maxTrail) {
+    spiderY = `${maxTrail}px`;
+  }
+
+  if (centerX < 0) {
+    spiderX = `0px`;
+  }
+
+  if (centerX > maxTrail) {
+    spiderX = `${maxTrail}px`;
+  }
+  spider.style.top = spiderY;
+  spider.style.left = spiderX;
 });
