@@ -27,27 +27,19 @@ document.addEventListener('click', e => {
   const x = e.clientX;
   const y = e.clientY;
 
-  switch (true) {
-    case x < minCoordX:
-      spider.style.left = 0 + 'px';
-      break;
-    case x > maxCoordX:
-      spider.style.left = (wallClW - spiderOfW) + 'px';
-      break;
-    default:
-      spider.style.left = (x - minCoordX + spiderOfW / 2) + 'px';
-      break;
+  if (x < minCoordX) {
+    spider.style.left = 0 + 'px';
+  } else if (x > maxCoordX) {
+    spider.style.left = (wallClW - spiderOfW) + 'px';
+  } else {
+    spider.style.left = (x - minCoordX + spiderOfW / 2) + 'px';
   }
 
-  switch (true) {
-    case y < minCoordY:
-      spider.style.top = 0 + 'px';
-      break;
-    case y > maxCoordY:
-      spider.style.top = (wallClH - spiderOfW) + 'px';
-      break;
-    default:
-      spider.style.top = (y - minCoordY + spiderOfW / 2) + 'px';
-      break;
+  if (y < minCoordY) {
+    spider.style.top = 0 + 'px';
+  } else if (y > maxCoordY) {
+    spider.style.top = (wallClH - spiderOfW) + 'px';
+  } else {
+    spider.style.top = (y - minCoordY + spiderOfW / 2) + 'px';
   }
 });
