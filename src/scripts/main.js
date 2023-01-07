@@ -1,32 +1,53 @@
 'use strict';
 
 const spider = document.querySelector('.spider');
-const wall = document.querySelector('.wall');
 
 document.addEventListener('click', e => {
-  let x = e.offsetX;
-  let y = e.offsetY;
+  const wall = e.target.closest('.wall');
 
-  if (!e.target.closest('.wall')) {
+  const clickX = e.clientX;
+  const clickY = e.clientY;
+
+  const wallWidth = wall.clientWidth;
+  const wallHeight = wall.clientHeight;
+  const wallBorderLeft = wall.clientLeft;
+  const wallBorderTop = wall.clientTop;
+
+  const wallCoordinates = wall.getBoundingClientRect();
+  const wallCoordinateX = wallCoordinates.x;
+  const wallCoordinateY = wallCoordinates.y;
+
+  const spiderWidth = spider.clientWidth;
+  const spiderHeight = spider.clientHeight;
+
+  let calcSpiderLeft = (
+    clickX - wallCoordinateX - wallBorderLeft - spiderWidth / 2
+  );
+
+  let calcSpiderTop = (
+    clickY - wallCoordinateY - wallBorderTop - spiderHeight / 2
+  );
+
+  if (calcSpiderLeft < 0) {
+    calcSpiderLeft = 0;
+  }
+
+  if (calcSpiderTop < 0) {
+    calcSpiderTop = 0;
+  }
+
+  if (calcSpiderLeft + spiderWidth > wallWidth) {
+    calcSpiderLeft = wallWidth - spiderWidth;
+  }
+
+  if (calcSpiderTop + spiderHeight > wallHeight) {
+    calcSpiderTop = wallHeight - spiderHeight;
+  }
+
+  if (!wall) {
     return;
   }
 
-  const spiderHight = spider.offsetHeight;
-  const spiderWidth = spider.offsetWidth;
-  const wallHight = wall.clientHeight;
-  const wallWidth = wall.clientWidth;
-
-  const calcMinTop = spiderHight / 2;
-  const calcMaxTop = wallHight - spiderHight / 2;
-  const calcMinLeft = spiderWidth / 2;
-  const calcMaxLeft = wallWidth - spiderWidth / 2;
-
-  y = y < calcMinTop ? calcMinTop : y;
-  y = y > calcMaxTop ? calcMaxTop : y;
-  x = x < calcMinLeft ? calcMinLeft : x;
-  x = x > calcMaxLeft ? calcMaxLeft : x;
-
-  spider.style.top = y + 'px';
-  spider.style.left = x + 'px';
-  spider.style.transform = 'translate(-50%, -50%)';
+  spider.style.left = calcSpiderLeft + 'px';
+  spider.style.top = calcSpiderTop + 'px';
 });
