@@ -5,34 +5,26 @@ const wall = document.querySelector('.wall');
 
 document.addEventListener('click', e => {
   // write code here
-
-  // console.log(e.target.className);
+  function getSize(el, prop) {
+    return parseFloat(
+      window.getComputedStyle(el)[prop]
+    );
+  };
 
   if (e.target.className === 'wall') {
-    const spiderWidth = parseFloat(
-      window.getComputedStyle(spider).width);
-    const spiderHeight = parseFloat(
-      window.getComputedStyle(spider).height);
+    const spiderWidth = getSize(spider, 'width');
+    const spiderHeight = getSize(spider, 'height');
+    const wallWidth = getSize(wall, 'width');
+    const wallHeight = getSize(wall, 'height');
+    const halfSpiderWidth = spiderWidth / 2;
+    const halfSpiderHeight = spiderHeight / 2;
 
-    const wallWidth = parseFloat(
-      window.getComputedStyle(wall).width);
-    const wallHeight = parseFloat(
-      window.getComputedStyle(wall).height);
-
-    let newX = e.offsetX - (spiderWidth / 2);
-    let newY = e.offsetY - (spiderHeight / 2);
-
-    if (e.offsetX < (spiderWidth / 2)) {
-      newX = 0;
-    } else if ((e.offsetX + (spiderWidth / 2)) > wallWidth) {
-      newX = wallWidth - spiderWidth;
-    }
-
-    if (e.offsetY < (spiderHeight / 2)) {
-      newY = 0;
-    } else if ((e.offsetY + (spiderHeight / 2)) > wallHeight) {
-      newY = wallHeight - spiderHeight;
-    }
+    const newX = (e.offsetX < halfSpiderWidth)
+      ? 0 : (e.offsetX > wallWidth - halfSpiderWidth)
+        ? wallWidth - spiderWidth : e.offsetX - halfSpiderWidth;
+    const newY = (e.offsetY < halfSpiderHeight)
+      ? 0 : (e.offsetY > wallHeight - halfSpiderHeight)
+        ? wallHeight - spiderHeight : e.offsetY - halfSpiderHeight;
 
     spider.style.cssText = `
       left: ${newX}px;
