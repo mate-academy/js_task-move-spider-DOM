@@ -7,20 +7,26 @@ document.addEventListener('click', e => {
   const wallXCorrection = wall.getBoundingClientRect().left;
   const wallYCorrection = wall.getBoundingClientRect().top;
   let xPos = e.clientX - (spider.clientWidth / 2)
-  - wallXCorrection;
+    - wallXCorrection;
   let yPos = e.clientY - (spider.clientHeight / 2)
-  - wallYCorrection;
+    - wallYCorrection;
+  const leftBorderX = wall.clientWidth - spider.clientWidth;
+  const leftBorderY = wall.clientHeight - spider.clientHeight;
 
   if (xPos < 0) {
     xPos = 0;
-  } else if (xPos > wall.clientWidth - spider.clientWidth) {
-    xPos = wall.clientWidth - spider.clientWidth;
+  }
+
+  if (xPos > leftBorderX) {
+    xPos = leftBorderX;
   }
 
   if (yPos < 0) {
     yPos = 0;
-  } else if (yPos > wall.clientWidth - spider.clientWidth) {
-    yPos = wall.clientHeight - spider.clientWidth;
+  }
+
+  if (yPos > leftBorderY) {
+    yPos = leftBorderY;
   }
 
   spider.style.left = xPos + 'px';
