@@ -9,11 +9,10 @@ wall.addEventListener('click', (e) => {
 
   const spiderXBorder
     = e.clientX - wallCoords.x - (spiderCoords.width / 2)
-      - (spiderCoords.x - wallCoords.x);
-
+      - (wall.offsetWidth - wall.clientWidth) / 2;
   const spiderYBorder
     = e.clientY - wallCoords.y - (spiderCoords.height / 2)
-      - (spiderCoords.x - wallCoords.x);
+      - (wall.offsetWidth - wall.clientWidth) / 2;
 
   spider.style.left = spiderXBorder + 'px';
   spider.style.top = spiderYBorder + 'px';
