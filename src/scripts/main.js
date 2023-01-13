@@ -5,9 +5,15 @@ const wall = document.querySelector('.wall');
 
 wall.addEventListener('click', (e) => {
   const wallCoords = wall.getBoundingClientRect();
+  const spiderCoords = spider.getBoundingClientRect();
 
-  const spiderXBorder = e.clientX - wallCoords.x - 35;
-  const spiderYBorder = e.clientY - wallCoords.y - 35;
+  const spiderXBorder
+    = e.clientX - wallCoords.x - (spiderCoords.width / 2)
+      - (spiderCoords.x - wallCoords.x);
+
+  const spiderYBorder
+    = e.clientY - wallCoords.y - (spiderCoords.height / 2)
+      - (spiderCoords.x - wallCoords.x);
 
   spider.style.left = spiderXBorder + 'px';
   spider.style.top = spiderYBorder + 'px';
