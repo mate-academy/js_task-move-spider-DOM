@@ -8,21 +8,27 @@ document.addEventListener('click', e => {
     return;
   }
 
-  const x = e.clientX;
-  const y = e.clientY;
-  const wallCoords = wall.getBoundingClientRect();
-  let spiderTop = y - wallCoords.top;
-  const spiderLeft = x - wallCoords.left;
+  const limitWidth = wall.clientWidth - spider.offsetWidth;
+  const limitHeight = wall.clientHeight - spider.offsetHeight;
+  let spiderPositionX = e.offsetX - (spider.offsetWidth / 2);
+  let spiderPositionY = e.offsetY - (spider.offsetHeight / 2);
 
-  if (spiderTop < wallCoords.top + wall.clientTop) {
-    spiderTop = wallCoords.top;
+  if (spiderPositionX < 0) {
+    spiderPositionX = 0;
   }
 
-  spider.style.top = spiderTop + 'px';
-  spider.style.left = spiderLeft + 'px';
-  spider.style.transform = 'translate(-50%, -50%)';
+  if (spiderPositionX > limitWidth) {
+    spiderPositionX = limitWidth;
+  }
 
-  // const wallPositionX = wallCoords.left + wall.clientLeft;
+  if (spiderPositionY < 0) {
+    spiderPositionY = 0;
+  }
 
-  // console.log(wall.clientLeft);
+  if (spiderPositionY > limitHeight) {
+    spiderPositionY = limitHeight;
+  }
+
+  spider.style.top = spiderPositionY + 'px';
+  spider.style.left = spiderPositionX + 'px';
 });
