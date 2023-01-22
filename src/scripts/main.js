@@ -10,7 +10,7 @@ document.addEventListener('click', e => {
 
   if (target !== wall) {
     return;
-  }
+  };
 
   const coords = {
     left: x - (spiderWidth / 2),
@@ -19,7 +19,7 @@ document.addEventListener('click', e => {
 
   if (coords.left > wallWidth - spiderWidth) {
     coords.left = wallWidth - spiderWidth;
-  }
+  };
 
   if (coords.top > wallHeight - spiderHeight) {
     coords.top = wallHeight - spiderHeight;
@@ -27,11 +27,11 @@ document.addEventListener('click', e => {
 
   if (coords.top < 0) {
     coords.top = 0;
-  }
+  };
 
   if (coords.left < 0) {
     coords.left = 0;
-  }
+  };
 
   spider.style.top = `${coords.top}px`;
   spider.style.left = `${coords.left}px`;
