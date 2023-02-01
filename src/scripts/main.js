@@ -10,6 +10,8 @@ document.addEventListener('click', e => {
 
   let x = e.offsetX - spider.height / 2;
   let y = e.offsetY - spider.width / 2;
+  const height = wall.clientHeight - spider.height;
+  const width = wall.clientWidth - spider.width;
 
   if (x < 0) {
     x = 0;
@@ -19,12 +21,12 @@ document.addEventListener('click', e => {
     y = 0;
   }
 
-  if (x > wall.clientHeight - spider.height) {
-    x = wall.clientHeight - spider.height;
+  if (x > height) {
+    x = height;
   }
 
-  if (y > wall.clientWidth - spider.width) {
-    y = wall.clientWidth - spider.width;
+  if (y > width) {
+    y = width;
   }
 
   spider.style.left = x + 'px';
