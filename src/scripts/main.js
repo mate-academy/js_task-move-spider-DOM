@@ -10,21 +10,23 @@ document.addEventListener('click', e => {
 
   let leftValue = e.pageX - wall.offsetLeft - wall.clientLeft;
   let topValue = e.pageY - wall.offsetTop - wall.clientTop;
+  const spiderHalfWidth = spider.offsetWidth / 2;
+  const spiderHalfHeight = spider.offsetHeight / 2;
 
-  if (leftValue < wall.clientLeft + spider.offsetWidth / 2) {
-    leftValue = spider.offsetWidth / 2;
+  if (leftValue < wall.clientLeft + spiderHalfWidth) {
+    leftValue = spiderHalfWidth;
   }
 
-  if (leftValue > wall.clientWidth - spider.offsetWidth / 2) {
-    leftValue = wall.clientWidth - spider.offsetWidth / 2;
+  if (leftValue > wall.clientWidth - spiderHalfWidth) {
+    leftValue = wall.clientWidth - spiderHalfWidth;
   }
 
-  if (topValue < wall.clientTop + spider.offsetHeight / 2) {
-    topValue = spider.offsetHeight / 2;
+  if (topValue < wall.clientTop + spiderHalfHeight) {
+    topValue = spiderHalfHeight;
   }
 
-  if (topValue > wall.clientHeight - spider.offsetWidth / 2) {
-    topValue = wall.clientHeight - spider.offsetHeight / 2;
+  if (topValue > wall.clientHeight - spiderHalfHeight) {
+    topValue = wall.clientHeight - spiderHalfHeight;
   }
 
   spider.style.position = 'absolute';
