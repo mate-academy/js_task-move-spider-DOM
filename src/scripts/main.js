@@ -1,11 +1,11 @@
 'use strict';
 
-document.getElementsByClassName('wall')[0].addEventListener('click', e => {
-  const spider = document.getElementsByClassName('spider')[0];
-  const wall = document.getElementsByClassName('wall')[0];
-  const borderWidth = parseInt(window.getComputedStyle(wall)
-    .getPropertyValue('border-width'));
+const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
+const borderWidth = parseInt(window.getComputedStyle(wall)
+  .getPropertyValue('border-width'));
 
+document.querySelector('.wall').addEventListener('click', e => {
   if (wall) {
     const x = e.clientX - wall.offsetLeft - spider.offsetWidth
       / 2 - borderWidth;
