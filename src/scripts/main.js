@@ -7,10 +7,13 @@ wall.addEventListener('click', e => {
   const workSpaceY = wall.clientHeight - spider.clientHeight;
   const workSpaceX = wall.clientWidth - spider.clientWidth;
 
-  let normalizedY = e.offsetY;
-  let normalizedX = e.offsetX;
+  const spiderHalfHeight = spider.clientHeight / 2;
+  const spiderHalfWidth = spider.clientWidth / 2;
 
-  if (e.offsetY < 0) {
+  let normalizedY = e.offsetY - spiderHalfHeight;
+  let normalizedX = e.offsetX - spiderHalfWidth;
+
+  if (e.offsetY < spiderHalfHeight) {
     normalizedY = 0;
   }
 
@@ -18,7 +21,7 @@ wall.addEventListener('click', e => {
     normalizedY = workSpaceY;
   }
 
-  if (e.offsetX < 0) {
+  if (e.offsetX < spiderHalfWidth) {
     normalizedX = 0;
   }
 
