@@ -7,8 +7,8 @@ document.addEventListener('click', e => {
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
 
-  const wallLeft = wallRect.left + 10;
-  const wallTop = wallRect.top + 10;
+  const wallLeft = wallRect.left;
+  const wallTop = wallRect.top;
 
   const spiderWidth = spiderRect.width;
   const spiderHeight = spiderRect.height;
