@@ -7,10 +7,8 @@ document.addEventListener('click', e => {
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
 
-  const wallLeft = wallRect.left;
-  const wallTop = wallRect.top;
-  const wallRight = wallRect.right;
-  const wallBottom = wallRect.bottom;
+  const wallLeft = wallRect.left + 10;
+  const wallTop = wallRect.top + 10;
 
   const spiderWidth = spiderRect.width;
   const spiderHeight = spiderRect.height;
@@ -21,11 +19,7 @@ document.addEventListener('click', e => {
   const newSpiderLeft = mouseX - spiderWidth / 2 - wallLeft;
   const newSpiderTop = mouseY - spiderHeight / 2 - wallTop;
 
-  if (
-    newSpiderLeft < 0
-    || newSpiderTop < 0
-    || newSpiderLeft + spiderWidth > wallRight - wallLeft
-    || newSpiderTop + spiderHeight > wallBottom - wallTop
+  if (event.target.className !== 'wall'
   ) {
     return;
   }
