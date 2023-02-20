@@ -15,16 +15,7 @@ document.addEventListener('click', e => {
     const x = e.clientX - wall.offsetLeft - spider.offsetHeight / 2 - border;
     const y = e.clientY - wall.offsetTop - spider.offsetHeight / 2 - border;
 
-    if (x >= maxValue) {
-      spider.style.left = maxValue + 'px';
-    } else {
-      spider.style.left = `${x < 0 ? 0 : x}` + 'px';
-    }
-
-    if (y >= maxValue) {
-      spider.style.top = maxValue + 'px';
-    } else {
-      spider.style.top = `${y < 0 ? 0 : y}` + 'px';
-    }
+    spider.style.left = x >= maxValue ? `${maxValue}px` : `${x < 0 ? 0 : x}px`;
+    spider.style.top = y >= maxValue ? `${maxValue}px` : `${y < 0 ? 0 : y}px`;
   }
 });
