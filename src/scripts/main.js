@@ -8,31 +8,53 @@ document.addEventListener('click', e => {
   const wallElement = document.querySelector('.wall');
   const spiderElement = document.querySelector('.spider');
 
-  const wallX = wallElement.getBoundingClientRect().x;
-  const wallY = wallElement.getBoundingClientRect().y;
+  const borderSizeWall
+    = parseInt(window.getComputedStyle(wallElement).borderWidth);
+  const halfSizeSpider
+    = parseInt(window.getComputedStyle(spiderElement).width) / 2;
+  const wallSize = parseInt(window.getComputedStyle(wallElement).width);
+
+  const bordLeftWall
+    = wallElement.getBoundingClientRect().x
+    + borderSizeWall
+    + halfSizeSpider;
+
+  const bordRightWall
+    = wallElement.getBoundingClientRect().x
+    + borderSizeWall
+    + wallSize
+    - halfSizeSpider;
+
+  const bordTopWall
+    = wallElement.getBoundingClientRect().y
+    + borderSizeWall
+    + halfSizeSpider;
+
+  const bordButtonWall
+    = wallElement.getBoundingClientRect().y
+    + borderSizeWall
+    + wallSize
+    - halfSizeSpider;
 
   const cursorX = e.clientX;
   const cursorY = e.clientY;
 
-  const wallReduceSpider
-    = parseInt(window.getComputedStyle(wallElement).width)
-    - parseInt(window.getComputedStyle(spiderElement).width);
-  const borderAndCenterSpider
-    = parseInt(window.getComputedStyle(spiderElement).width) / 2
-    + parseInt(window.getComputedStyle(wallElement).borderWidth);
+  spiderElement.style.left = cursorX - bordLeftWall + 'px';
+  spiderElement.style.top = cursorY - bordTopWall + 'px';
 
-  spiderElement.style.left
-    = (cursorX - borderAndCenterSpider) < wallX ? 0
-      : (cursorX - wallX - borderAndCenterSpider) + 'px';
-
-  spiderElement.style.top = (cursorY - borderAndCenterSpider) < wallY ? 0
-    : (cursorY - wallY - borderAndCenterSpider) + 'px';
-
-  if (((cursorX - borderAndCenterSpider) - wallX) > wallReduceSpider) {
-    spiderElement.style.left = wallReduceSpider + 'px';
+  if (cursorX < bordLeftWall) {
+    spiderElement.style.left = 0;
   }
 
-  if (((cursorY - borderAndCenterSpider) - wallY) > wallReduceSpider) {
-    spiderElement.style.top = wallReduceSpider + 'px';
+  if (cursorY < bordTopWall) {
+    spiderElement.style.top = 0;
+  }
+
+  if (cursorX > bordRightWall) {
+    spiderElement.style.left = bordRightWall - bordLeftWall + 'px';
+  }
+
+  if (cursorY > bordButtonWall) {
+    spiderElement.style.top = bordButtonWall - bordTopWall + 'px';
   }
 });
