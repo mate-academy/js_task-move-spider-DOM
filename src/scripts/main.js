@@ -7,10 +7,13 @@ document.addEventListener('click', e => {
 
   const wallElement = document.querySelector('.wall');
   const spiderElement = document.querySelector('.spider');
+
   const wallX = wallElement.getBoundingClientRect().x;
   const wallY = wallElement.getBoundingClientRect().y;
+
   const cursorX = e.clientX;
   const cursorY = e.clientY;
+
   const wallReduceSpider
     = parseInt(window.getComputedStyle(wallElement).width)
     - parseInt(window.getComputedStyle(spiderElement).width);
