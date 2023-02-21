@@ -8,8 +8,8 @@ document.addEventListener('click', e => {
   const widthWall = wall.clientWidth;
   const maxValue = widthWall - widthSpider;
   const border = parseInt(
-    window.getComputedStyle(wall).getPropertyValue('border-width'
-    ));
+    window.getComputedStyle(wall).getPropertyValue('border-width')
+  );
 
   if (wall) {
     const x = e.clientX - wall.offsetLeft - spider.offsetHeight / 2 - border;
