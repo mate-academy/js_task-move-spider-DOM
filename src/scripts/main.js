@@ -8,9 +8,23 @@ const walls = document.querySelector('.wall');
 walls.addEventListener('click', (event) => {
   const clickX = event.clientX - walls.offsetLeft;
   const clickY = event.clientY - walls.offsetTop;
+  const maxWidth = walls.clientWidth - spider.offsetWidth;
+  const maxHeight = walls.clientHeight - spider.offsetWidth;
 
-  const newSpiderX = clickX - spider.offsetWidth / 2;
-  const newSpiderY = clickY - spider.offsetHeight / 2;
+  let newSpiderX = clickX - spider.offsetWidth / 2;
+  let newSpiderY = clickY - spider.offsetHeight / 2;
+
+  if (newSpiderX > maxWidth) {
+    newSpiderX = maxWidth;
+  } else if (newSpiderX < 0) {
+    newSpiderX = 0;
+  }
+
+  if (newSpiderY > maxHeight) {
+    newSpiderY = maxHeight;
+  } else if (newSpiderY < 0) {
+    newSpiderY = 0;
+  }
 
   spider.style.left = `${newSpiderX}px`;
   spider.style.top = `${newSpiderY}px`;
