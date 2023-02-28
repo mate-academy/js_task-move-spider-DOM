@@ -11,8 +11,8 @@ walls.addEventListener('click', (event) => {
   const maxWidth = walls.clientWidth - spider.offsetWidth;
   const maxHeight = walls.clientHeight - spider.offsetWidth;
 
-  let newSpiderX = clickX - spider.offsetWidth / 2;
-  let newSpiderY = clickY - spider.offsetHeight / 2;
+  let newSpiderX = clickX - spider.offsetWidth / 1.5;
+  let newSpiderY = clickY - spider.offsetHeight / 1.5;
 
   if (newSpiderX > maxWidth) {
     newSpiderX = maxWidth;
