@@ -6,11 +6,11 @@ document.addEventListener('click', e => {
   const borderWidth = parseInt(window.getComputedStyle(wall)
     .getPropertyValue('border-width'));
 
-  document.querySelector('.wall').addEventListener('click', e => {
+  document.querySelector('.wall').addEventListener('click', ev => {
     if (wall) {
-      const x = e.clientX - wall.offsetLeft - spider.offsetWidth
+      const x = ev.clientX - wall.offsetLeft - spider.offsetWidth
         / 2 - borderWidth;
-      const y = e.clientY - wall.offsetTop - spider.offsetHeight
+      const y = ev.clientY - wall.offsetTop - spider.offsetHeight
         / 2 - borderWidth;
 
       const maxCoordsX = wall.clientWidth - spider.offsetWidth;
