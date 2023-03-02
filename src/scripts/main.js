@@ -2,30 +2,17 @@
 
 document.addEventListener('click', e => {
   // write code here
-  const wall = document.querySelector('.wall');
+
   const spider = document.querySelector('.spider');
 
-  const coordinateMouseX = e.offsetX;
-  const coordinateMouseY = e.offsetY;
-
-  const widthWall = e.clientX;
-  const hightWall = e.clientY;
-
-  wall.style.position = 'reletive';
-  spider.style.position = 'absolute';
+  const { offsetX, offsetY, clientX, clientY } = e;
 
   const widthSpider = getComputedStyle(spider);
   const halfWidthSpider = parseFloat(widthSpider.width) / 2;
 
-  if (coordinateMouseX >= widthWall) {
-    spider.style.left = widthWall;
-  } else {
-    spider.style.left = `${coordinateMouseX - halfWidthSpider}px`;
-  }
+  spider.style.left = clientX <= offsetX ? clientX
+    : `${offsetX - halfWidthSpider}px`;
 
-  if (coordinateMouseY >= hightWall) {
-    spider.style.hight = hightWall;
-  } else {
-    spider.style.top = `${coordinateMouseY - halfWidthSpider}px`;
-  }
+  spider.style.top = clientY <= offsetY ? clientY
+    : `${offsetY - halfWidthSpider}px`;
 });
