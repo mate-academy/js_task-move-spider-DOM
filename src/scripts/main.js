@@ -14,8 +14,6 @@ document.addEventListener('click', e => {
   wall.style.position = 'reletive';
   spider.style.position = 'absolute';
 
-  console.log(e);
-
   const widthSpider = getComputedStyle(spider);
   const halfWidthSpider = parseFloat(widthSpider.width) / 2;
 
