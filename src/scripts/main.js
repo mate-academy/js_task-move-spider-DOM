@@ -5,8 +5,14 @@ document.addEventListener('click', e => {
   const wall = document.querySelector('.wall');
   const maxY = wall.clientHeight - spider.clientHeight;
   const maxX = wall.clientWidth - spider.clientWidth;
-  let spiderTop = e.clientY - spider.offsetHeight / 2;
-  let spiderLeft = e.clientX - wall.clientWidth - spider.offsetWidth;
+  let spiderTop = e.clientY - spider.offsetHeight / 2
+  - e.target.offsetTop - e.target.clientTop;
+  let spiderLeft = e.clientX - spider.offsetWidth / 2
+  - e.target.offsetLeft - e.target.clientLeft;
+
+  if (e.target.className !== 'wall') {
+    return;
+  }
 
   if (spiderTop > maxY) {
     spiderTop = maxY;
