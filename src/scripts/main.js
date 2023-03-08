@@ -11,27 +11,27 @@ document.addEventListener('click', e => {
 
   const wallCoords = wall.getBoundingClientRect();
 
-  let x = e.clientY - wallCoords.top
+  let y = e.clientY - wallCoords.top
     - wall.clientTop - spider.clientHeight / 2;
-  let y = e.clientX - wallCoords.left
+  let x = e.clientX - wallCoords.left
     - wall.clientLeft - spider.clientWidth / 2;
-
-  if (x <= 0) {
-    x = 0;
-  };
 
   if (y <= 0) {
     y = 0;
   };
 
-  if (x + spider.clientHeight > wall.clientHeight) {
-    x = wall.clientHeight - spider.clientHeight;
+  if (x <= 0) {
+    x = 0;
+  };
+
+  if (y + spider.clientHeight > wall.clientHeight) {
+    y = wall.clientHeight - spider.clientHeight;
   }
 
-  if (y + spider.clientWidth > wall.clientWidth) {
-    y = wall.clientWidth - spider.clientWidth;
+  if (x + spider.clientWidth > wall.clientWidth) {
+    x = wall.clientWidth - spider.clientWidth;
   }
 
-  spider.style.top = `${x}px`;
-  spider.style.left = `${y}px`;
+  spider.style.top = `${y}px`;
+  spider.style.left = `${x}px`;
 });
