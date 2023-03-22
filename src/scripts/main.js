@@ -15,11 +15,11 @@ document.addEventListener('click', e => {
 function positionCalc(coordinate, wallSize, spiderSize) {
   let position = coordinate - spiderSize / 2;
 
-  if (coordinate < 0) {
+  if (coordinate < spiderSize / 2) {
     position = 0;
   }
 
-  if (coordinate > wallSize) {
+  if (coordinate > wallSize - spiderSize / 2) {
     position = wallSize - spiderSize;
   }
 
