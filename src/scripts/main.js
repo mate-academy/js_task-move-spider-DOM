@@ -5,12 +5,12 @@ document.addEventListener('click', e => {
     return;
   };
 
-  const wall = document.querySelector('.wall');
+  const bricks = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
   const x = Math.min(Math.max(e.offsetX - spider.width / 2, 0),
-    wall.clientWidth - spider.clientWidth);
+    bricks.clientWidth - spider.clientWidth);
   const y = Math.min(Math.max(e.offsetY - spider.height / 2, 0),
-    wall.clientHeight - spider.clientHeight);
+    bricks.clientHeight - spider.clientHeight);
 
   spider.style.top = `${y}px`;
   spider.style.left = `${x}px`;
