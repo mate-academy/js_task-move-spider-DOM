@@ -2,8 +2,11 @@
 
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
-  const spiderWidth = 50;
-  const board = 400;
+  const wall = document.querySelector('.wall');
+
+  const spiderWidth = +window.getComputedStyle(spider).width.slice(0, -2);
+  const board = window.getComputedStyle(wall).width.slice(0, -2);
+
   const maxPosition = board - spiderWidth;
   const minPosition = spiderWidth / 2;
 
