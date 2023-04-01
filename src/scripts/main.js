@@ -13,13 +13,14 @@ document.addEventListener('click', e => {
   let y = e.offsetY - spider.clientHeight / 2;
   const maxWidth = wall.clientWidth - spider.clientWidth;
   const maxHeight = wall.clientHeight - spider.clientHeight;
+  const correctCoord = 0;
 
-  if (x < 0) {
-    x = 0;
+  if (x < correctCoord) {
+    x = correctCoord;
   }
 
-  if (y < 0) {
-    y = 0;
+  if (y < correctCoord) {
+    y = correctCoord;
   }
 
   if (x > maxWidth) {
