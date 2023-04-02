@@ -5,8 +5,12 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  if (e.target !== wall) {
+  if (e.target !== wall && e.target !== spider) {
     return;
+  }
+
+  if (e.target === spider) {
+    spider.style.pointerEvents = 'none';
   }
 
   if (e.offsetY < spider.offsetHeight / 2) {
