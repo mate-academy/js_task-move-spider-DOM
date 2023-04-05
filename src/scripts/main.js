@@ -12,8 +12,8 @@ wall.addEventListener('click', e => {
   const spiderX = x - (spiderWidth / 2);
   const spiderY = y - (spiderHeight / 2);
 
-  const wallWidth = wall.offsetWidth;
-  const wallHeight = wall.offsetHeight;
+  const wallWidth = wall.offsetWidth - 20;
+  const wallHeight = wall.offsetHeight - 20;
   const insideX = (spiderX >= 0) && ((spiderX + spiderWidth) <= wallWidth);
   const insideY = (spiderY >= 0) && ((spiderY + spiderHeight) <= wallHeight);
 
