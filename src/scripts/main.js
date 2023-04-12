@@ -1,5 +1,4 @@
 'use strict';
-
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
