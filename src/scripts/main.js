@@ -8,7 +8,7 @@ wall.addEventListener('click', e => {
   - wall.clientTop - spider.clientHeight / 2;
   const positionX = e.clientX - wall.offsetLeft
   - wall.clientLeft - spider.clientWidth / 2;
-  
+
   const maxy = wall.clientHeight - spider.offsetHeight;
   const maxh = wall.clientWidth - spider.offsetWidth;
 
