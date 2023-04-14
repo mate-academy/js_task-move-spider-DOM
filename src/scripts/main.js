@@ -23,7 +23,8 @@ document.addEventListener('click', e => {
     const minLeft = spider.clientWidth / 2;
     const maxLeft = wall.clientHeight - minLeft;
 
-    spider.style.top = moveToY < minTop ? minTop + 'px'
+    spider.style.top = moveToY < minTop 
+      ? minTop + 'px'
       : moveToY > maxTop ? maxTop + 'px' : moveToY + 'px';
 
     spider.style.left = moveToX < minLeft ? minLeft + 'px'
