@@ -10,6 +10,25 @@ document.addEventListener('click', e => {
     return;
   }
 
-  spider.style.top = `${e.clientY - element.offsetTop}px`;
-  spider.style.left = `${e.clientX - element.offsetLeft}px`;
+  let x = e.clientX - element.offsetLeft - (spider.clientWidth / 2);
+  let y = e.clientY - element.offsetTop - (spider.clientHeight / 2);
+
+  if (x < 0) {
+    x += (spider.clientWidth / 2);
+  }
+
+  if (x > (element.clientWidth - (spider.clientWidth / 2))) {
+    x = element.clientWidth - spider.clientWidth;
+  }
+
+  if (y < 0) {
+    y += (spider.clientHeight / 2);
+  }
+
+  if (y > (element.offsetTop - (spider.clientWidth / 2))) {
+    y = element.clientHeight - spider.clientHeight;
+  }
+
+  spider.style.left = `${x}px`;
+  spider.style.top = `${y}px`;
 });
