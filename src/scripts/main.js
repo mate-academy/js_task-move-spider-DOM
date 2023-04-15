@@ -14,13 +14,13 @@ wall.addEventListener('click', e => {
 
   if (wallTop < 0) {
     wallTop = 0;
-  } else if (wallTop > 350) {
+  } else if (wallTop >= 350) {
     wallTop = 350;
   };
 
   if (wallLeft < 0) {
     wallLeft = 0;
-  } else if (wallLeft > 350) {
+  } else if (wallLeft >= 350) {
     wallLeft = 350;
   };
 
