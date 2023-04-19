@@ -4,6 +4,8 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
+  spider.style.pointerEvents = 'none';
+
   if (!e.target.closest('.wall')) {
     return;
   };
