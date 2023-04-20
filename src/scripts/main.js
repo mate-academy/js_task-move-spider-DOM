@@ -3,19 +3,27 @@
 const wallElement = document.querySelector('.wall');
 const spiderElement = document.querySelector('.spider');
 
-wallElement.addEventListener('click', e => {
+wallElement.addEventListener('click', clickEvent => {
+  if (clickEvent.target.classList.contains('spider')) {
+    return;
+  }
+
   const game = {
     coords: {
-      x: e.clientX - e.target.getBoundingClientRect().x - e.target.clientTop,
-      y: e.clientY - e.target.getBoundingClientRect().y - e.target.clientLeft,
+      x: clickEvent.clientX
+        - clickEvent.target.getBoundingClientRect().x
+        - clickEvent.target.clientTop,
+      y: clickEvent.clientY
+        - clickEvent.target.getBoundingClientRect().y
+        - clickEvent.target.clientLeft,
     },
     spider: {
       width: spiderElement.offsetWidth,
       height: spiderElement.offsetHeight,
     },
     wall: {
-      width: wallElement.offsetWidth - e.target.clientLeft * 2,
-      height: wallElement.offsetHeight - e.target.clientTop * 2,
+      width: wallElement.offsetWidth - clickEvent.target.clientLeft * 2,
+      height: wallElement.offsetHeight - clickEvent.target.clientTop * 2,
     },
   };
 
