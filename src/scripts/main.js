@@ -15,17 +15,15 @@ document.addEventListener('click', e => {
   };
 
   function wallLimit(value, limit) {
-    switch (true) {
-      case (value < 0):
-        return 0;
-      case (value > limit):
-        const current = limit;
+    if (value < 0) {
+      return 0;
+    }
 
-        return current;
+    if (value > limit) {
+      return limit;
+    }
 
-      default:
-        return value;
-    };
+    return value;
   };
 
   spider.style.left = wallLimit(x, maxWidth) + 'px';
