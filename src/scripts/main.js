@@ -7,21 +7,25 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('.wall')) {
     const mouseX = e.pageX - wall.offsetLeft - wall.clientLeft;
     const mouseY = e.pageY - wall.offsetTop - wall.clientTop;
+    const spiderWidth = spider.clientWidth;
+    const spiderHeight = spider.clientHeight;
+    const wallWidth = wall.clientWidth;
+    const wallHeigth = wall.clientHeight;
 
-    if (mouseX < spider.clientWidth / 2) {
+    if (mouseX < spiderWidth / 2) {
       spider.style.left = 0 + 'px';
-    } else if (mouseX > (wall.clientWidth - spider.clientWidth / 2)) {
-      spider.style.left = wall.clientWidth - spider.clientWidth + 'px';
+    } else if (mouseX > (wallWidth - spiderWidth / 2)) {
+      spider.style.left = wallWidth - spiderWidth + 'px';
     } else {
-      spider.style.left = mouseX - spider.clientWidth / 2 + 'px';
+      spider.style.left = mouseX - spiderWidth / 2 + 'px';
     }
 
-    if (mouseY < spider.clientHeight / 2) {
+    if (mouseY < spiderHeight / 2) {
       spider.style.top = 0 + 'px';
-    } else if (mouseY > (wall.clientHeight - spider.clientHeight / 2)) {
-      spider.style.top = wall.clientHeight - spider.clientHeight + 'px';
+    } else if (mouseY > (wallHeigth - spiderHeight / 2)) {
+      spider.style.top = wallHeigth - spiderHeight + 'px';
     } else {
-      spider.style.top = mouseY - spider.clientHeight / 2 + 'px';
+      spider.style.top = mouseY - spiderHeight / 2 + 'px';
     }
   }
 });
