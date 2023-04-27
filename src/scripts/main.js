@@ -4,6 +4,10 @@ document.addEventListener('click', e => {
   const spiderElement = document.querySelector('.spider');
   const wallElement = document.querySelector('.wall');
 
+  if (!wallElement.contains(e.target)) {
+    return;
+  };
+
   const halfX = spiderElement.getBoundingClientRect().width / 2;
   const halfY = spiderElement.getBoundingClientRect().height / 2;
 
