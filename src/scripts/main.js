@@ -1,12 +1,12 @@
 'use strict';
 
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
+
 document.addEventListener('click', e => {
   if (e.target.className !== 'wall') {
     return;
   }
-
-  const wall = document.querySelector('.wall');
-  const spider = document.querySelector('.spider');
 
   const maxWidth = wall.clientWidth - spider.clientWidth;
   const maxHeight = wall.clientHeight - spider.clientHeight;
