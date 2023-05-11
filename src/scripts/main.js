@@ -4,7 +4,9 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', e => {
-  if (e.target.className !== 'wall') {
+  spider.style.pointerEvents = 'none';
+
+  if (e.target.className !== 'wall' && e.target.className !== 'spider') {
     return;
   }
 
