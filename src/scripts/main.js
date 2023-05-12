@@ -17,21 +17,21 @@ function followMouse(e) {
     x += spider.offsetLeft;
   }
 
-  let topSpider = y - spider.offsetHeight / 2;
-  let leftSpider = x - spider.offsetWidth / 2;
+  let spiderTop = y - spider.offsetHeight / 2;
+  let spiderLeft = x - spider.offsetWidth / 2;
 
   if (y <= spider.offsetHeight / 2) {
-    topSpider = 0;
+    spiderTop = 0;
   } else if (y >= wall.clientHeight - spider.offsetHeight / 2) {
-    topSpider = wall.clientHeight - spider.offsetHeight;
+    spiderTop = wall.clientHeight - spider.offsetHeight;
   }
 
   if (x <= spider.offsetWidth / 2) {
-    leftSpider = 0;
+    spiderLeft = 0;
   } else if (x >= wall.clientWidth - spider.offsetWidth / 2) {
-    leftSpider = wall.clientWidth - spider.offsetWidth;
+    spiderLeft = wall.clientWidth - spider.offsetWidth;
   }
 
-  spider.style.left = leftSpider + 'px';
-  spider.style.top = topSpider + 'px';
+  spider.style.left = spiderLeft + 'px';
+  spider.style.top = spiderTop + 'px';
 };
