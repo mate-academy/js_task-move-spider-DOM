@@ -12,8 +12,12 @@ document.addEventListener('click', e => {
     return;
   }
 
-  let yPosition = e.offsetY - (spider.clientHeight / 2);
-  let xPosition = e.offsetX - (spider.clientWidth / 2);
+  const wallCoords = wall.getBoundingClientRect();
+
+  let yPosition
+   = e.clientY - wallCoords.top - wall.clientTop - (spider.clientHeight / 2);
+  let xPosition
+   = e.clientX - wallCoords.left - wall.clientLeft - (spider.clientWidth / 2);
 
   if (yPosition > maxHeight) {
     yPosition = maxHeight;
