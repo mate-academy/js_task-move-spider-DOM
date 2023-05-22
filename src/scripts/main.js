@@ -3,9 +3,11 @@
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
-
-  if (e.target.className !== 'wall') {
-    return false;
+  
+  spider.style.pointerEvents = 'none';
+  
+  if (!wall.contains(e.target)) {
+    return;
   }
 
   let coordinateX = e.offsetX - spider.clientWidth / 2;
