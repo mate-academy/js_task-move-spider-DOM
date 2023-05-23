@@ -5,10 +5,10 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  const halfSpider = spider.width / 2;
+  const halfSpider = spider.width;
 
-  let positionOfCLickX = e.offsetX - halfSpider;
-  let positionOfCLickY = e.offsetY - halfSpider;
+  let positionOfCLickX = e.offsetX - halfSpider / 2;
+  let positionOfCLickY = e.offsetY - halfSpider / 2;
 
   if (targetElem !== 'wall') {
     return;
