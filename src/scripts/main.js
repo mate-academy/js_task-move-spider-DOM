@@ -1,5 +1,8 @@
 'use strict';
 
 document.addEventListener('click', e => {
-  // write code here
+  const spider = document.querySelector('.spider');
+
+  spider.style.top = `${e.offsetY}px`;
+  spider.style.left = `${e.offsetX}px`;
 });
