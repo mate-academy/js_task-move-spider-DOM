@@ -3,6 +3,16 @@
 document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
+  const body = document.querySelector('body');
+  const item = e.target;
+
+  if (item.classList.contains('spider')) {
+    return;
+  }
+
+  if (item === body) {
+    return;
+  }
 
   if (e.offsetX > wall.clientWidth || e.offsetX < 0) {
     return;
