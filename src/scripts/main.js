@@ -8,20 +8,20 @@ document.addEventListener('click', e => {
     return 0;
   }
 
-  const maxTop = wall.clientHeight - spider.clientHeight;
-  const maxLeft = wall.clientWidth - spider.clientWidth;
+  const maxTop = wall.clientHeight - spider.offsetHeight;
+  const maxLeft = wall.clientWidth - spider.offsetWidth;
 
-  let spiderLeft = e.clientY - wall.offsetTop
-    - wall.clientTop - spider.clientHeight / 2;
+  let spiderTop = e.clientY - wall.offsetTop
+    - wall.clientTop - spider.offsetHeight / 2;
 
-  let spiderTop = e.clientX - wall.offsetLeft
-    - wall.clientLeft - spider.clientWidth / 2;
+  let spiderLeft = e.clientX - wall.offsetLeft
+    - wall.clientLeft - spider.offsetWidth / 2;
 
   // Restrict the spider position within the field boundaries
   spiderLeft = Math.max(0, Math.min(spiderLeft, maxLeft));
   spiderTop = Math.max(0, Math.min(spiderTop, maxTop));
 
   // Set the spider's position
-  spider.style.top = `${spiderLeft}px`;
-  spider.style.left = `${spiderTop}px`;
+  spider.style.left = `${spiderLeft}px`;
+  spider.style.top = `${spiderTop}px`;
 });
