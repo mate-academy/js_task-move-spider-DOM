@@ -14,10 +14,10 @@ document.addEventListener('click', (e) => {
   const clickX = e.clientX - (wallLeft + spider.offsetWidth / 2);
   const clickY = e.clientY - (wallTop + spider.offsetHeight / 2);
 
-  const widthBorder = 20;
+  const wallBorderWidth = 20;
 
-  const maxX = wall.offsetWidth - spider.offsetWidth - widthBorder;
-  const maxY = wall.offsetHeight - spider.offsetHeight - widthBorder;
+  const maxX = wall.offsetWidth - spider.offsetWidth - wallBorderWidth;
+  const maxY = wall.offsetHeight - spider.offsetHeight - wallBorderWidth;
 
   const validX = Math.min(Math.max(clickX, 0), maxX);
   const validY = Math.min(Math.max(clickY, 0), maxY);
