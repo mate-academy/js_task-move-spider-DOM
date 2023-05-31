@@ -1,7 +1,7 @@
 'use strict';
 
-document.addEventListener('click', (even) => {
-  const wall = even.target.closest('.wall');
+document.addEventListener('click', (e) => {
+  const wall = e.target.closest('.wall');
   const spider = document.querySelector('.spider');
 
   if (!wall) {
@@ -11,8 +11,8 @@ document.addEventListener('click', (even) => {
   const wallTop = wall.offsetTop;
   const wallLeft = wall.offsetLeft;
 
-  const clickX = even.pageX - (wallLeft + spider.offsetWidth / 2);
-  const clickY = even.pageY - (wallTop + spider.offsetHeight / 2);
+  const clickX = e.clientX - (wallLeft + spider.offsetWidth / 2);
+  const clickY = e.clientY - (wallTop + spider.offsetHeight / 2);
 
   const widthBorder = 20;
 
