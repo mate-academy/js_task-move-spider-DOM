@@ -4,10 +4,6 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  if (e.target !== wall) {
-    return 0;
-  }
-
   const maxTop = wall.clientHeight - spider.offsetHeight;
   const maxLeft = wall.clientWidth - spider.offsetWidth;
 
@@ -21,7 +17,6 @@ document.addEventListener('click', e => {
   spiderLeft = Math.max(0, Math.min(spiderLeft, maxLeft));
   spiderTop = Math.max(0, Math.min(spiderTop, maxTop));
 
-  // Set the spider's position
   spider.style.left = `${spiderLeft}px`;
   spider.style.top = `${spiderTop}px`;
 });
