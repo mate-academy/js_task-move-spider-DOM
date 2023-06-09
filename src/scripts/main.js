@@ -7,18 +7,37 @@ document.addEventListener('click', e => {
   const spiderRect = spider.getBoundingClientRect();
   const wallRect = wall.getBoundingClientRect();
 
+  const wallStyles = getComputedStyle(wall);
+  const borderWidth = parseFloat(wallStyles.borderTopWidth);
+
   const clickX = e.clientX;
   const clickY = e.clientY;
 
-  const spiderX = clickX - wallRect.left - spiderRect.width / 2;
-  const spiderY = clickY - wallRect.top - spiderRect.height / 2;
+  const spiderWidth = spiderRect.width;
+  const spiderHeight = spiderRect.height;
+
+  const wallWidth = wallRect.width - spiderWidth - borderWidth * 2;
+  const wallHeight = wallRect.height - spiderHeight - borderWidth * 2;
+
+  const spiderXMin = borderWidth;
+  const spiderXMax = wallWidth;
+  const spiderYMin = borderWidth;
+  const spiderYMax = wallHeight;
+
+  const clickOffset = 5;
 
   if (
-    spiderX >= 0
-    && spiderY >= 0
-    && spiderX + spiderRect.width <= wallRect.width
-    && spiderY + spiderRect.height <= wallRect.height
+    clickX >= wallRect.left + spiderWidth / 2 + borderWidth - clickOffset
+    && clickX <= wallRect.right - spiderWidth / 2 - borderWidth + clickOffset
+    && clickY >= wallRect.top + spiderHeight / 2 + borderWidth - clickOffset
+    && clickY <= wallRect.bottom - spiderHeight / 2 - borderWidth + clickOffset
   ) {
+    const spiderX = Math.max(spiderXMin,
+      Math.min(clickX - wallRect.left - spiderWidth / 2, spiderXMax));
+
+    const spiderY = Math.max(spiderYMin,
+      Math.min(clickY - wallRect.top - spiderHeight / 2, spiderYMax));
+
     spider.style.left = `${spiderX}px`;
     spider.style.top = `${spiderY}px`;
   }
