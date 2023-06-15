@@ -3,7 +3,7 @@
 const spider = document.querySelector('.spider');
 const spiderParent = spider.parentElement;
 
-spiderParent.addEventListener('click', function(e) {
+spiderParent.addEventListener('click', (e) => {
   const parentRect = spiderParent.getBoundingClientRect();
 
   const style = getComputedStyle(spiderParent);
