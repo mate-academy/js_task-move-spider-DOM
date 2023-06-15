@@ -24,8 +24,10 @@ spiderParent.addEventListener('click', function(e) {
     - borderBottomWidth
     - borderTopWidth;
 
-  let left = e.clientX - parentRect.left - borderLeftWidth;
-  let spiderTop = e.clientY - parentRect.top - borderTopWidth;
+  let left
+    = e.clientX - parentRect.left - borderLeftWidth - spider.offsetWidth / 2;
+  let spiderTop
+    = e.clientY - parentRect.top - borderTopWidth - spider.offsetHeight / 2;
 
   if (left < 0) {
     left = 0;
