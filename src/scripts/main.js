@@ -12,22 +12,20 @@ spiderParent.addEventListener('click', (e) => {
   const borderRightWidth = parseFloat(style.borderRightWidth);
   const borderBottomWidth = parseFloat(style.borderBottomWidth);
 
-  const maxLeft
-    = parentRect.width
+  const maxLeft = parentRect.width
       - spider.offsetWidth
       - borderRightWidth
       - borderLeftWidth;
 
-  const maxTop
-  = parentRect.height
+  const maxTop = parentRect.height
     - spider.offsetHeight
     - borderBottomWidth
     - borderTopWidth;
 
-  let left
-    = e.clientX - parentRect.left - borderLeftWidth - spider.offsetWidth / 2;
-  let spiderTop
-    = e.clientY - parentRect.top - borderTopWidth - spider.offsetHeight / 2;
+  let left = e.clientX
+    - parentRect.left - borderLeftWidth - spider.offsetWidth / 2;
+  let spiderTop = e.clientY
+    - parentRect.top - borderTopWidth - spider.offsetHeight / 2;
 
   if (left < 0) {
     left = 0;
