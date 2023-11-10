@@ -1,11 +1,11 @@
 'use strict';
 
-document.addEventListener('click', e => {
-  // import document
-  const body = document.body;
-  const spider = document.querySelector('.spider');
-  const wall = document.querySelector('.wall');
+// import document
+const body = document.body;
+const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
 
+wall.addEventListener('click', e => {
   // get click position
   const clickX = e.clientX;
   const clickY = e.clientY;
