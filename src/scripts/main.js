@@ -27,6 +27,6 @@ wall.addEventListener('click', e => {
     positionY -= spider.offsetHeight / 2;
   }
 
-  spider.style.left = positionX + 'px';
-  spider.style.top = positionY + 'px';
+  spider.style.left = positionX + window.scrollX + 'px';
+  spider.style.top = positionY + window.scrollY + 'px';
 });
