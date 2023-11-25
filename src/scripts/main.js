@@ -4,22 +4,26 @@ const spider = document.querySelector('.spider');
 
 document.addEventListener('click', e => {
   if (e.target.classList.contains('wall')) {
+    const wallMaxOffset = 375;
+    const wallMinOffset = 25;
+    const spiderOffset = 25;
+
     let x = e.offsetX;
     let y = e.offsetY;
 
-    if (x > 375) {
-      x = 375;
-    } else if (x < 25) {
-      x = 25;
+    if (x > wallMaxOffset) {
+      x = wallMaxOffset;
+    } else if (x < wallMinOffset) {
+      x = wallMinOffset;
     }
 
-    if (y > 375) {
-      y = 375;
-    } else if (y < 25) {
-      y = 25;
+    if (y > wallMaxOffset) {
+      y = wallMaxOffset;
+    } else if (y < wallMinOffset) {
+      y = wallMinOffset;
     }
 
-    spider.style.marginLeft = (x - 25) + 'px';
-    spider.style.marginTop = (y - 25) + 'px';
+    spider.style.marginLeft = (x - spiderOffset) + 'px';
+    spider.style.marginTop = (y - spiderOffset) + 'px';
   }
 });
