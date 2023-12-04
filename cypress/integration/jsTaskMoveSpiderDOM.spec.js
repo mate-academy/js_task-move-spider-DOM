@@ -60,7 +60,7 @@ describe('Spider', () => {
     });
   });
 
-  it(`should not move on 
+  it(`should not move on
       the click out of the wall`, () => {
     cy.get('body').click('top');
     cy.get('.spider').should(($spider) => {
