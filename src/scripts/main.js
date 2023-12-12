@@ -14,6 +14,7 @@ document.addEventListener('click', e => {
     offsetWidth: spiderWidth,
     style: spiderStyle,
   } = document.querySelector('.spider');
+
   const spiderX = clientX - wallLeft - border - (spiderWidth / 2);
   const spiderY = clientY - wallTop - border - (spiderHeight / 2);
   const innerBorderLeft = wallLeft + border;
