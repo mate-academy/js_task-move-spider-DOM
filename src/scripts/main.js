@@ -1,28 +1,40 @@
-"use strict";
+'use strict';
 
-document.addEventListener("click", (e) => {
-  const spider = document.querySelector(".spider");
-  const wall = document.querySelector(".wall");
+document.addEventListener('click', (e) => {
+  const spider = document.querySelector('.spider');
+  const wall = document.querySelector('.wall');
+
+  if (!spider || !wall) {
+    return;
+  }
 
   const clickX = e.clientX;
   const clickY = e.clientY;
   const wallRect = wall.getBoundingClientRect();
 
+  if (spider.clientWidth === undefined || spider.clientHeight === undefined) {
+    return;
+  }
+
+  const clickXRelative = clickX - wallRect.left;
+  const clickYRelative = clickY - wallRect.top;
+
   const spiderX = Math.max(
-    wallRect.left,
+    0,
     Math.min(
-      wallRect.right - spider.clientWidth,
-      clickX - spider.clientWidth / 2
-    )
-  );
-  const spiderY = Math.max(
-    wallRect.top,
-    Math.min(
-      wallRect.bottom - spider.clientHeight,
-      clickY - spider.clientHeight / 2
-    )
+      wall.clientWidth - spider.clientWidth,
+      clickXRelative - spider.clientWidth / 2,
+    ),
   );
 
-  spider.style.left = spiderX + "px";
-  spider.style.top = spiderY + "px";
+  const spiderY = Math.max(
+    0,
+    Math.min(
+      wall.clientHeight - spider.clientHeight,
+      clickYRelative - spider.clientHeight / 2,
+    ),
+  );
+
+  spider.style.left = spiderX + 'px';
+  spider.style.top = spiderY + 'px';
 });
