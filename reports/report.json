@@ -1,0 +1,217 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 2,
+    "pending": 0,
+    "failures": 4,
+    "start": "2024-01-22T11:42:53.890Z",
+    "end": "2024-01-22T11:43:12.694Z",
+    "duration": 18730,
+    "testsRegistered": 6,
+    "passPercent": 33.333333333333336,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "707a6b0a-928c-4bb5-9180-ca5151dfa316",
+      "title": "",
+      "fullFile": "cypress/integration/jsTaskMoveSpiderDOM.spec.js",
+      "file": "cypress/integration/jsTaskMoveSpiderDOM.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+          "title": "Spider",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should go down left",
+              "fullTitle": "Spider should go down left",
+              "timedOut": null,
+              "duration": 4392,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('bottomLeft');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(350);\n  expect(spiderLeft).to.equal(0);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskMoveSpiderDOM.spec.js:108:28)",
+                "diff": null
+              },
+              "uuid": "13b349df-e507-4613-9c20-0dca7810fe2a",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go up right",
+              "fullTitle": "Spider should go up right",
+              "timedOut": null,
+              "duration": 4314,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('topRight');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(350);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskMoveSpiderDOM.spec.js:118:29)",
+                "diff": null
+              },
+              "uuid": "44fdefd4-4f14-4ce1-a763-bc3defddc89e",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go up",
+              "fullTitle": "Spider should go up",
+              "timedOut": null,
+              "duration": 4324,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('top');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(175);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 175",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 175\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskMoveSpiderDOM.spec.js:127:29)",
+                "diff": null
+              },
+              "uuid": "43421496-8d7d-40c4-a0e9-69cc71178f85",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go to the center",
+              "fullTitle": "Spider should go to the center",
+              "timedOut": null,
+              "duration": 1127,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('center');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(175);\n  expect(spiderLeft).to.equal(175);\n});",
+              "err": {},
+              "uuid": "6cf3a187-d9e5-4647-b2b8-8475172da452",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should go down right",
+              "fullTitle": "Spider should go down right",
+              "timedOut": null,
+              "duration": 4387,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.wall').click('bottomRight');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(350);\n  expect(spiderLeft).to.equal(350);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 0 to equal 350\n    at Context.eval (http://localhost:8080/__cypress/tests?p=cypress\\integration\\jsTaskMoveSpiderDOM.spec.js:144:28)",
+                "diff": null
+              },
+              "uuid": "c9ac21e0-fa5d-4987-aad6-3c656745fd50",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not move on \n      the click out of the wall",
+              "fullTitle": "Spider should not move on \n      the click out of the wall",
+              "timedOut": null,
+              "duration": 186,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('body').click('top');\ncy.get('.spider').should($spider => {\n  const spiderTop = $spider.position().top;\n  const spiderLeft = $spider.position().left;\n  expect(spiderTop).to.equal(0);\n  expect(spiderLeft).to.equal(0);\n});",
+              "err": {},
+              "uuid": "5304685a-39a5-4f4c-b883-624d0c67b8c7",
+              "parentUUID": "1e51e3a3-ba79-425f-bd97-1e8969aea29e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6cf3a187-d9e5-4647-b2b8-8475172da452",
+            "5304685a-39a5-4f4c-b883-624d0c67b8c7"
+          ],
+          "failures": [
+            "13b349df-e507-4613-9c20-0dca7810fe2a",
+            "44fdefd4-4f14-4ce1-a763-bc3defddc89e",
+            "43421496-8d7d-40c4-a0e9-69cc71178f85",
+            "c9ac21e0-fa5d-4987-aad6-3c656745fd50"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 18730,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "raw_reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
