@@ -5,9 +5,13 @@ document.addEventListener('click', e => {
 
   const wall = document.querySelector('.wall');
 
-  const shiftLeft = wall.getBoundingClientRect().left + wall.borderWidth;
+  const style = getComputedStyle(wall);
 
-  const shiftTop = wall.getBoundingClientRect().top + wall.borderWidth;
+  const borderWidth = parseFloat(style.border);
+
+  const shiftLeft = wall.getBoundingClientRect().left + borderWidth;
+
+  const shiftTop = wall.getBoundingClientRect().top + borderWidth;
 
   const spiderWidth = spider.clientWidth;
 
