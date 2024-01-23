@@ -5,8 +5,11 @@ document.addEventListener('click', e => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
-  const x = e.clientX - spider.clientWidth / 2 - wall.getBoundingClientRect().left;
-  const y = e.clientY - spider.clientHeight / 2 - wall.getBoundingClientRect().top;
+  const wallStyles = getComputedStyle(wall);
+  const borderSize = parseInt(wallStyles.borderWidth, 10);
+
+  const x = e.clientX - spider.clientWidth / 2 - wall.getBoundingClientRect().left - borderSize;
+  const y = e.clientY - spider.clientHeight / 2 - wall.getBoundingClientRect().top - borderSize;
 
   const maxX = wall.clientWidth - spider.clientWidth;
   const maxY = wall.clientHeight - spider.clientHeight;
