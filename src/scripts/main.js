@@ -1,5 +1,5 @@
 'use strict';
 
-document.addEventListener('click', e => {
+document.addEventListener('click', (e) => {
   // write code here
 });
