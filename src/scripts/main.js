@@ -10,12 +10,8 @@ document.addEventListener('click', (e) => {
 
   const maxX = wall.clientWidth - spider.clientWidth;
   const maxY = wall.clientHeight - spider.clientHeight;
-  const x = e.clientX;
-  const y = e.clientY;
-  const startWallX = wall.offsetLeft;
-  const startWallY = wall.offsetTop;
-  let left = x - startWallX - spider.clientWidth / 2;
-  let topY = y - startWallY - spider.clientHeight / 2;
+  let topY = e.offsetY - spider.clientHeight / 2;
+  let left = e.offsetX - spider.clientWidth / 2;
 
   if (left > maxX) {
     left = maxX;
