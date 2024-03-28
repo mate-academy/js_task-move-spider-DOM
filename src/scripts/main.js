@@ -14,6 +14,12 @@ document.addEventListener('click', (e) => {
   const positionX = e.offsetX - spider.clientWidth / 2;
   const positionY = e.offsetY - spider.clientHeight / 2;
 
-  spider.style.top = `${Math.max(0, Math.min(possibleHeight, positionY))}px`;
-  spider.style.left = `${Math.max(0, Math.min(possibleWidth, positionX))}px`;
+  const mathMinY = Math.min(possibleHeight, positionY);
+  const mathMaxY = Math.max(0, mathMinY);
+
+  const mathMinX = Math.min(possibleWidth, positionX);
+  const mathMaxX = Math.max(0, mathMinX);
+
+  spider.style.top = `${mathMaxY}px`;
+  spider.style.left = `${mathMaxX}px`;
 });
