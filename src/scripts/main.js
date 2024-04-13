@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.wall')) {
+  if (e.target.className !== 'wall') {
     return;
   }
 
