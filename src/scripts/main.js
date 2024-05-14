@@ -3,7 +3,7 @@
 document.addEventListener('click', (e) => {
   const wall = document.querySelector('.wall');
 
-  if (e.target !== 'wall') {
+  if (e.target.className !== 'wall') {
     return;
   }
 
