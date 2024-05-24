@@ -21,7 +21,6 @@ document.addEventListener('click', (e) => {
       container.clientLeft -
       spiderParams.width / 2;
 
-    // Ensure the spider does not cross the wall boundaries
     if (coordY < 0) {
       coordY = 0;
     } else if (coordY > container.clientHeight - spider.clientHeight) {
