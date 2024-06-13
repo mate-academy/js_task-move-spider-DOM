@@ -10,17 +10,16 @@ document.addEventListener('click', (e) => {
   let newLeft = e.clientX - wallRect.left - spiderRect.width / 2;
   let newTop = e.clientY - wallRect.top - spiderRect.height / 2;
 
-  // Перевірка на межі стінки
   if (newLeft < 0) {
     newLeft = 0;
-  } else if (newLeft + spiderRect.width > wallRect.width) {
-    newLeft = wallRect.width - spiderRect.width;
+  } else if (newLeft > 400 - spiderRect.width) {
+    newLeft = 400 - spiderRect.width;
   }
 
   if (newTop < 0) {
     newTop = 0;
-  } else if (newTop + spiderRect.height > wallRect.height) {
-    newTop = wallRect.height - spiderRect.height;
+  } else if (newTop > 400 - spiderRect.height) {
+    newTop = 400 - spiderRect.height;
   }
 
   spider.style.left = `${newLeft}px`;
