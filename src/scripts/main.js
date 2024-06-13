@@ -1,27 +1,33 @@
 'use strict';
 
-document.addEventListener('click', (e) => {
-  const wall = document.querySelector('.wall');
-  const spider = document.querySelector('.spider');
+document.addEventListener('click', relocateSpider);
 
-  if (!wall.contains(e.target)) {
+function relocateSpider(evnt) {
+  if (!evnt.target.closest('.wall')) {
     return;
   }
 
-  const wallRect = wall.getBoundingClientRect();
-  const wallHeight = wall.clientHeight;
-  const wallWidth = wall.clientWidth;
+  const spider = document.querySelector('.spider');
+  const wall = document.querySelector('.wall');
 
-  const spiderHeight = spider.clientHeight;
-  const spiderWidth = spider.clientWidth;
+  const clickPosX = evnt.offsetX;
+  const clickPosY = evnt.offsetY;
 
-  const newSpiderY = e.clientY - wallRect.top - spiderHeight / 2;
-  const newSpiderX = e.clientX - wallRect.left - spiderWidth / 2;
+  let spiderLeft = clickPosX - spider.offsetWidth / 2;
+  let spiderTop = clickPosY - spider.offsetHeight / 2;
 
-  const clampedY = Math.min(Math.max(newSpiderY, 0), wallHeight - spiderHeight);
-  const clampedX = Math.min(Math.max(newSpiderX, 0), wallWidth - spiderWidth);
+  if (clickPosY <= spider.offsetHeight / 2) {
+    spiderTop = 0;
+  } else if (clickPosY >= wall.clientHeight - spider.offsetHeight / 2) {
+    spiderTop = wall.clientHeight - spider.offsetHeight;
+  }
 
-  spider.style.position = 'absolute';
-  spider.style.top = `${clampedY}px`;
-  spider.style.left = `${clampedX}px`;
-});
+  if (clickPosX <= spider.offsetWidth / 2) {
+    spiderLeft = 0;
+  } else if (clickPosX >= wall.clientWidth - spider.offsetWidth / 2) {
+    spiderLeft = wall.clientWidth - spider.offsetWidth;
+  }
+
+  spider.style.top = `${spiderTop}px`;
+  spider.style.left = `${spiderLeft}px`;
+}
