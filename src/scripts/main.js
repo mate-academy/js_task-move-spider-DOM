@@ -7,21 +7,27 @@ document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
 
-  let newLeft = e.clientX - wallRect.left - spiderRect.width / 2;
-  let newTop = e.clientY - wallRect.top - spiderRect.height / 2;
-
-  if (newLeft < 0) {
-    newLeft = 0;
-  } else if (newLeft > 400 - spiderRect.width) {
-    newLeft = 400 - spiderRect.width;
-  }
+  let newTop =
+    e.clientY - wallRect.top - wall.clientTop - spiderRect.height / 2;
+  let newLeft =
+    e.clientX - wallRect.left - wall.clientLeft - spiderRect.width / 2;
 
   if (newTop < 0) {
     newTop = 0;
-  } else if (newTop > 400 - spiderRect.height) {
-    newTop = 400 - spiderRect.height;
   }
 
-  spider.style.left = `${newLeft}px`;
+  if (newTop > wall.clientHeight - spider.clientHeight) {
+    newTop = wall.clientHeight - spider.clientHeight;
+  }
+
+  if (newLeft < 0) {
+    newLeft = 0;
+  }
+
+  if (newLeft > wall.clientWidth - spider.clientWidth) {
+    newLeft = wall.clientWidth - spider.clientWidth;
+  }
+
   spider.style.top = `${newTop}px`;
+  spider.style.left = `${newLeft}px`;
 });
