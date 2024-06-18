@@ -2,22 +2,6 @@ const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
 spider.style.position = 'absolute';
-spider.style.left = '50%';
-spider.style.top = '50%';
-
-function centerSpider() {
-  const spiderWidth = spider.offsetWidth;
-  const spiderHeight = spider.offsetHeight;
-  const wallRect = wall.getBoundingClientRect();
-
-  const initialLeft = (wallRect.width - spiderWidth) / 2;
-  const initialTop = (wallRect.height - spiderHeight) / 2;
-
-  spider.style.left = initialLeft + 'px';
-  spider.style.top = initialTop + 'px';
-}
-
-centerSpider();
 
 wall.addEventListener('click', (e) => {
   const spiderWidth = spider.offsetWidth;
@@ -25,11 +9,8 @@ wall.addEventListener('click', (e) => {
 
   const wallRect = wall.getBoundingClientRect();
 
-  let marginLeft = e.clientX - wallRect.left;
-  let marginTop = e.clientY - wallRect.top;
-
-  marginLeft -= spiderWidth / 2;
-  marginTop -= spiderHeight / 2;
+  let marginLeft = e.clientX - wallRect.left - spiderWidth / 2;
+  let marginTop = e.clientY - wallRect.top - spiderHeight / 2;
 
   if (marginLeft < 0) {
     marginLeft = 0;
@@ -43,6 +24,6 @@ wall.addEventListener('click', (e) => {
     marginTop = wallRect.height - spiderHeight;
   }
 
-  spider.style.left = marginLeft + 'px';
-  spider.style.top = marginTop + 'px';
+  spider.style.left = marginLeft - 9 + 'px';
+  spider.style.top = marginTop - 9 + 'px';
 });
