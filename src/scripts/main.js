@@ -2,6 +2,22 @@ const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
 spider.style.position = 'absolute';
+spider.style.left = '50%';
+spider.style.top = '50%';
+
+function centerSpider() {
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
+  const wallRect = wall.getBoundingClientRect();
+
+  const initialLeft = (wallRect.width - spiderWidth) / 2;
+  const initialTop = (wallRect.height - spiderHeight) / 2;
+
+  spider.style.left = initialLeft + 'px';
+  spider.style.top = initialTop + 'px';
+}
+
+centerSpider();
 
 wall.addEventListener('click', (e) => {
   const spiderWidth = spider.offsetWidth;
