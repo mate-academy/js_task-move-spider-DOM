@@ -16,17 +16,14 @@ document.addEventListener('click', (e) => {
   const borderVertWidth =
     parseFloat(wallStyle.borderTopWidth) +
     parseFloat(wallStyle.borderBottomWidth);
-
   const clickX = e.clientX - wallSpace.left;
   const clickY = e.clientY - wallSpace.top;
-
   const newLeft = Math.min(
-    Math.max(clickX - spiderSpace.width / 2, 0),
+    Math.max(clickX - spiderSpace.width / 2 - borderHorWidth / 2, 0),
     wallSpace.width - spiderSpace.width - borderHorWidth,
   );
-
   const newTop = Math.min(
-    Math.max(clickY - spiderSpace.height / 2, 0),
+    Math.max(clickY - spiderSpace.height / 2 - borderHorWidth / 2, 0),
     wallSpace.height - spiderSpace.height - borderVertWidth,
   );
 
