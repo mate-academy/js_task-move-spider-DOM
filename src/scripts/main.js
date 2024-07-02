@@ -4,6 +4,10 @@ document.addEventListener('click', (e) => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
+  if (e.target.tagName !== 'DIV') {
+    return;
+  }
+
   let coordX = e.offsetX;
   let coordY = e.offsetY;
 
