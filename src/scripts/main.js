@@ -3,37 +3,37 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-const wallWidth = wall.offsetWidth;
-const wallHeight = wall.clientHeight;
-const wallBorder = wallWidth - wall.clientWidth;
-
 const { x, y } = wall.getBoundingClientRect();
 
-const spiderSize = spider.getBoundingClientRect();
+const spiderProps = spider.getBoundingClientRect();
+const wallProps = wall.getBoundingClientRect();
+const wallBorder = wall.clientLeft * 2;
+
+const maxOffsetX = wallProps.width - spiderProps.width - wallBorder;
+const maxoffsetY = wallProps.height - spiderProps.height - wallBorder;
 
 wall.addEventListener('click', (e) => {
   const { clientX, clientY } = e;
-  let offsetLeft = clientX - x - spiderSize.width / 2 - wallBorder / 2;
-  let offsetTop = clientY - y - spiderSize.height / 2 - wallBorder / 2;
 
-  console.log(offsetLeft, wallWidth, spiderSize.width, clientX);
+  let coordX = clientX - x - wallBorder / 2 - spiderProps.width / 2;
+  let coordY = clientY - y - wallBorder / 2 - spiderProps.height / 2;
 
-  if (offsetLeft >= wallWidth - spiderSize.width - wallBorder / 2) {
-    offsetLeft = wallWidth - spiderSize.width - wallBorder;
+  if (coordX > maxOffsetX) {
+    coordX = maxOffsetX;
   }
 
-  if (offsetLeft < 0) {
-    offsetLeft = 0;
+  if (coordX < 0) {
+    coordX = 0;
   }
 
-  if (offsetTop >= wallHeight - spiderSize.height) {
-    offsetTop = wallHeight - spiderSize.height;
+  if (coordY > maxoffsetY) {
+    coordY = maxoffsetY;
   }
 
-  if (offsetTop < 0) {
-    offsetTop = 0;
+  if (coordY < 0) {
+    coordY = 0;
   }
 
-  spider.style.left = offsetLeft + 'px';
-  spider.style.top = offsetTop + 'px';
+  spider.style.left = coordX + 'px';
+  spider.style.top = coordY + 'px';
 });
