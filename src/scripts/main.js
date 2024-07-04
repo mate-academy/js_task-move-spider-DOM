@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const wallRect = walls.getBoundingClientRect();
     const spiderRect = spider.getBoundingClientRect();
 
+    if (
+      e.clientX < wallRect.left ||
+      e.clientX > wallRect.right ||
+      e.clientY < wallRect.top ||
+      e.clientY > wallRect.bottom
+    ) {
+      return;
+    }
+
     let newLeft = e.clientX - wallRect.left - spiderRect.width / 2;
     let newTop = e.clientY - wallRect.top - spiderRect.height / 2;
 
