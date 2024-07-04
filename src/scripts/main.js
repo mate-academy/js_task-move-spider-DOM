@@ -5,6 +5,16 @@ document.addEventListener('click', (e) => {
   const wall = document.querySelector('.wall');
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
+
+  if (
+    e.clientX < wallRect.left ||
+    e.clientX > wallRect.right ||
+    e.clientY < wallRect.top ||
+    e.clientY > wallRect.bottom
+  ) {
+    return;
+  }
+
   let newTop =
     e.clientY - wallRect.top - wall.clientTop - spiderRect.height / 2;
   let newLeft =
@@ -25,6 +35,7 @@ document.addEventListener('click', (e) => {
   if (newLeft > wall.clientWidth - spider.clientWidth) {
     newLeft = wall.clientWidth - spider.clientWidth;
   }
+
   spider.style.top = `${newTop}px`;
   spider.style.left = `${newLeft}px`;
 });
