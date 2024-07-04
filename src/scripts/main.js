@@ -1,7 +1,6 @@
 'use strict';
 
 const spider = document.querySelector('.spider');
-// const wall = document.querySelector('.wall');
 
 document.addEventListener('click', (e) => {
   const borderWidth = e.target.offsetWidth - e.target.clientWidth;
