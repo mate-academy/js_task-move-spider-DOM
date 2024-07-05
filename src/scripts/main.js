@@ -8,25 +8,25 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  const indexX = e.x - e.target.offsetLeft - 10 - spider.clientWidth / 2;
-  const indexY = e.y - e.target.offsetTop - 10 - spider.clientHeight / 2;
+  const indexX = e.x - e.target.offsetLeft - spider.clientWidth / 2;
+  const indexY = e.y - e.target.offsetTop - spider.clientHeight / 2;
 
   spider.style.left = `${indexX}px`;
   spider.style.top = `${indexY}px`;
 
-  if (indexX < 35) {
+  if (indexX < spider.clientWidth / 2) {
     spider.style.left = '0';
   }
 
-  if (indexY < 35) {
+  if (indexY < spider.clientHeight / 2) {
     spider.style.top = '0';
   }
 
-  if (indexX > 370) {
+  if (indexX > wall.clientWidth - spider.clientWidth) {
     spider.style.left = `${e.target.clientWidth - spider.clientWidth}px`;
   }
 
-  if (indexY > 370) {
+  if (indexY > wall.clientHeight - spider.clientHeight) {
     spider.style.top = `${e.target.clientHeight - spider.clientHeight}px`;
   }
 });
