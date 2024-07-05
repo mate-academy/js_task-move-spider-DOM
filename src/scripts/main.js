@@ -8,8 +8,8 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  const indexX = e.x - e.target.offsetLeft - spider.clientWidth / 2;
-  const indexY = e.y - e.target.offsetTop - spider.clientHeight / 2;
+  const indexX = e.x - e.target.offsetLeft - 10 - spider.clientWidth / 2;
+  const indexY = e.y - e.target.offsetTop - 10 - spider.clientHeight / 2;
 
   spider.style.left = `${indexX}px`;
   spider.style.top = `${indexY}px`;
