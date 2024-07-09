@@ -19,7 +19,7 @@ document.addEventListener('click', (e) => {
       spiderCoord.x = 0;
     } else if (
       coord.x >
-      wallEl.offsetLeft + wallEl.offsetWidth - spider?.clientWidth / 2
+      wallEl.offsetLeft + wallEl?.clientWidth - spider?.clientWidth / 2
     ) {
       spiderCoord.x =
         wallEl.offsetWidth - spider?.clientWidth - wallEl?.clientLeft * 2;
@@ -38,7 +38,7 @@ document.addEventListener('click', (e) => {
       spiderCoord.y = 0;
     } else if (
       coord.y >
-      wallEl.offsetTop + wallEl.offsetHeight - spider?.clientHeight / 2
+      wallEl.offsetTop + wallEl.clientHeight - spider?.clientHeight / 2
     ) {
       spiderCoord.y =
         wallEl.offsetHeight - spider?.clientHeight - wallEl?.clientTop * 2;
