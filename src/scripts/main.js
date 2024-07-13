@@ -1,28 +1,25 @@
-'use strict'; // Включаем строгий режим для безопасности
+'use strict';
 
 // Находим элементы стены и паука
 const wall = document.querySelector('.wall');
-const spider = document.querySelector('.spider');
+const spider = document.querySelector('.spider'); // или byid
 
 // Добавляем обработчик клика на документ
 document.addEventListener('click', (e) => {
+  // общий класс
   if (e.target !== wall) {
     return;
   } // Проверяем, что кликнули на стену
 
   // Максимальные координаты для паука
-  const maxY = wall.clientHeight - spider.clientHeight;
-  const maxX = wall.clientWidth - spider.clientWidth;
+  const y = wall.clientHeight - spider.clientHeight;
+  const x = wall.clientWidth - spider.clientWidth;
 
-  // Новые координаты центра паука
-  const yPos = e.offsetY - spider.clientHeight / 2;
-  const xPos = e.offsetX - spider.clientWidth / 2;
-
-  // Ограничиваем координаты для паука
-  const y = Math.max(0, Math.min(maxY, yPos));
-  const x = Math.max(0, Math.min(maxX, xPos));
+  const positionX = e.offsetX - spider.clientWidth / 2;
+  // e.offsetX де був цей клик
+  const positionY = e.offsetY - spider.clientHeight / 2;
 
   // Устанавливаем новые координаты паука
-  spider.style.top = `${y}px`;
-  spider.style.left = `${x}px`;
+  spider.style.top = `${Math.max(Math.min(y, positionY), 0)}px`; // math mix - правый бордер
+  spider.style.left = `${Math.max(Math.min(x, positionX), 0)}px`; // math max - левый бордер
 });
