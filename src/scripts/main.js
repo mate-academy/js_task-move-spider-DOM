@@ -9,24 +9,22 @@ document.addEventListener('click', (e) => {
   const borderTop = parseInt(getComputedStyle(wall).borderTopWidth);
   const wallWidth = parseInt(getComputedStyle(wall).width);
   const wallHeight = parseInt(getComputedStyle(wall).height);
-  let newLeft = e.clientX - notWallX - borderLeft - spider.offsetWidth / 2;
-  let newTop = e.clientY - notWallY - borderTop - spider.offsetHeight / 2;
+  const NotAvailableXLeft = e.clientX < notWallX + borderLeft;
+  const NotAvailableXRight = e.clientX > notWallX + borderLeft + wallWidth;
+  const NotAvailableYTop = e.clientY < notWallY + borderTop;
+  const NotAvailableXBottom = e.clientY > notWallY + borderTop + wallHeight;
 
-  if (newLeft < 0) {
-    newLeft = 0;
+  if (
+    NotAvailableXLeft ||
+    NotAvailableXRight ||
+    NotAvailableYTop ||
+    NotAvailableXBottom
+  ) {
+    return;
   }
 
-  if (newLeft > wallWidth - spider.offsetWidth) {
-    newLeft = wallWidth - spider.offsetWidth;
-  }
-
-  if (newTop < 0) {
-    newTop = 0;
-  }
-
-  if (newTop > wallHeight - spider.offsetHeight) {
-    newTop = wallHeight - spider.offsetHeight;
-  }
+  const newLeft = e.clientX - notWallX - borderLeft - spider.offsetWidth / 2;
+  const newTop = e.clientY - notWallY - borderTop - spider.offsetHeight / 2;
 
   spider.style.left = `${newLeft}px`;
   spider.style.top = `${newTop}px`;
