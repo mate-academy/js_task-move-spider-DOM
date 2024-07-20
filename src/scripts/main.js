@@ -10,23 +10,19 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  let x = e.clientX;
-  let y = e.clientY;
+  let x = e.clientX - wallRect.left - wallBorderSize - spider.width / 2;
+  let y = e.clientY - wallRect.top - wallBorderSize - spider.height / 2;
 
-  if (x < wallRect.left + wallBorderSize + spider.width / 2) {
+  if (x < 0) {
     x = 0;
-  } else if (x > wallRect.right - wallBorderSize - spider.width / 2) {
-    x = wallRect.width - spider.width - wallBorderSize * 2;
-  } else {
-    x = e.clientX - wallRect.left - spider.width / 2 - wallBorderSize;
+  } else if (x > wall.clientWidth - spider.clientWidth) {
+    x = wall.clientWidth - spider.clientWidth;
   }
 
-  if (y < wallRect.top + wallBorderSize + spider.height / 2) {
+  if (y < 0) {
     y = 0;
-  } else if (y > wallRect.bottom - wallBorderSize - spider.height / 2) {
-    y = wallRect.height - spider.height - wallBorderSize * 2;
-  } else {
-    y = e.clientY - wallRect.top - spider.height / 2 - wallBorderSize;
+  } else if (y > wall.clientHeight - spider.clientHeight) {
+    y = wall.clientHeight - spider.clientHeight;
   }
 
   spider.style.left = x + 'px';
