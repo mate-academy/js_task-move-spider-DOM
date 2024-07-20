@@ -6,6 +6,10 @@ const wallBorderSize = Number.parseFloat(getComputedStyle(wall).borderWidth);
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', (e) => {
+  if (!e.target.closest('.wall')) {
+    return;
+  }
+
   let x = e.clientX;
   let y = e.clientY;
 
