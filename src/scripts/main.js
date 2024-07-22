@@ -10,10 +10,7 @@ const offsetY =
   wall.getBoundingClientRect().top + wallBorderWidth + spider.height / 2;
 const maxY = wall.clientHeight - spider.clientHeight;
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.wall')) {
-    return;
-  }
+wall.addEventListener('click', (e) => {
   spider.style.left = getCoordinate(e.clientX, offsetX, maxX) + 'px';
   spider.style.top = getCoordinate(e.clientY, offsetY, maxY) + 'px';
 });
