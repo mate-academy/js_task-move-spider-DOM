@@ -4,19 +4,19 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 document.addEventListener('click', (e) => {
-  const x = e.offsetX;
-  const y = e.offsetY;
   const centerSpider = spider.offsetWidth / 2;
   const edge = wall.clientWidth;
+  const x = e.offsetX < centerSpider ? centerSpider : e.offsetX;
+  const y = e.offsetY < centerSpider ? centerSpider : e.offsetY;
 
   if (e.target.closest('.wall')) {
-    const newX = x < centerSpider ? centerSpider : x;
-    const rightX = newX + centerSpider > edge ? edge - centerSpider : newX;
-    const newY = y < centerSpider ? centerSpider : y;
-    const bottomY = newY + centerSpider > edge ? edge - centerSpider : newY;
+    const posX =
+      (x + centerSpider > edge ? edge - centerSpider : x) - centerSpider;
+    const posY =
+      (y + centerSpider > edge ? edge - centerSpider : y) - centerSpider;
 
     spider.style.cssText = `
-    transform: translate(${rightX - centerSpider}px, ${bottomY - centerSpider}px);
+    transform: translate(${posX}px, ${posY}px);
     `;
   }
 });
