@@ -20,5 +20,5 @@ document.addEventListener('click', (e) => {
   x = Math.max(0, Math.min(x, wall.clientWidth - spiderSize.width));
   y = Math.max(0, Math.min(y, wall.clientHeight - spiderSize.height));
   spider.style.left = `${x}px`;
-  spider.style.up = `${y}px`;
+  spider.style.top = `${y}px`;
 });
