@@ -8,27 +8,25 @@ document.addEventListener('click', (e) => {
 
   const rect = wall.getBoundingClientRect();
 
-  let x = e.clientX - rect.left;
-  let y = e.clientY - rect.top;
+  const WALL_LENGTH = 400;
+  const BORDER = 10;
+  const SPIDER_WIDTH = 50;
 
-  if (x > 400) {
-    x = 400 - 15;
-  }
+  let wallX = e.clientX - rect.left;
+  let wallY = e.clientY - rect.top;
 
-  if (y > 400) {
-    y = 400 - 15;
-  }
+  wallX = Math.max(
+    BORDER + SPIDER_WIDTH / 2,
+    Math.min(wallX, WALL_LENGTH - (SPIDER_WIDTH / 2 - BORDER)),
+  );
 
-  if (x < 15) {
-    x = 35;
-  }
-
-  if (y < 15) {
-    y = 35;
-  }
+  wallY = Math.max(
+    BORDER + SPIDER_WIDTH / 2,
+    Math.min(wallY, WALL_LENGTH - (SPIDER_WIDTH / 2 - BORDER)),
+  );
 
   if (e.target.className === 'wall') {
-    spider.style.left = x - 35 + 'px';
-    spider.style.top = y - 35 + 'px';
+    spider.style.left = wallX - (BORDER + SPIDER_WIDTH / 2) + 'px';
+    spider.style.top = wallY - (BORDER + SPIDER_WIDTH / 2) + 'px';
   }
 });
