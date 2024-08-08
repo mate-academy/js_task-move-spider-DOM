@@ -26,13 +26,13 @@ document.addEventListener('click', (e) => {
 
   if (moveX < 0) {
     moveX = 0;
-  } else if (moveX > wallRect.width - spider.offsetWidth) {
+  } else if (moveX > wallRect.width - spider.offsetWidth - centreOfSpider) {
     moveX = wallRect.width - spider.offsetWidth - border * 2;
   }
 
   if (moveY < 0) {
     moveY = 0;
-  } else if (moveY > wallRect.height - spider.offsetHeight) {
+  } else if (moveY > wallRect.height - spider.offsetHeight - centreOfSpider) {
     moveY = wallRect.height - spider.offsetHeight - border * 2;
   }
 
