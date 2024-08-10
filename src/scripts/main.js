@@ -4,6 +4,10 @@ document.addEventListener('click', (e) => {
   const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
 
+  if (!wall.contains(e.target)) {
+    return;
+  }
+
   const wallCoords = wall.getBoundingClientRect();
 
   const spiderCoords = {
