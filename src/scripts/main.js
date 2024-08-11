@@ -11,7 +11,7 @@ document.addEventListener('click', (e) => {
     const spiderHeight = spider.offsetHeight;
     const spiderWidth = spider.offsetWidth;
 
-    let positionX = e.clientX - wallRect.left - spider.offsetWidth / 2;
+    let positionX = e.clientX - wallRect.left - spiderWidth / 2;
     let positionY = e.clientY - wallRect.top - spiderHeight / 2;
 
     if (positionY < 0) {
@@ -21,9 +21,9 @@ document.addEventListener('click', (e) => {
     }
 
     if (positionX < 0) {
-      positionY = 0;
-    } else if (positionX + spiderWidth > wallRect.height) {
-      positionX = wallRect.height - spiderWidth;
+      positionX = 0;
+    } else if (positionX + spiderWidth > wallRect.width) {
+      positionX = wallRect.width - spiderWidth;
     }
 
     spider.style.top = `${positionY}px`;
