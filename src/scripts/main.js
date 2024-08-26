@@ -3,23 +3,19 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-document.addEventListener('click', (e) => {
+wall.addEventListener('click', (e) => {
   const wallBorder = parseInt(getComputedStyle(wall).border);
   const wallRect = wall.getBoundingClientRect();
-  const spiderRect = spider.getBoundingClientRect();
 
   let spiderLeft = e.clientX - wallRect.x - wallBorder - spider.offsetWidth / 2;
   let spiderTop = e.clientY - wallRect.y - wallBorder - spider.offsetHeight / 2;
 
-  spiderLeft = Math.max(
-    0,
-    Math.min(wallRect.width - spiderRect.width, spiderLeft),
-  );
+  const maxLeft = wall.offsetWidth - spider.offsetWidth - wallBorder * 2;
+  const maxTop = wall.offsetHeight - spider.offsetHeight - wallBorder * 2;
 
-  spiderTop = Math.max(
-    0,
-    Math.min(wallRect.height - spiderRect.height, spiderTop),
-  );
+  spiderLeft = Math.min(Math.max(spiderLeft, 0), maxLeft);
+
+  spiderTop = Math.min(Math.max(spiderTop, 0), maxTop);
 
   spider.style.left = `${spiderLeft}px`;
   spider.style.top = `${spiderTop}px`;
