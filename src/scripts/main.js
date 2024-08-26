@@ -3,6 +3,8 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
+const wallBorder = 0;
+
 document.addEventListener('click', (e) => {
   const x = e.clientX;
   const y = e.clientY;
@@ -10,12 +12,19 @@ document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
 
-  let newLeft = x - wallRect.left - spiderRect.width / 2;
-  let newTop = y - wallRect.top - spiderRect.height / 2;
+  let spiderLeft = x - wallRect.x - wallBorder - spider.offsetWidth / 2;
+  let spiderTop = y - wallRect.y - wallBorder - spider.offsetHeight / 2;
 
-  newLeft = Math.max(0, Math.min(wallRect.width - spiderRect.width, newLeft));
-  newTop = Math.max(0, Math.min(wallRect.height - spiderRect.height, newTop));
+  spiderLeft = Math.max(
+    0,
+    Math.min(wallRect.width - spiderRect.width, spiderLeft),
+  );
 
-  spider.style.left = `${newLeft}px`;
-  spider.style.top = `${newTop}px`;
+  spiderTop = Math.max(
+    0,
+    Math.min(wallRect.height - spiderRect.height, spiderTop),
+  );
+
+  spider.style.left = `${spiderLeft}px`;
+  spider.style.top = `${spiderTop}px`;
 });
