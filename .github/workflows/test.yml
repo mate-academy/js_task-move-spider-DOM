@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm start & sleep 5 && npm test
+      - run: npm start && sleep 30 && npm test
       - name: Upload tests report(cypress mochaawesome merged HTML report)
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
