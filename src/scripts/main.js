@@ -5,14 +5,7 @@ const spider = document.querySelector('.spider');
 
 spider.style.pointerEvents = 'none';
 
-function getPosition(clickCoordinates) {
-  const { x, y } = clickCoordinates;
-
-  const coordinates = {
-    left: 0,
-    top: 0,
-  };
-
+function getPosition({ x, y }) {
   const spiderWidth = spider.clientWidth;
   const spiderHeight = spider.clientHeight;
   const leftIndent = wall.offsetLeft + wall.clientLeft;
@@ -22,33 +15,20 @@ function getPosition(clickCoordinates) {
   const rightBoundary = leftIndent + wall.clientWidth - spiderWidth / 2;
   const bottomBoundary = topIndent + wall.clientHeight - spiderHeight / 2;
 
-  if (x > leftBoundary && x <= rightBoundary) {
-    coordinates.left = x - leftIndent - spiderWidth / 2;
-  }
+  const leftPosition =
+    Math.min(Math.max(x, leftBoundary), rightBoundary) - leftBoundary;
 
-  if (x > rightBoundary) {
-    coordinates.left = wall.clientWidth - spiderWidth;
-  }
+  const topPosition =
+    Math.min(Math.max(y, topBoundary), bottomBoundary) - topBoundary;
 
-  if (y > topBoundary && y <= bottomBoundary) {
-    coordinates.top = y - topIndent - spiderHeight / 2;
-  }
-
-  if (y > bottomBoundary) {
-    coordinates.top = wall.clientHeight - spiderHeight;
-  }
-
-  return coordinates;
+  return { leftPosition, topPosition };
 }
 
 document.addEventListener('click', (e) => {
   if (e.target === wall) {
-    const coordinates = {
-      x: e.clientX,
-      y: e.clientY,
-    };
+    const coordinates = getPosition({ x: e.clientX, y: e.clientY });
 
-    spider.style.left = `${getPosition(coordinates).left}px`;
-    spider.style.top = `${getPosition(coordinates).top}px`;
+    spider.style.left = `${coordinates.leftPosition}px`;
+    spider.style.top = `${coordinates.topPosition}px`;
   }
 });
