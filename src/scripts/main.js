@@ -14,8 +14,8 @@ document.addEventListener('click', (e) => {
   }
 
   const wallCoords = target.getBoundingClientRect();
-  const spiderHalfWidth = spider.clientWidth / 2;
-  const spiderHalfHeight = spider.clientHeight / 2;
+  const spiderHalfWidth = spider.offsetWidth / 2;
+  const spiderHalfHeight = spider.offsetHeight / 2;
 
   const newLeft = Math.max(
     0,
