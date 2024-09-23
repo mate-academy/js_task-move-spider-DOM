@@ -2,12 +2,11 @@
 
 document.addEventListener('click', (e) => {
   const spider = document.querySelector('.spider');
+  const target = e.target.closest('.wall');
 
   if (!spider) {
     return;
   }
-
-  const target = e.target.closest('.wall');
 
   if (!target) {
     return;
