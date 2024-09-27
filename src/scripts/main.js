@@ -5,41 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const spider = document.querySelector('.spider');
 
   wall.addEventListener('click', (ev) => {
-    // spider size
-    const spiderWidth = spider.clientWidth;
-    const spiderHeight = spider.clientHeight;
+    const wallX = wall.clientWidth;
+    const wallY = wall.clientHeight;
+    const spiderX = spider.clientWidth;
+    const spiderY = spider.clientHeight;
+    const clickX = ev.offsetX;
+    const clickY = ev.offsetY;
+    const maxX = wallX - spiderX;
+    const maxY = wallY - spiderY;
 
-    // top and left of the wall
-    const wallRect = wall.getBoundingClientRect();
-
-    // coordinates of the cursor click
-    const clickX = ev.clientX + window.scrollX - wallRect.left;
-    const clickY = ev.clientY + window.scrollY - wallRect.top;
-
-    // setting the center of the spider
-    let newLeft = clickX - spiderWidth / 2;
-    let newTop = clickY - spiderHeight / 2;
-
-    // wall restriction
-    if (newLeft < 0) {
-      newLeft = 0;
-    }
-
-    if (newLeft > wall.clientWidth - spiderWidth) {
-      newLeft = wall.clientWidth - spiderWidth;
-    }
-
-    if (newTop < 0) {
-      newTop = 0;
-    }
-
-    if (newTop > wall.clientHeight - spiderHeight) {
-      newTop = wall.clientHeight - spiderHeight;
-    }
-
-    // new spider position
+    spider.style.left =
+      Math.max(0, Math.min(clickX - spiderX / 2, maxX)) + 'px';
+    spider.style.top = Math.max(0, Math.min(clickY - spiderY / 2, maxY)) + 'px';
     spider.style.position = 'absolute';
-    spider.style.left = `${newLeft}px`;
-    spider.style.top = `${newTop}px`;
   });
 });
