@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      - run: npm update
       - run: npm start & sleep 5 && npm test
       - name: Upload tests report(cypress mochaawesome merged HTML report)
         if: ${{ always() }}
