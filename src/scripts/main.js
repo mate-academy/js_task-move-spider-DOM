@@ -12,18 +12,18 @@ document.addEventListener('click', (e) => {
   const clickY = e.clientY - wallRect.top;
 
   if (
-    clickX < borderWidth ||
-    clickX > wallRect.width - borderWidth ||
-    clickY < borderWidth ||
-    clickY > wallRect.height - borderWidth
+    clickX < -borderWidth ||
+    clickX > wallRect.width + borderWidth ||
+    clickY < -borderWidth ||
+    clickY > wallRect.height + borderWidth
   ) {
     return;
   }
 
-  const minX = borderWidth - 10;
-  const maxX = wallRect.width - spiderWidth - 20;
-  const minY = borderWidth - 10;
-  const maxY = wallRect.height - spiderHeight - 20;
+  const minX = 0;
+  const maxX = wallRect.width - spiderWidth - borderWidth * 2;
+  const minY = 0;
+  const maxY = wallRect.height - spiderHeight - borderWidth * 2;
 
   let newLeft = clickX - spiderWidth / 2;
   let newTop = clickY - spiderHeight / 2;
