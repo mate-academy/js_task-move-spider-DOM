@@ -2,10 +2,10 @@
 
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
+const wallSize = wall.getBoundingClientRect();
+const spiderSize = spider.getBoundingClientRect();
 
 document.addEventListener('click', (e) => {
-  const wallSize = wall.getBoundingClientRect();
-  const spiderSize = spider.getBoundingClientRect();
   const clickInWall = e.target.closest('.wall');
 
   if (!clickInWall) {
