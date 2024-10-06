@@ -34,6 +34,6 @@ document.addEventListener('click', (e) => {
     positionY = wallSize.height - spiderSize.height - border * 2;
   }
 
-  spider.style.left = `${positionX}px`;
-  spider.style.top = `${positionY}px`;
+  spider.style.left = positionX + 'px';
+  spider.style.top = positionY + 'px';
 });
