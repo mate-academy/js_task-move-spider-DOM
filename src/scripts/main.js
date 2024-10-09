@@ -1,34 +1,33 @@
 'use strict';
 
 document.addEventListener('click', (e) => {
-  // Клік в будь-якому місці на полі
   const relatedTarget = e.target.closest('.wall');
   const getSpider = document.querySelector('.spider');
 
-  // Перевіряємо, чи клікнули по полю
   if (relatedTarget) {
-    // Отримати координати контейнера
     const rect = relatedTarget.getBoundingClientRect();
-
-    // Отримати ширину та висоту контейнера та павука
     const widthContainer = rect.width;
     const heightContainer = rect.height;
 
     const widthSpider = getSpider.clientWidth;
     const heightSpider = getSpider.clientHeight;
 
-    const subWidth = widthContainer - widthSpider;
-    const subHeight = heightContainer - heightSpider;
+    // Отримуємо стиль рамки
+    const style = getComputedStyle(relatedTarget);
+    const borderLeft = parseInt(style.borderLeftWidth);
+    const borderTop = parseInt(style.borderTopWidth);
+    const borderRight = parseInt(style.borderRightWidth);
+    const borderBottom = parseInt(style.borderBottomWidth);
 
-    // Отримати координати кліку відносно контейнера
-    const forX = e.clientX - rect.left; // відняти ліву координату контейнера
-    const forY = e.clientY - rect.top; // відняти верхню координату контейнера
+    const subWidth = widthContainer - widthSpider - borderLeft - borderRight;
+    const subHeight = heightContainer - heightSpider - borderTop - borderBottom;
 
-    // Перевірка, чи координати в межах
+    const forX = e.clientX - rect.left - widthSpider / 2 - borderLeft;
+    const forY = e.clientY - rect.top - heightSpider / 2 - borderTop;
+
     const newX = Math.max(0, Math.min(subWidth, forX));
     const newY = Math.max(0, Math.min(subHeight, forY));
 
-    // Встановити позиції павука
     getSpider.style.left = newX + 'px';
     getSpider.style.top = newY + 'px';
   }
