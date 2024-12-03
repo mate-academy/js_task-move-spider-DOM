@@ -13,6 +13,6 @@ document.addEventListener('click', (e) => {
   newLeft = Math.max(0, Math.min(newLeft, wallsRect.width - spiderRect.width));
   newTop = Math.max(0, Math.min(newTop, wallsRect.height - spiderRect.height));
 
-  spider.computedStyleMap.left = `${newLeft}px`;
-  spider.computedStyleMap.top = `${newTop}px`;
+  spider.style.left = `${newLeft}px`;
+  spider.style.top = `${newTop}px`;
 });
