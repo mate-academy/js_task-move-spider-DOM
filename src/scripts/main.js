@@ -11,7 +11,7 @@ document.addEventListener('click', (e) => {
 
     const spiderHalfWidth = spiderRect.width / 2;
     const spiderHalfHeight = spiderRect.height / 2;
-    const borderWidth = 10;
+    const borderWidth = parseInt(getComputedStyle(wall).borderWidth, 10);
 
     const clickX = e.clientX - wallRect.left;
     const clickY = e.clientY - wallRect.top;
