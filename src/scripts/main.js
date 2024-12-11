@@ -6,15 +6,15 @@ document.addEventListener('click', (e) => {
   const spider = document.querySelector('.spider');
 
   wall.addEventListener('click', () => {
-    const wallRect = wall.getClientRects();
+    const wallRect = wall.getBoundingClientRect();
     const spiderRect = spider.getBoundingClientRect();
 
     const spiderHalfWidth = spiderRect.width / 2;
     const spiderHalfHeight = spiderRect.height / 2;
     const borderWidth = 10;
 
-    const clickX = event.clientX - wallRect.left;
-    const clickY = event.clientY - wallRect.top;
+    const clickX = e.clientX - wallRect.left;
+    const clickY = e.clientY - wallRect.top;
 
     let newLeft = clickX - spiderHalfWidth - borderWidth;
     let newTop = clickY - spiderHalfHeight - borderWidth;
