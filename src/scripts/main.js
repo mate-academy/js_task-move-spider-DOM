@@ -7,14 +7,14 @@ document.addEventListener('click', (e) => {
   const border = parseInt(getComputedStyle(wall).borderWidth);
 
   const spider = document.querySelector('.spider');
-  const spiderWidth = parseInt(spider.width) / 2;
-  const spiderHeight = parseInt(spider.height) / 2;
+  const spiderWidth = spider.offsetWidth / 2;
+  const spiderHeight = spider.offsetHeight / 2;
 
   if (
     e.clientX < wallLeft ||
     e.clientY < wallTop ||
     e.clientX > wallLeft + wall.offsetWidth ||
-    e.clientY > wallTop + wall.offsetHeigth
+    e.clientY > wallTop + wall.offsetHeight
   ) {
     return;
   }
