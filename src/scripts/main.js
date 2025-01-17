@@ -1,5 +1,8 @@
 'use strict';
 
 document.addEventListener('click', (e) => {
-  // write code here
+  const spiderMan = document.querySelector('.spider');
+
+  spiderMan.style.left = `${e.clientX}px`;
+  spiderMan.style.top = `${e.clientY}px`;
 });
