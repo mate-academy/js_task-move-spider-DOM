@@ -15,7 +15,7 @@ document.addEventListener('click', (e) => {
     mouseY >= 0 &&
     mouseY <= wallRect.height
   ) {
-    spider.style.left = `${Math.min(mouseX - spider.offsetWidth / 2)}px`;
-    spider.style.top = `${Math.min(mouseY - spider.offsetWidth / 2)}px`;
+    spider.style.left = `${mouseX - spider.offsetWidth / 2}px`;
+    spider.style.top = `${mouseY - spider.offsetWidth / 2}px`;
   }
 });
