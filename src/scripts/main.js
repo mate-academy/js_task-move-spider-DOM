@@ -1,38 +1,40 @@
 'use strict';
 
-const wall = document.querySelector('.wall');
-const spider = document.querySelector('.spider');
-
 document.addEventListener('click', (e) => {
-  function calculateSpiderPosition() {
-    const spiderPosition = {
-      topCoord: e.clientY - wall.offsetTop - spider.offsetHeight / 2,
-      leftCoord: e.clientX - wall.offsetLeft - spider.offsetWidth / 2,
-    };
+  const wall = document.querySelector('.wall');
+  const wallTop = wall.offsetTop;
+  const wallLeft = wall.offsetLeft;
+  const border = parseInt(getComputedStyle(wall).borderWidth);
 
-    if (spiderPosition.leftCoord < 0) {
-      spiderPosition.leftCoord = 0;
-    } else if (
-      spiderPosition.leftCoord + spider.offsetWidth >
-      wall.clientWidth
-    ) {
-      spiderPosition.leftCoord = wall.clientWidth - spider.offsetWidth;
-    }
+  const spider = document.querySelector('.spider');
+  const spiderWidth = parseInt(spider.width) / 2;
+  const spiderHeight = parseInt(spider.height) / 2;
 
-    if (spiderPosition.topCoord < 0) {
-      spiderPosition.topCoord = 0;
-    } else if (
-      spiderPosition.topCoord + spider.offsetHeight >
-      wall.clientHeight
-    ) {
-      spiderPosition.topCoord = wall.clientHeight - spider.offsetHeight;
-    }
-
-    return spiderPosition;
+  if (
+    e.clientX < wallLeft ||
+    e.clientY < wallTop ||
+    e.clientX > wallLeft + wall.offsetWidth ||
+    e.clientY > wallTop + wall.offsetHeigth
+  ) {
+    return;
   }
 
-  const { topCoord, leftCoord } = calculateSpiderPosition();
+  spider.style.left = e.clientX - wallLeft - spiderWidth - border + 'px';
+  spider.style.top = e.clientY - wallTop - spiderHeight - border + 'px';
 
-  spider.style.top = `${topCoord}px`;
-  spider.style.left = `${leftCoord}px`;
+  if (e.clientX < wallLeft + border + spiderWidth) {
+    spider.style.left = 0 + 'px';
+  }
+
+  if (e.clientY < wallTop + border + spiderHeight) {
+    spider.style.top = 0 + 'px';
+  }
+
+  if (e.clientX > wallLeft + border + wall.clientWidth - spiderWidth) {
+    spider.style.left = wall.clientWidth - spider.width + 'px';
+  }
+
+  if (e.clientY > wallTop + border + wall.clientHeight - spiderHeight) {
+    spider.style.top = wall.clientHeight - spider.height + 'px';
+  }
 });
