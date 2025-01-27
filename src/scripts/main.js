@@ -23,16 +23,16 @@ document.addEventListener('click', (e) => {
 
   const spider = document.querySelector('.spider');
   const spiderWidth = spider.clientWidth;
-  const spiderHeigth = spider.clientHeight;
-  let spiderShiftTop = topClick - wallOffsetTop - spiderWidth / 2;
-  let spiderShiftLeft = leftClick - wallOffsetLeft - spiderHeigth / 2;
+  const spiderHeight = spider.clientHeight;
+  let spiderShiftTop = topClick - wallOffsetTop - spiderHeight / 2;
+  let spiderShiftLeft = leftClick - wallOffsetLeft - spiderWidth / 2;
 
   if (spiderShiftTop < 0) {
     spiderShiftTop = 0;
   }
 
-  if (spiderShiftTop + spiderHeigth > wallClientHeight) {
-    spiderShiftTop = wallClientHeight - spiderHeigth;
+  if (spiderShiftTop + spiderHeight > wallClientHeight) {
+    spiderShiftTop = wallClientHeight - spiderHeight;
   }
 
   if (spiderShiftLeft < 0) {
