@@ -1,3 +1,3 @@
 @import 'utils/vars';
-@import 'utils/mixins';
+@use 'utils/mixins' as *;
 @import 'utils/extends';
