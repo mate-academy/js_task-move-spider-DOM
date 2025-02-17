@@ -1,16 +1,22 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
-const clickableZone = document.querySelector('.wall');
+document.addEventListener('click', (e) => {
+  const spider = document.querySelector('.spider')
+  const wall = document.querySelector('.wall')
 
-clickableZone.addEventListener('click', (e) => {
-  const rect = clickableZone.getBoundingClientRect();
 
-  let x = e.clientX - rect.left - 10;
-  let y = e.clientY - rect.top - 10;
+  if (e.target.closest('.wall')) {
+    const rectSpider = spider.getBoundingClientRect();
+    const rectWall = wall.getBoundingClientRect();
+    const wallOffset = 10;
 
-  x -= spider.offsetWidth / 2;
-  y -= spider.offsetHeight / 2;
+    let x = e.clientX - rectWall.left - rectSpider.width / 2 - wallOffset;
+    let y = e.clientY - rectWall.top - rectSpider.height / 2 - wallOffset;
 
-  spider.style.transform = `translate(${x}px, ${y}px)`;
+    x = Math.max(0, Math.min(x, wall.clientWidth - rectSpider.width));
+    y = Math.max(0, Math.min(y, wall.clientHeight - rectSpider.height));
+
+    spider.style.transform = `translate(${x}px, ${y}px)`
+  }
 });
+
