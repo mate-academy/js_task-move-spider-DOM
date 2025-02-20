@@ -1,26 +1,30 @@
-1. Replace `<your_account>` with your Github username in the link
-    - [DEMO LINK](https://<your_account>.github.io/js_task-move-spider-DOM/)
-2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
-    - Run `npm run test` command to test your code;
-    - Run `npm run test:only -- -n` to run fast test ignoring linter;
-    - Run `npm run test:only -- -l` to run fast test with additional info in console ignoring linter.
-    
-### Task: Move the spider
+# Move the Spider
 
-Move the spider to the cursor on click.
+## 🎮 About the Project
+This project implements an interactive animation where a spider moves toward the cursor when clicking on the screen. The animation adds a fun and dynamic effect, making the page more engaging.
 
-**Requirements:**
+## 🚀 Tech Stack
+- **HTML** (BEM methodology for structured markup)
+- **CSS** (For styling and animations)
+- **JavaScript** (Handles click events and movement logic)
 
-- The spider center should come exactly under the pointer on click (without crossing the wall edge).
-- The spider can not cross wall boundaries.
-- When the page is scrolled, nothing should break.
+## 🛠️ Tools & Dependencies
+- **ESLint** – Ensuring code quality  
+- **Prettier** – Code formatting for readability  
+- **Cypress** – End-to-end testing  
+- **Mochawesome** – Test reporting  
+- **Parcel** – Web application bundler  
 
-**Notes:**
+## 📌 Features
+✅ Moves the spider to the clicked position  
+✅ Smooth and natural animation effect  
+✅ Handles multiple clicks dynamically  
 
-- The code should work with spider and walls of any sizes, do not use hardcoded sizes values.
-- Use properties event.clientX/event.clientY to get click coordinates.
-- You can modify only `src/scripts/main.js` file.
+## 🌐 Demo
+🔗 [Live Demo](https://AndriiZakharenko.github.io/move-spider/)
 
+## 📸 Reference Image  
+<img src="example/example.gif" alt="reference image" width="400px" />
 
-### Gif of result
-![](example/example.gif)
+## 📜 License
+This project is forked from 💻 [Mate Academy](https://github.com/mate-academy/js_task-move-spider-DOM)
