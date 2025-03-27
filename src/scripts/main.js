@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let newX = e.clientX - wallRect.left - spiderHalfWidth;
     let newY = e.clientY - wallRect.top - spiderHalfHeight;
 
-    // Constrain within wall boundaries
     newX = Math.max(0, Math.min(newX, wallRect.width - spiderRect.width));
     newY = Math.max(0, Math.min(newY, wallRect.height - spiderRect.height));
 
-    spider.style.transform = `translate(${newX}px, ${newY}px)`;
+    spider.style.left = `${newX}px`;
+    spider.style.top = `${newY}px`;
   });
 });
