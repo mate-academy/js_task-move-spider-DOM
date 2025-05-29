@@ -12,8 +12,8 @@ document.addEventListener('click', (e) => {
   const destinationY = clickY - wallY - wallBorderWidth - spider.height / 2;
   const wallWidth = wall.offsetWidth - wallBorderWidth * 2;
   const wallHeight = wall.offsetHeight - wallBorderWidth * 2;
-  const spiderWidth = spider.width;
-  const spiderHeight = spider.height;
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
   const isWithinWall =
     destinationX >= 0 &&
     destinationX <= wallWidth - spiderWidth &&
@@ -30,8 +30,8 @@ document.addEventListener('click', (e) => {
   }
 
   if (isWithinWall) {
-    spider.style.left = `${clickX - wallX - wallBorderWidth - spider.width / 2}px`;
-    spider.style.top = `${clickY - wallY - wallBorderWidth - spider.height / 2}px`;
+    spider.style.left = `${clickX - wallX - wallBorderWidth - spiderWidth / 2}px`;
+    spider.style.top = `${clickY - wallY - wallBorderWidth - spiderHeight / 2}px`;
   } else {
     const clampedX = Math.max(
       0,
