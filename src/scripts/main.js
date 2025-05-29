@@ -31,7 +31,7 @@ document.addEventListener('click', (e) => {
     wallSpace.width - spiderSpace.width - borderHorWidth,
   );
   const newTop = Math.min(
-    Math.max(clickY - spiderSpace.height / 2 - borderHorWidth / 2, 0),
+    Math.max(clickY - spiderSpace.height / 2 - borderVertWidth / 2, 0),
     wallSpace.height - spiderSpace.height - borderVertWidth,
   );
 
