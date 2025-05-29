@@ -8,12 +8,12 @@ document.addEventListener('click', (e) => {
   const wallBorderWidth = parseInt(getComputedStyle(wall).borderWidth, 10);
   const clickX = e.pageX;
   const clickY = e.pageY;
-  const destinationX = clickX - wallX - wallBorderWidth - spider.width / 2;
-  const destinationY = clickY - wallY - wallBorderWidth - spider.height / 2;
-  const wallWidth = wall.offsetWidth - wallBorderWidth * 2;
-  const wallHeight = wall.offsetHeight - wallBorderWidth * 2;
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
+  const destinationX = clickX - wallX - wallBorderWidth - spiderWidth / 2;
+  const destinationY = clickY - wallY - wallBorderWidth - spiderHeight / 2;
+  const wallWidth = wall.offsetWidth - wallBorderWidth * 2;
+  const wallHeight = wall.offsetHeight - wallBorderWidth * 2;
   const isWithinWall =
     destinationX >= 0 &&
     destinationX <= wallWidth - spiderWidth &&
@@ -30,8 +30,8 @@ document.addEventListener('click', (e) => {
   }
 
   if (isWithinWall) {
-    spider.style.left = `${clickX - wallX - wallBorderWidth - spiderWidth / 2}px`;
-    spider.style.top = `${clickY - wallY - wallBorderWidth - spiderHeight / 2}px`;
+    spider.style.left = `${destinationX}px`;
+    spider.style.top = `${destinationY}px`;
   } else {
     const clampedX = Math.max(
       0,
