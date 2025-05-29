@@ -20,6 +20,15 @@ document.addEventListener('click', (e) => {
     destinationY >= 0 &&
     destinationY <= wallHeight - spiderHeight;
 
+  if (
+    clickX < wallX ||
+    clickX > wallX + wall.offsetWidth ||
+    clickY < wallY ||
+    clickY > wallY + wall.offsetHeight
+  ) {
+    return;
+  }
+
   if (isWithinWall) {
     spider.style.left = `${clickX - wallX - wallBorderWidth - spider.width / 2}px`;
     spider.style.top = `${clickY - wallY - wallBorderWidth - spider.height / 2}px`;
