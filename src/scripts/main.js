@@ -9,6 +9,11 @@ document.addEventListener('click', (e) => {
   }
 
   const spider = document.querySelector('.spider');
+
+  if (!spider) {
+    return;
+  }
+
   const spiderRect = spider.getBoundingClientRect();
   const wallRect = wall.getBoundingClientRect();
   const border = parseInt(getComputedStyle(wall).borderWidth);
