@@ -7,6 +7,15 @@ document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
   const spiderRect = spider.getBoundingClientRect();
 
+  if (
+    e.clientX < wallRect.left ||
+    e.clientX > wallRect.right ||
+    e.clientY < wallRect.top ||
+    e.clientY > wallRect.bottom
+  ) {
+    return;
+  }
+
   let newLeft =
     e.clientX - wallRect.left - wall.clientLeft - spiderRect.width / 2;
   let newTop =
