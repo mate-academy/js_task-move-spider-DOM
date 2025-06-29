@@ -13,6 +13,9 @@ document.addEventListener('click', (e) => {
   const goRight = offLeft + wall.clientWidth - spider.clientWidth / 2;
   const goBottom = offTop + wall.clientHeight - spider.clientHeight / 2;
 
+  const relativeX = e.clientX - offLeft;
+  const relativeY = e.clientY - offTop;
+
   const link = e.target.closest('.wall');
 
   if (!link) {
@@ -26,21 +29,21 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  if (goBottom < e.clientY && goLeft < 0) {
+  if (goBottom < relativeY && goLeft < 0) {
     spider.style.left = '0px';
     spider.style.top = `${wall.clientHeight - spider.clientHeight}px`;
 
     return;
   }
 
-  if (goTop < 0 && goRight < e.clientX) {
+  if (goTop < 0 && goRight < relativeX) {
     spider.style.left = `${wall.clientWidth - spider.clientWidth}px`;
-    spider.style.top = '0px';
 
+    spider.style.top = '0px';
     return;
   }
 
-  if (goRight < e.clientX && goBottom < e.clientY) {
+  if (goRight < relativeX && goBottom < relativeY) {
     spider.style.left = `${wall.clientWidth - spider.clientWidth}px`;
     spider.style.top = `${wall.clientHeight - spider.clientHeight}px`;
 
@@ -54,7 +57,7 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  if (goRight < e.clientX) {
+  if (goRight < relativeX) {
     spider.style.left = `${wall.clientWidth - spider.clientWidth}px`;
     spider.style.top = `${goTop}px`;
 
@@ -68,7 +71,7 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  if (goBottom < e.clientY) {
+  if (goBottom < relativeY) {
     spider.style.left = `${goLeft}px`;
     spider.style.top = `${wall.clientHeight - spider.clientHeight}px`;
 
