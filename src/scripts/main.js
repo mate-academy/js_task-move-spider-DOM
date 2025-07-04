@@ -26,12 +26,12 @@ walls.addEventListener('click', (e) => {
     above = 0;
   }
 
-  if (left > wallRect.width - spiderW) {
-    left = wallRect.width - spiderW;
+  if (left > wallRect.width - pavyk.offsetWidth) {
+    left = wallRect.width - pavyk.offsetWidth;
   }
 
-  if (above > wallRect.height - spiderH) {
-    above = wallRect.height - spiderH;
+  if (above > wallRect.height - pavyk.offsetHeight) {
+    above = wallRect.height - pavyk.offsetHeight;
   }
 
   pavyk.style.left = `${left}px`;
