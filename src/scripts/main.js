@@ -18,8 +18,8 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  let x = e.offsetX - spiderHeight / 2;
-  let y = e.offsetY - spiderWidth / 2;
+  let x = e.offsetX - spiderWidth / 2;
+  let y = e.offsetY - spiderHeight / 2;
   // допустимі значення
 
   x = Math.max(0, Math.min(x, wallWidth - spiderWidth));
