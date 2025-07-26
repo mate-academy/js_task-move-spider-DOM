@@ -3,23 +3,21 @@
 const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
-spider.style.display = 'block';
-
 wall.addEventListener('click', (e) => {
   // write code here
+  if (!e.target.matches('.wall')) {
+    return;
+  }
 
-  const wallRect = wall.getBoundingClientRect();
-  const x = e.clientX - wallRect.left;
-  const y = e.clientY - wallRect.top;
+  const x = e.pageX - wall.offsetLeft - wall.clientLeft;
+  const y = e.pageY - wall.offsetTop - wall.clientTop;
 
-  const spiderWidth = spider.offsetWidth;
-  const spiderHeight = spider.offsetHeight;
+  const spiderRect = spider.getBoundingClientRect();
+  const spiderWidth = spiderRect.width;
+  const spiderHeight = spiderRect.height;
 
   let newX = x - spiderWidth / 2;
   let newY = y - spiderHeight / 2;
-
-  newY -= 10;
-  newX -= 10;
 
   const maxX = wall.clientWidth - spiderWidth;
   const maxY = wall.clientHeight - spiderHeight;
