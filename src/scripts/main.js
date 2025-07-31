@@ -20,15 +20,13 @@ function moveSpider(x, y) {
   spider.style.top = `${spiderY}px`;
 }
 
+wall.addEventListener('mousemove', (el) => {
+  if (move) {
+    moveSpider(el.clientX, el.clientY);
+  }
+});
+
 wall.addEventListener('click', (e) => {
   moveSpider(e.clientX, e.clientY);
-
-  if (move) {
-    return;
-  }
   move = true;
-
-  wall.addEventListener('mousemove', (el) => {
-    moveSpider(el.clientX, el.clientY);
-  });
 });
