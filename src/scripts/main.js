@@ -3,36 +3,30 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-wall.addEventListener('click', (e) => {
+let move = false;
+
+function moveSpider(x, y) {
   const wallRect = wall.getBoundingClientRect();
-  const spiderWidth = spider.clientWidth;
-  const spiderHeight = spider.clientHeight;
+  const spiderW = spider.offsetWidth + 20;
+  const spiderH = spider.offsetHeight + 20;
 
-  const borderTop = parseInt(getComputedStyle(wall).borderTopWidth, 10);
-  const borderLeft = parseInt(getComputedStyle(wall).borderLeftWidth, 10);
+  let spiderX = x - wallRect.left - 35;
+  let spiderY = y - wallRect.top - 35;
 
-  const clickX = e.clientX - wallRect.left - borderLeft;
-  const clickY = e.clientY - wallRect.top - borderTop;
+  spiderX = Math.max(0, Math.min(spiderX, wallRect.width - spiderW));
+  spiderY = Math.max(0, Math.min(spiderY, wallRect.height - spiderH));
 
-  let left = clickX - spiderWidth / 2;
-  let t = clickY - spiderHeight / 2;
+  spider.style.left = `${spiderX}px`;
+  spider.style.top = `${spiderY}px`;
+}
 
-  if (left < 0) {
-    left = 0;
+wall.addEventListener('mousemove', (el) => {
+  if (move) {
+    moveSpider(el.clientX, el.clientY);
   }
+});
 
-  if (t < 0) {
-    t = 0;
-  }
-
-  if (left > wall.clientWidth - spiderWidth) {
-    left = wall.clientWidth - spiderWidth;
-  }
-
-  if (t > wall.clientHeight - spiderHeight) {
-    t = wall.clientHeight - spiderHeight;
-  }
-
-  spider.style.left = left + 'px';
-  spider.style.top = t + 'px';
+wall.addEventListener('click', (e) => {
+  moveSpider(e.clientX, e.clientY);
+  move = true;
 });
