@@ -13,8 +13,8 @@ document.addEventListener('click', (e) => {
 
     const wallWidth = parseFloat(getComputedStyle(wall).width);
     const wallHeight = parseFloat(getComputedStyle(wall).height);
-    const leftBorder = parseFloat(getComputedStyle(wall).borderLeft);
-    const topBorder = parseFloat(getComputedStyle(wall).borderTop);
+    const leftBorder = parseFloat(getComputedStyle(wall).borderLeftWidth);
+    const topBorder = parseFloat(getComputedStyle(wall).borderTopWidth);
 
     const moveX = cordsX - wallBound.x - leftBorder - spider.offsetWidth / 2;
     const moveY = cordsY - wallBound.y - topBorder - spider.offsetHeight / 2;
