@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wall) {
       const wallRect = wall.getBoundingClientRect();
       const spiderRect = spider.getBoundingClientRect();
+      const borderTop = parseInt(getComputedStyle(wall).borderTopWidth, 10);
+      const borderLeft = parseInt(getComputedStyle(wall).borderLeftWidth, 10);
 
       let newLeft =
-        e.clientX - wallRect.left - wall.clientLeft - spiderRect.width / 2;
-      let newTop =
-        e.clientY - wallRect.top - wall.clientTop - spiderRect.height / 2;
+        e.clientX - wallRect.left - borderLeft - spiderRect.width / 2;
+      let newTop = e.clientY - wallRect.top - borderTop - spiderRect.height / 2;
 
       if (newLeft < 0) {
         newLeft = 0;
@@ -23,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         newTop = 0;
       }
 
-      if (newLeft + spiderRect.width > wallRect.width - wall.clientLeft * 2) {
-        newLeft = wallRect.width - wall.clientLeft * 2 - spiderRect.width;
+      if (newLeft + spiderRect.width > wallRect.width - borderLeft * 2) {
+        newLeft = wallRect.width - borderLeft * 2 - spiderRect.width;
       }
 
-      if (newTop + spiderRect.height > wallRect.height - wall.clientTop * 2) {
-        newTop = wallRect.height - wall.clientTop * 2 - spiderRect.height;
+      if (newTop + spiderRect.height > wallRect.height - borderTop * 2) {
+        newTop = wallRect.height - borderTop * 2 - spiderRect.height;
       }
 
       spider.style.left = newLeft + 'px';
