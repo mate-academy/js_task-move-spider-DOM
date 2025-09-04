@@ -11,17 +11,15 @@ wall.addEventListener('click', (ev) => {
   const halfW = spiderRect.width / 2;
   const halfH = spiderRect.height / 2;
 
-  // Coordinates relative to wall
-  let x = ev.clientX - wallRect.left - halfW;
-  let y = ev.clientY - wallRect.top - halfH;
+  // Calculate center coordinates relative to wall
+  let centerX = ev.clientX - wallRect.left;
+  let centerY = ev.clientY - wallRect.top;
 
-  // Clamp inside wall
-  const maxX = wallRect.width - spiderRect.width;
-  const maxY = wallRect.height - spiderRect.height;
+  // Clamp the center, not the top-left corner
+  centerX = Math.max(halfW, Math.min(centerX, wallRect.width - halfW));
+  centerY = Math.max(halfH, Math.min(centerY, wallRect.height - halfH));
 
-  x = Math.max(0, Math.min(x, maxX));
-  y = Math.max(0, Math.min(y, maxY));
-
-  spider.style.left = `${x}px`;
-  spider.style.top = `${y}px`;
+  // Position spider so its center is at the clamped point
+  spider.style.left = `${centerX - halfW}px`;
+  spider.style.top = `${centerY - halfH}px`;
 });
