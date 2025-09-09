@@ -9,6 +9,7 @@
 
 Move the spider to the cursor on click.
 
+  
 **Requirements:**
 
 - The spider center should come exactly under the pointer on click (without crossing the wall edge).
