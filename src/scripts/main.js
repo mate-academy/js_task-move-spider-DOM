@@ -23,8 +23,8 @@ wall.addEventListener('click', (e) => {
   const maxWallX = e.clientX - coordsWall.left;
   const maxWallY = e.clientY - coordsWall.top;
 
-  const spiderCenterX = maxWallX - widthSpider / 2;
-  const spiderCenterY = maxWallY - heightSpider / 2;
+  const spiderCenterX = maxWallX - widthSpider / 2 - wall.clientLeft;
+  const spiderCenterY = maxWallY - heightSpider / 2 - wall.clientTop;
 
   const maxX = Math.max(0, Math.min(spiderCenterX, wallWidth - widthSpider));
   const maxY = Math.max(0, Math.min(spiderCenterY, wallHeight - heightSpider));
