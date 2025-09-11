@@ -3,12 +3,13 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 const spiderSize = parseInt(getComputedStyle(spider).height, 10);
+const borderSize = parseInt(getComputedStyle(wall).border, 10);
 
 document.addEventListener('click', (e) => {
   if (e.target === wall) {
     const wallRect = wall.getBoundingClientRect();
-    const x = e.clientX - wallRect.left - spiderSize / 2;
-    const y = e.clientY - wallRect.top - spiderSize / 2;
+    const x = e.clientX - wallRect.left - spiderSize / 2 - borderSize;
+    const y = e.clientY - wallRect.top - spiderSize / 2 - borderSize;
 
     const limitedX = Math.min(
       Math.max(x, 0),
