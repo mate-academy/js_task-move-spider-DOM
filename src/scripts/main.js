@@ -5,22 +5,23 @@ const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
-  const spiderSize = spider.getBoundingClientRect().height;
-  const borderSize = (wallRect.width - wall.clientWidth) / 2;
+  const spiderRect = spider.getBoundingClientRect();
 
-  const x = e.clientX - wallRect.left - spiderSize / 2 - borderSize;
-  const y = e.clientY - wallRect.top - spiderSize / 2 - borderSize;
+  const borderX = (wallRect.width - wall.clientWidth) / 2;
+  const borderY = (wallRect.height - wall.clientHeight) / 2;
 
-  const limitedX = Math.min(
-    Math.max(x, 0),
-    wall.clientWidth - spider.clientWidth,
+  const desLeft = e.clientX - wallRect.left - borderX - spiderRect.width / 2;
+  const desTop = e.clientY - wallRect.top - borderY - spiderRect.height / 2;
+
+  const clampedLeft = Math.max(
+    0,
+    Math.min(desLeft, wall.clientWidth - spiderRect.width),
+  );
+  const clampedTop = Math.max(
+    0,
+    Math.min(desTop, wall.clientHeight - spiderRect.height),
   );
 
-  const limitedY = Math.min(
-    Math.max(y, 0),
-    wall.clientHeight - spider.clientHeight,
-  );
-
-  spider.style.left = limitedX + 'px';
-  spider.style.top = limitedY + 'px';
+  spider.style.left = clampedLeft + 'px';
+  spider.style.top = clampedTop + 'px';
 });
