@@ -33,8 +33,8 @@ walls.addEventListener('click', (e) => {
 
     if (posY < spiderCenter.height) {
       posY = 0;
-    } else if (posY > wallsSize.width - spiderCenter.height * 2) {
-      posY = wallsSize.height - spiderCenter.height * 2;
+    } else if (posY > wallsSize.width - spiderCenter.width * 2) {
+      posY = wallsSize.width - spiderCenter.width * 2;
     }
     spider.style.top = `${posY}px`;
     spider.style.left = `${posX}px`;
