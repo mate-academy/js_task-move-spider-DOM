@@ -9,13 +9,17 @@ spider.style.position = 'absolute';
 wall.addEventListener('click', (e) => {
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
-  const wallWidth = wall.clientWidth;
-  const wallHeight = wall.clientHeight;
-  let newLeft = e.offsetX - spiderWidth / 2;
-  let newTop = e.offsetY - spiderHeight / 2;
 
-  newLeft = Math.max(0, Math.min(newLeft, wallWidth - spiderWidth));
-  newTop = Math.max(0, Math.min(newTop, wallHeight - spiderHeight));
+  const rect = wall.getBoundingClientRect();
+  const localX = e.clientX - rect.left;
+  const localY = e.clientY - rect.top;
+
+  let newLeft = localX - spiderWidth / 2;
+  let newTop = localY - spiderHeight / 2;
+
+  newLeft = Math.max(0, Math.min(newLeft, rect.width - spiderWidth));
+  newTop = Math.max(0, Math.min(newTop, rect.height - spiderHeight));
+
   spider.style.left = `${newLeft}px`;
   spider.style.top = `${newTop}px`;
 });
