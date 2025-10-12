@@ -5,6 +5,7 @@
     - Run `npm run test:only -- -n` to run fast test ignoring linter;
     - Run `npm run test:only -- -l` to run fast test with additional info in console ignoring linter.
 
+
 ### Task: Move the spider
 
 Move the spider to the cursor on click.
