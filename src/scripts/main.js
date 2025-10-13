@@ -11,28 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
   wall.addEventListener('click', (e) => {
     const wallRect = wall.getBoundingClientRect();
 
-    let spiderTop =
-      e.clientY - wallRect.y - wall.clientLeft - spider.offsetWidth / 2;
-    let spiderLeft =
-      e.clientX - wallRect.x - wall.clientTop - spider.offsetHeight / 2;
+    const spiderW = spider.offsetWidth;
+    const spiderH = spider.offsetHeight;
 
-    if (spiderTop < 0) {
-      spiderTop = 0;
-    }
+    let spiderLeft = e.clientX - wallRect.left - spiderW / 2;
+    let spiderTop = e.clientY - wallRect.top - spiderH / 2;
 
-    if (spiderLeft < 0) {
-      spiderLeft = 0;
-    }
+    spiderLeft = Math.min(Math.max(spiderLeft, 0), wall.clientWidth - spiderW);
+    spiderTop = Math.min(Math.max(spiderTop, 0), wall.clientHeight - spiderH);
 
-    if (spiderTop > wall.clientHeight - spider.offsetHeight) {
-      spiderTop = wall.clientHeight - spider.offsetHeight;
-    }
-
-    if (spiderLeft > wall.clientWidth - spider.offsetWidth) {
-      spiderLeft = wall.clientWidth - spider.offsetWidth;
-    }
-
-    spider.style.top = spiderTop + 'px';
-    spider.style.left = spiderLeft + 'px';
+    spider.style.left = `${spiderLeft}px`;
+    spider.style.top = `${spiderTop}px`;
   });
 });
