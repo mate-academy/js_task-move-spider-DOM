@@ -8,31 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const wallCoords = wall.getBoundingClientRect();
-
   wall.addEventListener('click', (e) => {
-    let topValue =
-      e.clientY - wallCoords.y - wall.clientLeft - spider.clientWidth / 2;
-    let leftValue =
-      e.clientX - wallCoords.x - wall.clientTop - spider.clientHeight / 2;
+    const wallRect = wall.getBoundingClientRect();
 
-    if (topValue < 0) {
-      topValue = 0;
+    let spiderTop =
+      e.clientY - wallRect.y - wall.clientLeft - spider.offsetWidth / 2;
+    let spiderLeft =
+      e.clientX - wallRect.x - wall.clientTop - spider.offsetHeight / 2;
+
+    if (spiderTop < 0) {
+      spiderTop = 0;
     }
 
-    if (leftValue < 0) {
-      leftValue = 0;
+    if (spiderLeft < 0) {
+      spiderLeft = 0;
     }
 
-    if (topValue > wall.clientHeight - spider.clientHeight) {
-      topValue = wall.clientHeight - spider.clientHeight;
+    if (spiderTop > wall.clientHeight - spider.offsetHeight) {
+      spiderTop = wall.clientHeight - spider.offsetHeight;
     }
 
-    if (leftValue > wall.clientWidth - spider.clientWidth) {
-      leftValue = wall.clientWidth - spider.clientWidth;
+    if (spiderLeft > wall.clientWidth - spider.offsetWidth) {
+      spiderLeft = wall.clientWidth - spider.offsetWidth;
     }
 
-    spider.style.top = topValue + 'px';
-    spider.style.left = leftValue + 'px';
+    spider.style.top = spiderTop + 'px';
+    spider.style.left = spiderLeft + 'px';
   });
 });
