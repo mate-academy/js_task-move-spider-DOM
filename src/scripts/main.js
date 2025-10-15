@@ -4,7 +4,7 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
-  if (e.target.closest('.spider')) {
+  if (!wall || !spider) {
     return;
   }
 
