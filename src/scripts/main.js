@@ -3,10 +3,13 @@
 const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-document.addEventListener('click', (e) => {
-   const wallRect = wall.getBoundingClientRect();
+// --- Перевірка на наявність елементів ---
+if (wall && spider) {
+   // --- Обробник кліків лише всередині стіни ---
+  document.addEventListener('click', (e) => {
+    const wallRect = wall.getBoundingClientRect();
 
-  // Якщо клік поза межами стіни — нічого не робимо
+    // Якщо клік поза межами стіни — нічого не робимо
     if (
       e.clientX < wallRect.left ||
       e.clientX > wallRect.right ||
@@ -15,29 +18,30 @@ document.addEventListener('click', (e) => {
     ) {
       return;
     }
-  const spiderRect = spider.getBoundingClientRect();
 
-  // 2) click координати відносно стіни (use clientX/clientY)
-  const clickX = e.clientX - wallRect.left;
-  const clickY = e.clientY - wallRect.top;
+    const spiderRect = spider.getBoundingClientRect();
 
-  // 3) розміри павука
-  const spiderW = spiderRect.width;
-  const spiderH = spiderRect.height;
+    // Координати кліку відносно стіни
+    const clickX = e.clientX - wallRect.left;
+    const clickY = e.clientY - wallRect.top;
 
-  // 4) позиція лівого-верхнього кута так, щоб центр павука був у click
-  let newLeft = clickX - spiderW / 2;
-  let newTop = clickY - spiderH / 2;
+    const spiderW = spiderRect.width;
+    const spiderH = spiderRect.height;
 
-  // 5) межі (щоб павук не виліз за рамки)
-  const maxLeft = wall.clientWidth - spiderW;
-  const maxTop = wall.clientHeight - spiderH;
+    // Початкові координати так, щоб центр павука опинився під курсором
+    let newLeft = clickX - spiderW / 2;
+    let newTop = clickY - spiderH / 2;
 
-  // 6) обмежуємо
-  newLeft = Math.max(0, Math.min(newLeft, maxLeft));
-  newTop = Math.max(0, Math.min(newTop, maxTop));
+    // --- Обмеження меж у тій самій системі координат (Rect) ---
+    const maxLeft = Math.max(0, wallRect.width - spiderW);
+    const maxTop = Math.max(0, wallRect.height - spiderH);
 
-  // 7) застосовуємо
-  spider.style.left = `${newLeft}px`;
-  spider.style.top = `${newTop}px`;
-});
+    // --- Затискання координат ---
+    newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+    newTop = Math.max(0, Math.min(newTop, maxTop));
+
+    // --- Застосування ---
+    spider.style.left = `${newLeft}px`;
+    spider.style.top = `${newTop}px`;
+  });
+}
