@@ -4,22 +4,22 @@ const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 
 wall.addEventListener('click', (e) => {
+  const wallRect = wall.getBoundingClientRect();
   const x = Math.max(
     0,
     Math.min(
-      e.offsetX - spider.offsetWidth / 2,
-      wall.clientWidth - spider.offsetWidth,
+      e.clientX - wallRect.left - spider.offsetWidth / 2,
+      wallRect.width - spider.offsetWidth,
     ),
   );
-
   const y = Math.max(
     0,
     Math.min(
-      e.offsetY - spider.offsetHeight / 2,
-      wall.clientHeight - spider.offsetHeight,
+      e.clientY - wallRect.top - spider.offsetHeight / 2,
+      wallRect.height - spider.offsetHeight,
     ),
   );
 
-  spider.style.left = `${x}px`;
-  spider.style.top = `${y}px`;
+  spider.style.left = x + 'px';
+  spider.style.top = y + 'px';
 });
