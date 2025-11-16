@@ -1,39 +1,26 @@
 'use strict';
 
-const spider = document.body.querySelector('.spider');
-const wall = document.body.querySelector('.wall');
-
+const spider = document.querySelector('.spider');
+const wall = document.querySelector('.wall');
 const spiderSize = parseInt(getComputedStyle(spider).height, 10);
 
 document.addEventListener('click', (e) => {
-  const coordX = e.clientX;
-  const coordY = e.clientY;
-
-  const wallBorder = parseInt(getComputedStyle(wall).borderWidth, 10);
+  if (!e.target.closest('.wall')) {
+    return;
+  }
 
   const wallRect = wall.getBoundingClientRect();
+  const wallBorder = parseInt(getComputedStyle(wall).borderWidth, 10);
 
-  if (e.target.closest('.wall')) {
-    let horizShift = coordX - wallRect.left - wallBorder - spiderSize / 2;
-    let vertShift = coordY - wallRect.top - wallBorder - spiderSize / 2;
+  let horizShift = e.clientX - wallRect.left - wallBorder - spiderSize / 2;
+  let vertShift = e.clientY - wallRect.top - wallBorder - spiderSize / 2;
 
-    if (vertShift < spiderSize) {
-      vertShift = 0;
-    }
+  const maxX = wall.clientWidth - spiderSize;
+  const maxY = wall.clientHeight - spiderSize;
 
-    if (wall.clientHeight - vertShift < spiderSize) {
-      vertShift = wall.clientHeight - spiderSize;
-    }
+  horizShift = Math.max(0, Math.min(horizShift, maxX));
+  vertShift = Math.max(0, Math.min(vertShift, maxY));
 
-    if (horizShift < spiderSize) {
-      horizShift = 0;
-    }
-
-    if (wall.clientWidth - horizShift < spiderSize) {
-      horizShift = wall.clientWidth - spiderSize;
-    }
-
-    spider.style.top = `${vertShift}px`;
-    spider.style.left = `${horizShift}px`;
-  }
+  spider.style.left = `${horizShift}px`;
+  spider.style.top = `${vertShift}px`;
 });
