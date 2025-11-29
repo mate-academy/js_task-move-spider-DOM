@@ -1,14 +1,15 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
+
+
+
+document.addEventListener('click', (e) => {
+  // write code here
+  const spider = document.querySelector('.spider');
 const wall = document.querySelector('.wall');
 const rect = wall.getBoundingClientRect();
 const borderTop = parseFloat(getComputedStyle(wall).borderTopWidth);
 const borderLeft = parseFloat(getComputedStyle(wall).borderLeftWidth);
-
-document.addEventListener('click', (e) => {
-  // write code here
-
   const spiderObj = spider.getBoundingClientRect();
   let topCoords = e.clientY - rect.top - borderTop - spiderObj.height / 2;
   let leftCoords = e.clientX - rect.left - borderLeft - spiderObj.width / 2;
