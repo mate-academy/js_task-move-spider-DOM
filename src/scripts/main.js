@@ -18,12 +18,12 @@ wall.addEventListener('click', (e) => {
     spiderTop = 0;
   }
 
-  if (spiderLeft + spider.clientWidth > wall.clientWidth) {
-    spiderLeft = wall.clientWidth - spider.clientWidth;
+  if (spiderLeft + spider.offsetWidth > wall.clientHeight) {
+    spiderLeft = wall.clientHeight - spider.offsetWidth;
   }
 
-  if (spiderTop + spider.clientHeight > wall.clientHeight) {
-    spiderTop = wall.clientHeight - spider.clientHeight;
+  if (spiderTop + spider.offsetHeight > wall.clientHeight) {
+    spiderTop = wall.clientHeight - spider.offsetHeight;
   }
 
   spider.style.left = spiderLeft + 'px';
