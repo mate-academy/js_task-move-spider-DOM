@@ -4,17 +4,17 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
- 
-  const rect = wall.getBoundingClientRect();
-  const wallWidth = rect.width;
-  const wallHeight = rect.height;
+  // Отримуємо актуальні розміри на кожен клік
+  const wallWidth = wall.clientWidth;
+  const wallHeight = wall.clientHeight;
   
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  // Обчислюємо позицію кліку ВІДНОСНО стінки (не сторінки!)
-  const clickX = e.clientX - rect.left;
-  const clickY = e.clientY - rect.top;
+  // Обчислюємо позицію кліку ВІДНОСНО стінки (враховуючи border)
+  const rect = wall.getBoundingClientRect();
+  const clickX = e.clientX - rect.left - wall.clientLeft;
+  const clickY = e.clientY - rect.top - wall.clientTop;
 
   // Центруємо павука на позицію кліку
   let newLeft = clickX - spiderWidth / 2;
