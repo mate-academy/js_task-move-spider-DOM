@@ -5,8 +5,10 @@ const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', function (e) {
   const wallRect = wall.getBoundingClientRect();
-  const BORDER_WIDTH = 10;
-  const FULL_COMPENSATION = 20;
+  const computedStyles = window.getComputedStyle(wall);
+  const borderString = computedStyles.borderLeftWidth;
+  const BORDER_WIDTH = parseFloat(borderString);
+  const FULL_COMPENSATION = BORDER_WIDTH * 2;
 
   const desiredX = e.clientX - wallRect.left - BORDER_WIDTH;
   const desiredY = e.clientY - wallRect.top - BORDER_WIDTH;
