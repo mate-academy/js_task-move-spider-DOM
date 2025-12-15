@@ -8,22 +8,24 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  const wallWidth = wall.clientWidth;
-  const wallHeight = wall.clientHeight;
+  const wallRect = wall.getBoundingClientRect();
+
+  const clickX = e.clientX - wallRect.left - wall.clientLeft;
+  const clickY = e.clientY - wallRect.top - wall.clientTop;
 
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
   const targetX = Math.min(
-    Math.max(e.offsetX - spiderWidth / 2, 0),
-    wallWidth - spiderWidth,
+    Math.max(clickX - spiderWidth / 2, 0),
+    wall.clientWidth - spiderWidth,
   );
 
   const targetY = Math.min(
-    Math.max(e.offsetY - spiderHeight / 2, 0),
-    wallHeight - spiderHeight,
+    Math.max(clickY - spiderHeight / 2, 0),
+    wall.clientHeight - spiderHeight,
   );
 
-  spider.style.top = `${Math.round(targetY)}px`;
   spider.style.left = `${Math.round(targetX)}px`;
+  spider.style.top = `${Math.round(targetY)}px`;
 });
