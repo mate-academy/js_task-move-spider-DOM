@@ -16,19 +16,19 @@ document.addEventListener('click', (e) => {
     let shiftY = coordY - wallRect.top - wallBorder - spiderElSize / 2;
     let shiftX = coordX - wallRect.left - wallBorder - spiderElSize / 2;
 
-    if (shiftY < spiderElSize) {
+    if (shiftY < 0) {
       shiftY = 0;
     }
 
-    if (wallEl.clientHeight - shiftY < spiderElSize) {
+    if (shiftY > wallEl.clientHeight - spiderElSize) {
       shiftY = wallEl.clientHeight - spiderElSize;
     }
 
-    if (shiftX < spiderElSize) {
+    if (shiftX < 0) {
       shiftX = 0;
     }
 
-    if (wallEl.clientWidth - shiftX < spiderElSize) {
+    if (shiftX > wallEl.clientWidth - spiderElSize) {
       shiftX = wallEl.clientWidth - spiderElSize;
     }
 
