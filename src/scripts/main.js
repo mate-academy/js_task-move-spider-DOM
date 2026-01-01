@@ -7,7 +7,7 @@ document.addEventListener('click', (e) => {
   const border = parseFloat(getComputedStyle(wallElement).borderWidth);
 
   if (
-    e.clientX < wall.lefth ||
+    e.clientX < wall.left ||
     e.clientX > wall.right ||
     e.clientY < wall.top ||
     e.clientY > wall.bottom
@@ -15,15 +15,15 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  const desiredLeft = e.clientX - wall.left - border - spider.width / 2;
-  const desiredTop = e.clientY - wall.top - border - spider.height / 2;
+  const desiredLeft = e.clientX - wall.left - border - spider.offsetWidth / 2;
+  const desiredTop = e.clientY - wall.top - border - spider.offsetHeight / 2;
 
   const wallWidth = wall.width - border * 2;
 
   const wallHeight = wall.height - border * 2;
 
-  const maxLeft = wallWidth - spider.width;
-  const maxTop = wallHeight - spider.height;
+  const maxLeft = wallWidth - spider.offsetWidth;
+  const maxTop = wallHeight - spider.offsetHeight;
 
   const positionX = Math.max(0, Math.min(desiredLeft, maxLeft));
   const positionY = Math.max(0, Math.min(desiredTop, maxTop));
