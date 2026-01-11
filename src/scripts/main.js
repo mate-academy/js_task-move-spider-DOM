@@ -7,7 +7,6 @@ wall.addEventListener('click', (e) => {
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  // 🔑 border correction
   const borderLeft = wall.clientLeft;
   const borderTop = wall.clientTop;
 
@@ -15,7 +14,6 @@ wall.addEventListener('click', (e) => {
 
   let y = e.clientY - wallRect.top - borderTop - spiderHeight / 2;
 
-  // обмеження меж
   x = Math.max(0, Math.min(x, wall.clientWidth - spiderWidth));
   y = Math.max(0, Math.min(y, wall.clientHeight - spiderHeight));
 
