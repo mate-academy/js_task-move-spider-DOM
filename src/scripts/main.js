@@ -1,5 +1,24 @@
-'use strict';
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
-document.addEventListener('click', (e) => {
-  // write code here
+wall.addEventListener('click', (e) => {
+  const wallRect = wall.getBoundingClientRect();
+
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
+
+  // 🔑 border correction
+  const borderLeft = wall.clientLeft;
+  const borderTop = wall.clientTop;
+
+  let x = e.clientX - wallRect.left - borderLeft - spiderWidth / 2;
+
+  let y = e.clientY - wallRect.top - borderTop - spiderHeight / 2;
+
+  // обмеження меж
+  x = Math.max(0, Math.min(x, wall.clientWidth - spiderWidth));
+  y = Math.max(0, Math.min(y, wall.clientHeight - spiderHeight));
+
+  spider.style.left = `${x}px`;
+  spider.style.top = `${y}px`;
 });
