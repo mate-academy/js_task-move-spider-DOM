@@ -1,51 +1,26 @@
 'use strict';
 
-const spider = document.querySelector('img.spider');
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
-document.addEventListener('click', (e) => {
-  if (e.target.tagName === 'DIV') {
-    const place = [e.clientX, e.clientY];
-    const wallX = e.target.getBoundingClientRect().x;
-    const wallY = e.target.getBoundingClientRect().y;
-    const wallWidth = e.target.getBoundingClientRect().width;
-    const wallHeight = e.target.getBoundingClientRect().height;
-    const spiderWidth = spider.getBoundingClientRect().width;
-    const spiderHeight = spider.getBoundingClientRect().height;
-    const borderLeft = e.target.clientLeft;
-    const borderTop = e.target.clientTop;
-    let newLeft = place[0] - wallX - spiderWidth / 2 - borderLeft;
-    let newTop = place[1] - wallY - spiderHeight / 2 - borderTop;
+wall.addEventListener('click', (e) => {
+  const wallWidth = wall.clientWidth;
+  const wallHeight = wall.clientHeight;
 
-    if (
-      newLeft >= 0 &&
-      newTop >= 0 &&
-      newLeft + spiderWidth <= wallWidth - borderLeft * 2 &&
-      newTop + spiderHeight <= wallHeight - borderTop * 2
-    ) {
-      spider.style.left = `${newLeft}px`;
-      spider.style.top = `${newTop}px`;
-    } else {
-      if (newLeft + spiderWidth > wallWidth - borderLeft * 2) {
-        newLeft = wallWidth - borderLeft * 2 - spiderWidth;
-        spider.style.left = `${newLeft}px`;
-      }
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
 
-      if (newLeft < 0) {
-        newLeft = 0;
-        spider.style.left = `${newLeft}px`;
-      }
+  const wallRect = wall.getBoundingClientRect();
+  const relativeX = e.clientX - wallRect.left - wall.clientLeft;
+  const relativeY = e.clientY - wallRect.top - wall.clientTop;
 
-      if (newTop + spiderHeight > wallHeight - borderTop * 2) {
-        newTop = wallHeight - borderTop * 2 - spiderHeight;
-        spider.style.top = `${newTop}px`;
-      }
+  let spiderPosLeft = relativeX - spiderWidth / 2;
+  let spiderPosTop = relativeY - spiderHeight / 2;
 
-      if (newTop < 0) {
-        newTop = 0;
-        spider.style.top = `${newTop}px`;
-      }
-      spider.style.left = `${newLeft}px`;
-      spider.style.top = `${newTop}px`;
-    }
-  }
+  spiderPosLeft = Math.max(0, Math.min(spiderPosLeft, wallWidth - spiderWidth));
+
+  spiderPosTop = Math.max(0, Math.min(spiderPosTop, wallHeight - spiderHeight));
+
+  spider.style.top = `${spiderPosTop}px`;
+  spider.style.left = `${spiderPosLeft}px`;
 });
