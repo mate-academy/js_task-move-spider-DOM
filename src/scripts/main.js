@@ -1,22 +1,18 @@
 'use strict';
 
-document.addEventListener('click', (e) => {
-  const clickY = e.clientY;
-  const clickX = e.clientX;
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
-  const spider = document.querySelector('.spider');
+wall.addEventListener('click', (e) => {
   const spiderRect = spider.getBoundingClientRect();
-  const wall = document.querySelector('.wall');
-  const wallRect = wall.getBoundingClientRect();
 
-  let positionX = clickX - spiderRect.width / 2;
-  let positionY = clickY - spiderRect.height / 2;
+  let positionX = e.offsetX - spiderRect.width / 2;
+  let positionY = e.offsetY - spiderRect.height / 2;
 
-  const minX = wallRect.left;
-  const maxX = wallRect.right - spiderRect.width;
-
-  const minY = wallRect.top;
-  const maxY = wallRect.bottom - spiderRect.height;
+  const minX = 0;
+  const minY = 0;
+  const maxX = wall.clientWidth - spiderRect.width;
+  const maxY = wall.clientHeight - spiderRect.height;
 
   if (positionX < minX) {
     positionX = minX;
@@ -34,7 +30,7 @@ document.addEventListener('click', (e) => {
     positionY = maxY;
   }
 
-  spider.style.position = 'fixed';
+  spider.style.position = 'absolute';
   spider.style.left = `${positionX}px`;
   spider.style.top = `${positionY}px`;
 });
