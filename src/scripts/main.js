@@ -6,8 +6,8 @@ const wall = document.querySelector('.wall');
 document.addEventListener('click', (e) => {
   const spiderRect = spider.getBoundingClientRect();
   const wallRect = wall.getBoundingClientRect();
-  const xRelative = e.pageX - (wallRect.left + window.scrollX);
-  const yRelative = e.pageY - (wallRect.top + window.scrollY);
+  const xRelative = e.clientX - wallRect.left;
+  const yRelative = e.clientY - wallRect.top;
   let x = xRelative - spiderRect.width / 2;
   let y = yRelative - spiderRect.height / 2;
 
