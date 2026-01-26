@@ -1,12 +1,12 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
-const wall = document.querySelector('.wall');
-const width = wall.clientWidth - spider.offsetWidth;
-const height = wall.clientHeight - spider.offsetHeight;
-const rect = wall.getBoundingClientRect();
-
 document.addEventListener('click', (e) => {
+  const spider = document.querySelector('.spider');
+  const wall = document.querySelector('.wall');
+  const width = wall.clientWidth - spider.offsetWidth;
+  const height = wall.clientHeight - spider.offsetHeight;
+  const rect = wall.getBoundingClientRect();
+
   if (e.target.classList.contains('wall')) {
     const x = e.clientX - rect.left - spider.offsetWidth / 2;
     const y = e.clientY - rect.top - spider.offsetHeight / 2;
