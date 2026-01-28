@@ -1,21 +1,21 @@
 'use strict';
 
-const wall = document.querySelector('.wall');
+const field = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
-wall.addEventListener('click', (eventL) => {
-  const spiderWidth = spider.clientWidth;
-  const spiderHeight = spider.clientHeight;
+field.addEventListener('click', (e) => {
+  const fieldRect = field.getBoundingClientRect(); // позиція стіни
+  const spiderRect = spider.getBoundingClientRect(); // розмір павука
 
-  // координати кліку всередині стіни
-  let newLeft = eventL.offsetX - spiderWidth / 2;
-  let newTop = eventL.offsetY - spiderHeight / 2;
+  // координати кліку відносно стіни
+  let x = e.clientX - fieldRect.left - spiderRect.width / 2;
+  let y = e.clientY - fieldRect.top - spiderRect.height / 2;
 
   // обмеження, щоб павук не виходив за стіну
-  newLeft = Math.max(0, Math.min(newLeft, wall.clientWidth - spiderWidth));
-  newTop = Math.max(0, Math.min(newTop, wall.clientHeight - spiderHeight));
+  x = Math.max(0, Math.min(x, field.clientWidth - spiderRect.width));
+  y = Math.max(0, Math.min(y, field.clientHeight - spiderRect.height));
 
   spider.style.position = 'absolute';
-  spider.style.left = newLeft + 'px';
-  spider.style.top = newTop + 'px';
+  spider.style.left = x + 'px';
+  spider.style.top = y + 'px';
 });

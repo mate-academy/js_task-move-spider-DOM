@@ -9,7 +9,7 @@ h1 {
   font-weight: normal;
   font-style: normal;
 }
-/* stylelint-disable-next-line rule-empty-line-before */
+
 body {
   margin: 0;
   height: 100vh;
@@ -36,5 +36,3 @@ body {
   height: 50px;
   transition: 1s;
 }
-
-/*# sourceMappingURL=main.css.map */
