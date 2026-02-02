@@ -7,19 +7,22 @@ const spider = document.querySelector('.spider');
 spider.style.transition = 'none';
 
 wall.addEventListener('click', (e) => {
-  // Клік поза стіною — нічого не робимо
-  if (e.target !== wall && e.target !== spider) {
+  // Клік тільки по стіні або павуку
+  if (!wall.contains(e.target)) {
     return;
   }
+
+  const wallRect = wall.getBoundingClientRect();
 
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  // Координати кліку ВСЕРЕДИНІ стіни (без border)
-  let x = e.offsetX - spiderWidth / 2;
-  let y = e.offsetY - spiderHeight / 2;
+  // Координати кліку відносно ВНУТРІШНЬОЇ області стіни (без border)
+  let x = e.clientX - wallRect.left - wall.clientLeft - spiderWidth / 2;
 
-  // Максимальні координати (без border)
+  let y = e.clientY - wallRect.top - wall.clientTop - spiderHeight / 2;
+
+  // Максимальні координати (внутрішня область, без border)
   const maxX = wall.clientWidth - spiderWidth;
   const maxY = wall.clientHeight - spiderHeight;
 
