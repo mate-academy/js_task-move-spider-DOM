@@ -10,12 +10,19 @@ wall.addEventListener('click', (e) => {
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
 
-  let leftPos = e.offsetX - spiderWidth / 2;
-  let topPos = e.offsetY - spiderHeight / 2;
+  let leftPosition = e.offsetX - spiderWidth / 2;
+  let topPosition = e.offsetY - spiderHeight / 2;
 
-  leftPos = Math.max(0, Math.min(leftPos, wall.clientWidth - spiderWidth));
-  topPos = Math.max(0, Math.min(topPos, wall.clientHeight - spiderHeight));
+  leftPosition = Math.max(
+    0,
+    Math.min(leftPosition, wall.clientWidth - spiderWidth),
+  );
 
-  spider.style.left = leftPos + 'px';
-  spider.style.top = topPos + 'px';
+  topPosition = Math.max(
+    0,
+    Math.min(topPosition, wall.clientHeight - spiderHeight),
+  );
+
+  spider.style.left = leftPosition + 'px';
+  spider.style.top = topPosition + 'px';
 });
