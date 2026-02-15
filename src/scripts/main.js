@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('click', (e) => {
-  // write code here
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
 
@@ -15,12 +14,14 @@ document.addEventListener('click', (e) => {
 
   const wallRect = wall.getBoundingClientRect();
 
-  const clickX = e.clientX - wallRect.left - wall.clientLeft;
-  const clickY = e.clientY - wallRect.top - wall.clientTop;
+  const borderLeft = wall.clientLeft;
+  const borderTop = wall.clientTop;
 
-  const spiderRect = spider.getBoundingClientRect();
-  const spiderW = spiderRect.width;
-  const spiderH = spiderRect.height;
+  const clickX = e.clientX - wallRect.left - borderLeft;
+  const clickY = e.clientY - wallRect.top - borderTop;
+
+  const spiderW = spider.offsetWidth;
+  const spiderH = spider.offsetHeight;
 
   let varLeft = clickX - spiderW / 2;
   let varTop = clickY - spiderH / 2;
