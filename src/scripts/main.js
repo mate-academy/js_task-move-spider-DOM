@@ -4,9 +4,10 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
-  // write code here
-  let finalX = e.offsetX - spider.offsetWidth / 2;
-  let finalY = e.offsetY - spider.offsetHeight / 2;
+  const rect = wall.getBoundingClientRect();
+
+  let finalX = e.clientX - rect.left - spider.offsetWidth / 2;
+  let finalY = e.clientY - rect.top - spider.offsetHeight / 2;
 
   if (finalX < 0) {
     finalX = 0;
@@ -20,8 +21,8 @@ wall.addEventListener('click', (e) => {
     finalY = 0;
   }
 
-  if (finalY > wall.clientHeight - spider.clientHeight) {
-    finalY = wall.clientHeight - spider.clientHeight;
+  if (finalY > wall.clientHeight - spider.offsetHeight) {
+    finalY = wall.clientHeight - spider.offsetHeight;
   }
 
   spider.style.left = finalX + 'px';
