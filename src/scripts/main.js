@@ -2,18 +2,20 @@
 
 const spider = document.querySelector('.spider');
 const wall = document.querySelector(`.wall`);
+const spiderX = spider.clientWidth;
+const spiderY = spider.clientHeight;
 
 wall.addEventListener('click', (e) => {
   const field = wall.getBoundingClientRect();
 
-  let x = e.clientX - field.left - wall.clientLeft - spider.clientWidth / 2;
-  let y = e.clientY - field.top - wall.clientTop - spider.clientHeight / 2;
+  let x = e.clientX - field.left - wall.clientLeft - spiderX / 2;
+  let y = e.clientY - field.top - wall.clientTop - spiderY / 2;
 
   if (x < 0) {
     x = 0;
   }
 
-  const maxX = wall.clientWidth - spider.clientWeight;
+  const maxX = wall.clientWidth - spider.clientWidth;
 
   if (x > maxX) {
     x = maxX;
