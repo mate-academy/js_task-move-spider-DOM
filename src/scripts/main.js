@@ -4,36 +4,36 @@ const spider = document.body.querySelector('.spider');
 const wall = document.body.querySelector('.wall');
 
 const spiderSize = parseInt(getComputedStyle(spider).height, 10);
+const halfSpider = spiderSize / 2;
 
 document.addEventListener('click', (e) => {
   const coordX = e.clientX;
   const coordY = e.clientY;
 
   const wallBorder = parseInt(getComputedStyle(wall).borderWidth, 10);
-
   const wallRect = wall.getBoundingClientRect();
 
   if (e.target.closest('.wall')) {
-    let vertShift = coordY - wallRect.top - wallBorder - spiderSize / 2;
-    let horizShift = coordX - wallRect.left - wallBorder - spiderSize / 2;
+    let centerX = coordX - wallRect.left - wallBorder;
+    let centerY = coordY - wallRect.top - wallBorder;
 
-    if (vertShift < spiderSize) {
-      vertShift = 0;
+    if (centerX < halfSpider) {
+      centerX = halfSpider;
     }
 
-    if (wall.clientHeight - vertShift < spiderSize) {
-      vertShift = wall.clientHeight - spiderSize;
+    if (centerX > wall.clientWidth - halfSpider) {
+      centerX = wall.clientWidth - halfSpider;
     }
 
-    if (horizShift < spiderSize) {
-      horizShift = 0;
+    if (centerY < halfSpider) {
+      centerY = halfSpider;
     }
 
-    if (wall.clientWidth - horizShift < spiderSize) {
-      horizShift = wall.clientWidth - spiderSize;
+    if (centerY > wall.clientHeight - halfSpider) {
+      centerY = wall.clientHeight - halfSpider;
     }
 
-    spider.style.top = `${vertShift}px`;
-    spider.style.left = `${horizShift}px`;
+    spider.style.left = `${centerX - halfSpider}px`;
+    spider.style.top = `${centerY - halfSpider}px`;
   }
 });
