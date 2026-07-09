@@ -6,7 +6,12 @@ document.addEventListener('click', (e) => {
 
   const rect = wall.getBoundingClientRect();
 
-  if (!wall.contains(e.target)) {
+  if (
+    e.clientX < rect.left ||
+    e.clientX > rect.right ||
+    e.clientY < rect.top ||
+    e.clientY > rect.bottom
+  ) {
     return;
   }
 
