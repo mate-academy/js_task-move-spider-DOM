@@ -21,7 +21,6 @@ document.addEventListener('click', (e) => {
   const maxX = wall.clientWidth - spider.offsetWidth;
   const maxY = wall.clientHeight - spider.offsetHeight;
 
-  // Обмеження руху рамками стіни
   x = Math.max(0, Math.min(x, maxX));
   y = Math.max(0, Math.min(y, maxY));
 
