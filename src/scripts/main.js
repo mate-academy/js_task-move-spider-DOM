@@ -8,10 +8,10 @@ document.addEventListener('click', (e) => {
   const borderLeft = parseFloat(wallStyles.borderLeftWidth);
   const borderTop = parseFloat(wallStyles.borderTopWidth);
   const isInsidWall =
-    e.clientX >= wallPosition.left + borderLeft &&
-    e.clientX <= wallPosition.right - borderLeft &&
-    e.clientY >= wallPosition.top + borderTop &&
-    e.clientY <= wallPosition.bottom - borderTop;
+    e.clientX >= wallPosition.left &&
+    e.clientX <= wallPosition.right &&
+    e.clientY >= wallPosition.top &&
+    e.clientY <= wallPosition.bottom;
 
   if (!isInsidWall) {
     return;
