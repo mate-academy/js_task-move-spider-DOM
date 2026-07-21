@@ -8,10 +8,10 @@ document.addEventListener('click', (e) => {
   const borderLeft = parseFloat(wallStyles.borderLeftWidth);
   const borderTop = parseFloat(wallStyles.borderTopWidth);
   const isInsidWall =
-    e.clientX >= wallPosition.left &&
-    e.clientX <= wallPosition.right &&
-    e.clientY >= wallPosition.top &&
-    e.clientY <= wallPosition.bottom;
+    e.clientX >= wallPosition.left + borderLeft &&
+    e.clientX <= wallPosition.right - borderLeft &&
+    e.clientY >= wallPosition.top + borderTop &&
+    e.clientY <= wallPosition.bottom - borderTop;
 
   if (!isInsidWall) {
     return;
@@ -19,8 +19,8 @@ document.addEventListener('click', (e) => {
 
   const clickXInsideWall = e.clientX - wallPosition.left - borderLeft;
   const clickYInsideWall = e.clientY - wallPosition.top - borderTop;
-  const inneWidth = wall.offsetWidth - borderLeft * 2;
-  const inneHeight = wall.offsetHeight - borderTop * 2;
+  const inneWidth = wall.clientWidth;
+  const inneHeight = wall.clientHeight;
   const spiderX = clickXInsideWall - spider.offsetWidth / 2;
   const spiderY = clickYInsideWall - spider.offsetHeight / 2;
 
