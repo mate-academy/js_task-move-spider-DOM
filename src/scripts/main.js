@@ -14,9 +14,12 @@ wall.addEventListener('click', function (evt) {
   let x = evt.clientX - wallRect.left - spiderRect.width / 2;
   let y = evt.clientY - wallRect.top - spiderRect.height / 2;
 
-  x = Math.max(0, Math.min(x, wallRect.width - spiderRect.width));
-  y = Math.max(0, Math.min(y, wallRect.height - spiderRect.height));
+  const maxX = wallRect.width - spiderRect.width;
+  const maxY = wallRect.height - spiderRect.height;
 
-  spider.style.left = x + 'px';
-  spider.style.top = y + 'px';
+  x = Math.min(Math.max(x, 0), maxX);
+  y = Math.min(Math.max(y, 0), maxY);
+
+  spider.style.left = Math.round(x) + 'px';
+  spider.style.top = Math.round(y) + 'px';
 });
