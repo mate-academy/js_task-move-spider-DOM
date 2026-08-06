@@ -7,19 +7,21 @@ spider.style.position = 'absolute';
 spider.style.left = '0px';
 spider.style.top = '0px';
 
-wall.addEventListener('click', function (evt) {
+wall.addEventListener('click', (evt) => {
   const wallRect = wall.getBoundingClientRect();
-  const spiderRect = spider.getBoundingClientRect();
 
-  let x = evt.clientX - wallRect.left - spiderRect.width / 2;
-  let y = evt.clientY - wallRect.top - spiderRect.height / 2;
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
 
-  const maxX = wallRect.width - spiderRect.width;
-  const maxY = wallRect.height - spiderRect.height;
+  let x = evt.clientX - wallRect.left - spiderWidth / 2;
+  let y = evt.clientY - wallRect.top - spiderHeight / 2;
 
-  x = Math.min(Math.max(x, 0), maxX);
-  y = Math.min(Math.max(y, 0), maxY);
+  const maxX = wall.clientWidth - spiderWidth;
+  const maxY = wall.clientHeight - spiderHeight;
 
-  spider.style.left = Math.round(x) + 'px';
-  spider.style.top = Math.round(y) + 'px';
+  x = Math.max(0, Math.min(x, maxX));
+  y = Math.max(0, Math.min(y, maxY));
+
+  spider.style.left = `${x}px`;
+  spider.style.top = `${y}px`;
 });
