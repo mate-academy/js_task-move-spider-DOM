@@ -8,8 +8,8 @@ wall.addEventListener('click', (e) => {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
-  let left = x - spider.offsetWidth / 2;
-  let topp = y - spider.offsetHeight / 2;
+  let left = x;
+  let topp = y;
 
   if (left < 0) {
     left = 0;
