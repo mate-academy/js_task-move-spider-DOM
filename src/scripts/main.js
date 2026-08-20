@@ -1,15 +1,16 @@
 'use strict';
 
 const wall = document.querySelector('.wall');
-
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
 
-  let leftForSpider = e.clientX - spider.clientWidth / 2 - wallRect.left;
+  let leftForSpider =
+    e.clientX - wallRect.left - wall.clientLeft - spider.clientWidth / 2;
 
-  let topForSpider = e.clientY - spider.clientHeight / 2 - wallRect.top;
+  let topForSpider =
+    e.clientY - wallRect.top - wall.clientTop - spider.clientHeight / 2;
 
   const rightForSpider = leftForSpider + spider.clientWidth;
   const bottomForSpider = topForSpider + spider.clientHeight;
