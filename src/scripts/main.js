@@ -6,19 +6,28 @@ const wall = document.querySelector('.wall');
 document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
 
-  let leftCoord = e.clientX - wallRect.left - spider.offsetWidth / 2;
-  let topCoord = e.clientY - wallRect.top - spider.offsetHeight / 2;
+  const wallCenterX = wallRect.left + wallRect.width / 2;
+  const wallCenterY = wallRect.top + wallRect.height / 2;
 
-  leftCoord = Math.min(
-    Math.max(leftCoord, 0),
-    wall.offsetWidth - spider.offsetWidth,
-  );
+  let leftCoord = e.clientX - wallCenterX;
+  let topCoord = e.clientY - wallCenterY;
 
-  topCoord = Math.min(
-    Math.max(topCoord, 0),
-    wall.offsetHeight - spider.offsetHeight,
-  );
+  const maxX = wall.clientWidth / 2 - spider.offsetWidth / 2;
+  const maxY = wall.clientHeight / 2 - spider.offsetHeight / 2;
 
-  spider.style.left = `${leftCoord}px`;
-  spider.style.top = `${topCoord}px`;
+  // Не рухаємо павука, якщо клік поза стіною
+  if (
+    e.clientX < wallRect.left ||
+    e.clientX > wallRect.right ||
+    e.clientY < wallRect.top ||
+    e.clientY > wallRect.bottom
+  ) {
+    return;
+  }
+
+  leftCoord = Math.max(-maxX, Math.min(leftCoord, maxX));
+  topCoord = Math.max(-maxY, Math.min(topCoord, maxY));
+
+  spider.style.left = `${wall.clientWidth / 2 - spider.offsetWidth / 2 + leftCoord}px`;
+  spider.style.top = `${wall.clientHeight / 2 - spider.offsetHeight / 2 + topCoord}px`;
 });
