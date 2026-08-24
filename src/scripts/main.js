@@ -20,8 +20,9 @@ document.addEventListener('click', (e) => {
   const fieldWidth = field.clientWidth;
   const fieldHeight = field.clientHeight;
 
-  const clickX = e.clientX - field.offsetLeft - field.clientLeft;
-  const clickY = e.clientY - field.offsetTop - field.clientTop;
+  const fieldBoundingClientRect = field.getBoundingClientRect();
+  const clickX = e.clientX - fieldBoundingClientRect.left - field.clientLeft;
+  const clickY = e.clientY - fieldBoundingClientRect.top - field.clientTop;
 
   spider.style.top = `${clickY - spiderOffsetY}px`;
   spider.style.left = `${clickX - spiderOffsetX}px`;
