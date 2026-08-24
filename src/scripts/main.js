@@ -11,9 +11,9 @@ document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
 
   let leftPos =
-    e.clientX - wallRect.left - spider.clientWidth / 2 - wall.clientLeft;
+    e.clientX - wallRect.left - wall.clientLeft - spider.clientWidth / 2;
   let topPos =
-    e.clientY - wallRect.top - spider.clientHeight / 2 - wall.clientTop;
+    e.clientY - wallRect.top - wall.clientTop - spider.clientHeight / 2;
 
   const maxLeft = wall.clientWidth - spider.clientWidth;
   const maxTop = wall.clientHeight - spider.clientHeight;
