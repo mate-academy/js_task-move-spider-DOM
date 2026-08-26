@@ -10,10 +10,8 @@ document.addEventListener('click', (e) => {
 
   const wallRect = wall.getBoundingClientRect();
 
-  let coordX =
-    e.clientX - wallRect.left - wall.clientLeft - spider.clientWidth / 2;
-  let coordY =
-    e.clientY - wallRect.top - wall.clientTop - spider.clientHeight / 2;
+  let coordX = e.clientX - wallRect.left - spider.clientWidth / 2 - 10;
+  let coordY = e.clientY - wallRect.top - spider.clientHeight / 2 - 10;
 
   if (coordX < 0) {
     coordX = 0;
