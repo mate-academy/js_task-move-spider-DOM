@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('click', (e) => {
-  // write code here
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
 
@@ -9,12 +8,12 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  const clickX =
-    e.target === spider ? e.offsetX + spider.offsetLeft : e.offsetX;
-  const clickY = e.target === spider ? e.offsetY + spider.offsetTop : e.offsetY;
+  const wallRect = wall.getBoundingClientRect();
 
-  let coordX = clickX - spider.clientWidth / 2;
-  let coordY = clickY - spider.clientHeight / 2;
+  let coordX =
+    e.clientX - wallRect.left - wall.clientLeft - spider.clientWidth / 2;
+  let coordY =
+    e.clientY - wallRect.top - wall.clientTop - spider.clientHeight / 2;
 
   if (coordX < 0) {
     coordX = 0;
