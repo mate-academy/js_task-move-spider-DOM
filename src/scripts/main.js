@@ -30,5 +30,4 @@ document.addEventListener('click', (e) => {
   }
 
   spider.style.left = `${coordX}px`;
-  spider.style.top = `${coordY}px`;
 });
