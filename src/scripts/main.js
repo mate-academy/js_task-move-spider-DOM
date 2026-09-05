@@ -5,6 +5,16 @@ document.addEventListener('click', (e) => {
   const wall = document.querySelector('.wall');
   const wallRect = wall.getBoundingClientRect();
 
+  const isClickOutsideWall =
+    e.clientX < wallRect.left ||
+    e.clientX > wallRect.right ||
+    e.clientY < wallRect.top ||
+    e.clientY > wallRect.bottom;
+
+  if (isClickOutsideWall) {
+    return;
+  }
+
   const clickX = e.clientX - wallRect.left - wall.clientLeft;
   const clickY = e.clientY - wallRect.top - wall.clientTop;
 
