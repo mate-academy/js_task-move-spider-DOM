@@ -1,5 +1,22 @@
 'use strict';
 
-document.addEventListener('click', (e) => {
-  // write code here
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
+
+wall.addEventListener('click', (e) => {
+  if (e.target.className !== 'wall') {
+    return;
+  }
+
+  const maxPossibleWidth = wall.clientWidth - spider.clientWidth;
+  const maxPossibleHeight = wall.clientHeight - spider.clientHeight;
+
+  const focusY = e.offsetY - spider.offsetHeight / 2;
+  const focusX = e.offsetX - spider.offsetWidth / 2;
+
+  const positionY = Math.max(Math.min(focusY, maxPossibleHeight), 0);
+  const positionX = Math.max(Math.min(focusX, maxPossibleWidth), 0);
+
+  spider.style.top = `${positionY}px`;
+  spider.style.left = `${positionX}px`;
 });
