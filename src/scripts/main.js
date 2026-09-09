@@ -10,20 +10,12 @@ if (getComputedStyle(wall).position === 'static') {
 wall.addEventListener('click', (e) => {
   // write code here
   const wallRect = wall.getBoundingClientRect();
-  const spiderRect = spider.getBoundingClientRect();
-  const wallStyles = getComputedStyle(wall);
-  const borderLeft = parseFloat(wallStyles.borderLeftWidth) || 0;
-  const borderTop = parseFloat(wallStyles.borderTopWidth) || 0;
-  const wallContentLeft = wallRect.left + borderLeft;
-  const wallContentTop = wallRect.top + borderTop;
+  const clickX = e.clientX - wallRect.left - wall.clientLeft;
+  const clickY = e.clientY - wallRect.top - wall.clientTop;
+  const spiderWidth = spider.offsetWidth;
+  const spiderHeight = spider.offsetHeight;
   const wallContentWidth = wall.clientWidth;
   const wallContentHeight = wall.clientHeight;
-
-  const spiderWidth = spiderRect.width;
-  const spiderHeight = spiderRect.height;
-
-  const clickX = e.clientX - wallContentLeft;
-  const clickY = e.clientY - wallContentTop;
 
   let left = clickX - spiderWidth / 2;
   let topSpider = clickY - spiderHeight / 2;
