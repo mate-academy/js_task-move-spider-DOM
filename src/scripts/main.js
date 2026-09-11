@@ -19,29 +19,15 @@ wall.addEventListener('click', (e) => {
     }
   }
 
-  function edgeCase(value, min, max) {
-    if (value === min || value === max) {
-      return true;
-    }
-  }
-
   if (
     clamp(e.clientX, minHorizontal, maxHorizontal) ||
     clamp(e.clientY, minVertical, maxVertical)
   ) {
-    return null;
+    return;
   }
 
-  let verticalMove = e.clientY - wallRect.top - border - spiderSize;
-  let horizontalMove = e.clientX - wallRect.left - border - spiderSize;
-
-  if (
-    edgeCase(e.clientX, minHorizontal, maxHorizontal) ||
-    edgeCase(e.clientY, minVertical, maxVertical)
-  ) {
-    verticalMove = e.clientY - wallRect.top - border - spiderSize * 2;
-    horizontalMove = e.clientX - wallRect.left - border - spiderSize * 2;
-  }
+  const verticalMove = e.clientY - wallRect.top - border - spiderSize;
+  const horizontalMove = e.clientX - wallRect.left - border - spiderSize;
 
   spider.style.left = `${horizontalMove}px`;
   spider.style.top = `${verticalMove}px`;
