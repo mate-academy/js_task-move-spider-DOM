@@ -1,15 +1,47 @@
 'use strict';
 
 const wall = document.querySelector('.wall');
-const wallRect = wall.getBoundingClientRect();
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
-  const spiderSize = spider.clientHeight / 2;
+  const wallRect = wall.getBoundingClientRect();
   const border = (wall.offsetHeight - wall.clientHeight) / 2;
+  const spiderSize = spider.clientHeight / 2;
 
-  const verticalMove = e.clientY - wallRect.top - border - spiderSize;
-  const horizontalMove = e.clientX - wallRect.left - border - spiderSize;
+  const minHorizontal = wallRect.left + border;
+  const maxHorizontal = wallRect.right - border;
+  const minVertical = wallRect.top + border;
+  const maxVertical = wallRect.bottom - border;
+
+  function clamp(value, min, max) {
+    if (value < min || value > max) {
+      return true;
+    }
+  }
+
+  function edgeCase(value, min, max) {
+    if (value === min || value === max) {
+      return true;
+    }
+  }
+
+  if (
+    clamp(e.clientX, minHorizontal, maxHorizontal) ||
+    clamp(e.clientY, minVertical, maxVertical)
+  ) {
+    return null;
+  }
+
+  let verticalMove = e.clientY - wallRect.top - border - spiderSize;
+  let horizontalMove = e.clientX - wallRect.left - border - spiderSize;
+
+  if (
+    edgeCase(e.clientX, minHorizontal, maxHorizontal) ||
+    edgeCase(e.clientY, minVertical, maxVertical)
+  ) {
+    verticalMove = e.clientY - wallRect.top - border - spiderSize * 2;
+    horizontalMove = e.clientX - wallRect.left - border - spiderSize * 2;
+  }
 
   spider.style.left = `${horizontalMove}px`;
   spider.style.top = `${verticalMove}px`;
