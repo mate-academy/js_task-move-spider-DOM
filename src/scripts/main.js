@@ -4,39 +4,19 @@ const wall = document.querySelector('.wall');
 const spider = document.querySelector('.spider');
 
 wall.addEventListener('click', (e) => {
-  const rect = wall.getBoundingClientRect();
-  const xInside = e.clientX - rect.left - wall.clientLeft;
-  const yInside = e.clientY - rect.top - wall.clientTop;
+  const wallRect = wall.getBoundingClientRect();
 
-  if (
-    xInside < 0 ||
-    yInside < 0 ||
-    xInside > wall.clientWidth ||
-    yInside > wall.clientHeight
-  ) {
-    return;
-  }
+  let spiderLeft =
+    e.clientX - wallRect.left - wall.clientLeft - spider.offsetWidth / 2;
+  let spiderTop =
+    e.clientY - wallRect.top - wall.clientTop - spider.offsetHeight / 2;
 
-  const spiderWidth = spider.clientWidth;
-  const spiderHeight = spider.clientHeight;
+  const maxLeft = wall.clientWidth - spider.offsetWidth;
+  const maxTop = wall.clientHeight - spider.offsetHeight;
 
-  const targetLeft = Math.max(
-    0,
-    Math.min(xInside - spiderWidth / 2, wall.clientWidth - spiderWidth),
-  );
-  const targetTop = Math.max(
-    0,
-    Math.min(yInside - spiderHeight / 2, wall.clientHeight - spiderHeight),
-  );
+  spiderLeft = Math.max(0, Math.min(spiderLeft, maxLeft));
+  spiderTop = Math.max(0, Math.min(spiderTop, maxTop));
 
-  const originalTransition = spider.style.transition;
-
-  spider.style.transition = 'none';
-
-  spider.style.left = targetLeft + 'px';
-  spider.style.top = targetTop + 'px';
-
-  setTimeout(() => {
-    spider.style.transition = originalTransition;
-  }, 0);
+  spider.style.left = `${spiderLeft}px`;
+  spider.style.top = `${spiderTop}px`;
 });
