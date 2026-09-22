@@ -29,6 +29,14 @@ wall.addEventListener('click', (e) => {
     Math.min(yInside - spiderHeight / 2, wall.clientHeight - spiderHeight),
   );
 
+  const originalTransition = spider.style.transition;
+
+  spider.style.transition = 'none';
+
   spider.style.left = targetLeft + 'px';
   spider.style.top = targetTop + 'px';
+
+  setTimeout(() => {
+    spider.style.transition = originalTransition;
+  }, 0);
 });
