@@ -7,10 +7,10 @@ wall.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
 
   let leftPosition =
-    e.clientX - wallRect.left - wall.clientLeft - spider.offsetWidth / 2;
+    e.clientX - wallRect.left - spider.offsetWidth / 2;
 
   let topPosition =
-    e.clientY - wallRect.top - wall.clientTop - spider.offsetHeight / 2;
+    e.clientY - wallRect.top - spider.offsetHeight / 2;
 
   leftPosition = Math.max(
     0,
