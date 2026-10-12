@@ -1,0 +1,39 @@
+h1 {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  src: url("Roboto-Regular-webfont.015d4426.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+}
+
+.wall {
+  cursor: pointer;
+  background-color: #f9b47d;
+  background-image: url("brick-wall.831bf26a.svg");
+  border: 10px solid #e1e1e1;
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+
+.spider {
+  width: 50px;
+  height: 50px;
+  transition: all 1s;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/*# sourceMappingURL=index.971c2ea4.css.map */
