@@ -3,11 +3,14 @@
 document.addEventListener('click', (e) => {
   const spider = document.querySelector('.spider');
   const field = document.querySelector('.wall');
+  const fieldRectX = field.getBoundingClientRect();
+  const fieldRectY = field.getBoundingClientRect();
   const spiderMid = spider.offsetWidth / 2;
 
   if (e.target === field) {
-    let xPos = e.clientX - field.offsetLeft - spiderMid - field.clientLeft;
-    let yPos = e.clientY - field.offsetTop - spiderMid - field.clientTop;
+    let xPos = e.clientX - fieldRectX.left - spiderMid - field.clientLeft;
+
+    let yPos = e.clientY - fieldRectY.top - spiderMid - field.clientTop;
 
     if (xPos < 0) {
       xPos = 0;
