@@ -6,6 +6,17 @@ const spider = document.querySelector('.spider');
 document.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
 
+  const isOutOfWall =
+    !wall.contains(e.target) ||
+    e.clientX < wallRect.left ||
+    e.clientX > wallRect.right ||
+    e.clientY < wallRect.top ||
+    e.clientY > wallRect.bottom;
+
+  if (isOutOfWall) {
+    return;
+  }
+
   const maxLeft = wall.clientWidth - spider.offsetWidth;
   const maxTop = wall.clientHeight - spider.offsetHeight;
 
