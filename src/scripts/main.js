@@ -1,38 +1,46 @@
 'use strict';
 
 const spider = document.querySelector('img.spider');
-let centerOfSpiderTop = spider.offsetHeight / 2;
-let centerOfSpiderLeft = spider.offsetWidth / 2;
+const centerOfSpider = spider.offsetHeight / 2;
 
 document.querySelector('body div.wall').addEventListener('click', (e) => {
   const wall = e.currentTarget;
 
-  const startX = wall.offsetLeft + wall.clientLeft;
+  const localCoordStartX = wall.offsetLeft + wall.clientLeft;
   const endX = wall.offsetLeft + wall.clientLeft + wall.clientWidth;
-  const rangeX = [startX, endX];
 
   const startY = wall.offsetTop + wall.clientTop;
   const endY = wall.offsetTop + wall.clientTop + wall.clientHeight;
-  const rangeY = [startY, endY];
 
-  const coordOfClickX = () => {
-    return e.clientX - centerOfSpiderLeft - rangeX[0] + 'px';
+  const localClickCoordX = () => {
+    return e.clientX - centerOfSpider - localCoordStartX;
   };
 
-  const coordOfClickY = () => {
-    return e.clientY - centerOfSpiderTop - rangeY[0] + 'px';
+  const localClickCoordY = () => {
+    return e.clientY - centerOfSpider - startY;
+  };
+
+  const coordToCSSValue = (coord) => {
+    return coord + 'px';
   };
 
   // Moving spider
-  if (coordOfClickX() <= rangeX[0]) {
-    spider.style.left = rangeX[0];
+
+  // By X coordinate
+  if (localClickCoordX() + localCoordStartX < localCoordStartX + centerOfSpider) {
+    spider.style.left = coordToCSSValue(0);
+  } else if (localClickCoordX() + localCoordStartX > endX - spider.offsetHeight) {
+    spider.style.left = coordToCSSValue(wall.clientWidth - spider.offsetHeight);
   } else {
-    spider.style.left = coordOfClickX();
+    spider.style.left = coordToCSSValue(localClickCoordX());
   }
 
-  if (coordOfClickY() <= rangeY[0]) {
-    spider.style.top = rangeY[0];
+  // By Y coordinate
+  if (localClickCoordY() + startY < startY + centerOfSpider) {
+    spider.style.top = coordToCSSValue(0);
+  } else if (localClickCoordY() + startY > endY - spider.offsetHeight) {
+    spider.style.top = coordToCSSValue(wall.clientHeight - spider.offsetHeight);
   } else {
-    spider.style.top = coordOfClickY();
+    spider.style.top = coordToCSSValue(localClickCoordY());
   }
 });
