@@ -10,14 +10,15 @@ wall.addEventListener('click', (e) => {
   const maxLeft = wall.clientWidth - spider.clientWidth;
   const maxTop = wall.clientHeight - spider.clientHeight;
 
-  const leftSpider =
+  const halfWidth =
     e.clientX -
     wall.getBoundingClientRect().left -
     wall.clientLeft -
     spiderWidth;
-  const topSpider =
+
+  const halfHeight =
     e.clientY - wall.getBoundingClientRect().top - wall.clientTop - spiderWidth;
 
-  spider.style.left = `${Math.min(Math.max(leftSpider, 0), maxLeft)}px`;
-  spider.style.top = `${Math.min(Math.max(topSpider, 0), maxTop)}px`;
+  spider.style.left = `${Math.min(Math.max(halfWidth, 0), maxLeft)}px`;
+  spider.style.top = `${Math.min(Math.max(halfHeight, 0), maxTop)}px`;
 });
